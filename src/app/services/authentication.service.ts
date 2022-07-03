@@ -38,12 +38,13 @@ export class AuthenticationService {
 
 
   isUserLoggedIn() {
-    const user = sessionStorage.getItem('email');
+    const user = localStorage.getItem('email');
     console.log(!(user === null));
     return !(user === null);
   }
   logOut() {
-    sessionStorage.removeItem('email');
+    localStorage.clear();
+    console.log('clear storage');
   }
 
 

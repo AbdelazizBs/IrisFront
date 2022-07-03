@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { CommandeComponent } from './pages/commande/commande.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LogoutComponent } from './pages/logout/logout.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    LogoutComponent
+    LogoutComponent,
+    CommandeComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

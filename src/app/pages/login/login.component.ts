@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginservice.authenticate(this.email, this.password).subscribe(
         data => {
           localStorage.setItem('email', data.email);
+          localStorage.setItem('id', data.id);
           this.router.navigate(['dashboard']);
           this.invalidLogin = false;
 
