@@ -16,7 +16,7 @@ export class ClientServiceService {
   // delete(id:any){
   //   return this.http.delete(this.endpoint.url+'agent-/delete/'+id)
   // }
-  update(id: any, client: any){
+  update(id: any, client: any) {
     return this.http.put(this.url + 'client/update/' + id, client);
   }
 }
