@@ -22,7 +22,7 @@ import {EmailValidator} from '@angular/forms';
 
 export class LoginComponent implements OnInit, OnDestroy {
 
-  email: EmailValidator;
+  login: any;
   password: string;
   invalidLogin = false;
   // client: Client ;
@@ -35,26 +35,49 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-  checkLogin() {
-    this.loginservice.authenticate(this.email, this.password).subscribe(
-        data => {
-          // this.response = data,
-          //   this.client = this.response;
-          localStorage.setItem('email', data.email);
-          localStorage.setItem('id', data.id);
-          localStorage.setItem('firstName', data.firstName);
-          this.router.navigate(['dashboard']);
-          this.invalidLogin = false;
+  checkLoginPersonnel() {
+    this.loginservice.authenticate(this.login, this.password).subscribe(
+      data => {
+        // this.response = data,
+        //   this.client = this.response;
+        localStorage.setItem('login', data.login);
+        localStorage.setItem('id', data.id);
+        localStorage.setItem('firstName', data.firstName);
+        this.router.navigate(['dashboard']);
+        this.invalidLogin = false;
 
         /*   localStorage.setItem('address',data.address)
 
      localStorage.setItem('id',data.id)*/
-        },
-        error => {
-          this.invalidLogin = true;
-        }
-      );
+      },
+      error => {
+        this.invalidLogin = true;
+      }
+    );
   }
+
+
+  //
+  // checkLogin() {
+  //   this.loginservice.authenticate(this.email, this.password).subscribe(
+  //       data => {
+  //         // this.response = data,
+  //         //   this.client = this.response;
+  //         localStorage.setItem('email', data.email);
+  //         localStorage.setItem('id', data.id);
+  //         localStorage.setItem('firstName', data.firstName);
+  //         this.router.navigate(['dashboard']);
+  //         this.invalidLogin = false;
+  //
+  //       /*   localStorage.setItem('address',data.address)
+  //
+  //    localStorage.setItem('id',data.id)*/
+  //       },
+  //       error => {
+  //         this.invalidLogin = true;
+  //       }
+  //     );
+  // }
 
 
 

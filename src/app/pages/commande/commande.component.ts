@@ -22,7 +22,7 @@ export class CommandeComponent implements OnInit {
     this.getMyListCommandes();
 
   }
-
+validate: any ;
   clientId: any;
   listCommande: any ;
  // commande : Commande ;
@@ -47,6 +47,11 @@ export class CommandeComponent implements OnInit {
       this.commandeService.getMyListCommandes( this.clientId).subscribe((data: any) => {
         this.listCommande = data;
         console.warn('*---**', this.listCommande);
+        for (let i = 0; i < data.length; i++) {
+          if (data.accepted === true) {
+            this.validate = 'accepted';
+          }
+        }
       });
     }
   }

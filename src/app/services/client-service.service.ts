@@ -10,8 +10,12 @@ export class ClientServiceService {
 
 
 
-  getById(id: any) {
+  getClientById(id: any) {
     return this.http.get(this.url + 'client/getbyid/' + id);
+  }
+
+  getPersonnelById(id: any) {
+    return this.http.get(this.url + 'personnel/getPersonnelById/' + id);
   }
   // delete(id:any){
   //   return this.http.delete(this.endpoint.url+'agent-/delete/'+id)
