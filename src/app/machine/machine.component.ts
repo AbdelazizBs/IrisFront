@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonnelServiceService} from '../services/personnel-service.service';
-import { MatDialog } from '@angular/material/dialog';
-import {UpdateMachineComponent} from '../update-machine/update-machine.component';
+
 
 @Component({
   selector: 'app-machine',
@@ -11,7 +10,7 @@ import {UpdateMachineComponent} from '../update-machine/update-machine.component
 export class MachineComponent implements OnInit {
   listMachine: any ;
 
-  constructor(private dialogRef: MatDialog , private  personnelService: PersonnelServiceService) { }
+  constructor( private  personnelService: PersonnelServiceService) { }
 
   ngOnInit(): void {
     this.getListMachine();
@@ -19,7 +18,7 @@ export class MachineComponent implements OnInit {
 
 
   openDialogToAdd() {
-    this.dialogRef.open(UpdateMachineComponent);
+    // this.dialogRef.open(UpdateMachineComponent);
   }
 
   getListMachine() {

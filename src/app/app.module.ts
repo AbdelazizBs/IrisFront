@@ -7,14 +7,14 @@ import { DatePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import {MatDialogModule} from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { CommandeComponent } from './pages/commande/commande.component';
 import { MachineComponent } from './machine/machine.component';
-import { UpdateMachineComponent } from './update-machine/update-machine.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { UpdateMachineComponent } from './update-machine/update-machine.componen
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    MatDialogModule
+   MatDialogModule
   ],
   declarations: [
     AppComponent,
@@ -34,8 +34,7 @@ import { UpdateMachineComponent } from './update-machine/update-machine.componen
     AuthLayoutComponent,
     LogoutComponent,
     CommandeComponent,
-    MachineComponent,
-    UpdateMachineComponent
+    MachineComponent
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
