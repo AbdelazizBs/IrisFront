@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientServiceService} from '../../services/client-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
+
 
 export class Client {
   id: number;
@@ -12,6 +14,7 @@ export class Client {
   email: any ;
   password: any ;
   phone: any ;
+
 }
 
 export class Personnel {
@@ -26,7 +29,8 @@ export class Personnel {
   password: string ;
   phone: string ;
   genre: string ;
-  dateNaissance: Date ;
+  dateNaissance: any ;
+  nomMachine: any;
 }
 @Component({
   selector: 'app-user-profile',
@@ -36,24 +40,26 @@ export class Personnel {
 
 export class UserProfileComponent implements OnInit {
 
-  constructor(private  clientService: ClientServiceService , private route: Router) {
-  // this.personnel = new Personnel();
+  constructor(private  clientService: ClientServiceService , private route: Router, public datepipe: DatePipe) {
+  this.personnel = new Personnel();
   }
 
 id: any ;
 response: any ;
-  // personnel: Personnel ;
-  cin : any ;
-  firstName: any ;
-  lastName: any ;
-  company: any ;
-  address: any ;
-  country: any ;
-  login: any ;
-  password: any ;
-  phone: any ;
-  genre: any ;
-  dateNaissance: any ;
+  personnel: Personnel ;
+  nomMachines: any ;
+  genres = [];
+  // cin : any ;
+  // firstName: any ;
+  // lastName: any ;
+  // company: any ;
+  // address: any ;
+  // country: any ;
+  // login: any ;
+  // password: any ;
+  // phone: any ;
+  // genre: any ;
+  // dateNaissance: any ;
   // personnel = {
   //   cin : '',
   //   firstName:  '',
@@ -68,26 +74,19 @@ response: any ;
   //   dateNaissance: ''
   // };
   ngOnInit() {
+    this.clientService.getNomMachine().subscribe((d: any) => {
+      this.nomMachines = d;
+    });
+this.genres = ['homme',
+  'femme'];
 
     this.id = localStorage.getItem('id');
     console.log(this.id);
     this.clientService.getPersonnelById(this.id).subscribe(      (res) => {
         console.log(res);
         this.response = res,
-          // this.personnel = this.response;
-          this.id = this.response.id;
-          this.cin = this.response.cin;
-        this.firstName = this.response.firstName;
-        this.lastName = this.response.lastName;
-        this.company = this.response.company;
-        this.address = this.response.address;
-        this.country = this.response.country;
-        this.password = this.response.password;
-        this.phone = this.response.phone;
-        this.genre = this.response.genre;
-        this.dateNaissance = this.response.dateNaissance;
-
-        console.log(this.cin); },
+          this.personnel = this.response;
+        console.log(this.personnel); },
       (err) => {
         console.log(err);
       }
@@ -95,22 +94,21 @@ response: any ;
   }
 
   update() {
-    const f = new FormData();
-    // f.append('address', this.client.address);
-    // f.append('firstName', this.client.firstName);
-    // f.append('lastName', this.client.lastName);
-    // f.append('country', this.client.country);
-    // f.append('company', this.client.company);
-    // f.append('email', this.client.email);
-    // f.append('password', this.client.password);
-    // f.append('phone', this.client.phone);
+    const f: FormData = new FormData();
+    f.append('address', this.personnel.address);
+    f.append('firstName', this.personnel.firstName);
+    f.append('lastName', this.personnel.lastName);
+    f.append('country', this.personnel.country);
+    f.append('company', this.personnel.company);
+    f.append('login', this.personnel.login);
+    f.append('password', this.personnel.password);
+    f.append('phone', this.personnel.phone);
+    f.append('cin', this.personnel.cin);
+    f.append('genre', this.personnel.genre);
+    f.append('nomMachine', this.personnel.nomMachine);
+    f.append('dateNaissance', this.datepipe.transform(this.personnel.dateNaissance, 'dd/MM/yyyy'));
+    f.append('password', this.personnel.password);
 
-
-    // if (this.image) {
-    //   f.append('image', this.image); } else {
-    //   f.append('image', this.actuality.image);
-    //
-    // }
     this.clientService.update(this.id, f).subscribe(
       (res) => {
         console.log(res);
