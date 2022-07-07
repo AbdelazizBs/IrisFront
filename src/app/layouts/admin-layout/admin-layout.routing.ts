@@ -8,6 +8,8 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import {AuthGuardService} from '../../services/auth-guard.service';
 import {CommandeComponent} from '../../pages/commande/commande.component';
 import {LogoutComponent} from '../../pages/logout/logout.component';
+import {MachineComponent} from '../../machine/machine.component';
+import {UpdateMachineComponent} from '../../update-machine/update-machine.component';
 
 export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
@@ -20,6 +22,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'tables',         component: TablesComponent  },
   { path: 'icons',          component: IconsComponent  },
   { path: 'logout',          component: LogoutComponent  },
-
+  { path: 'machine',          component: MachineComponent  },
+  { path: 'update-machine',          component: UpdateMachineComponent  },
   { path: 'commande',           component: CommandeComponent  }
 ];
