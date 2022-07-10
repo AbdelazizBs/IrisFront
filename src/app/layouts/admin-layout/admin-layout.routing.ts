@@ -23,6 +23,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'icons',          component: IconsComponent  },
   { path: 'logout',          component: LogoutComponent  },
   { path: 'machine',          component: MachineComponent  },
-  { path: 'update-machine',          component: UpdateMachineComponent  },
+  { path: 'update-machine/:id',    component: UpdateMachineComponent  },
   { path: 'commande',           component: CommandeComponent  }
 ];

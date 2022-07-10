@@ -13,8 +13,7 @@ import { ComponentsModule } from './components/components.module';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { CommandeComponent } from './pages/commande/commande.component';
 import { MachineComponent } from './machine/machine.component';
-import { MatDialogModule } from '@angular/material/dialog';
-
+import {UpdateMachineComponent} from './update-machine/update-machine.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule,
-   MatDialogModule
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
@@ -34,7 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AuthLayoutComponent,
     LogoutComponent,
     CommandeComponent,
-    MachineComponent
+    MachineComponent,
+    UpdateMachineComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

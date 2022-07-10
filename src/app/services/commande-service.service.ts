@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,12 @@ export class CommandeServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getMyListCommandes(id: any){
+  getMyListCommandes(id: any) {
     return this.http.get(this.url + 'commande/' + id + '/myCommandes' );  }
+
+  inverse(id: any, f: any): Observable<any> {
+    return this.http.put(this.url + 'personnel/inverse/' + id, f);
+  }
+  getListCommandes() {
+    return this.http.get(this.url + 'commande/commandes' );  }
 }

@@ -78,7 +78,7 @@
             </div>
             <div class="col-4 text-right">
               <!--              <a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
-              <button class="btn btn-info">Edit profile</button>
+              <button (click)="updateMachine()" class="btn btn-info">Edit machine</button>
 
             </div>
           </div>
@@ -91,24 +91,30 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label"  for="input-first-name">First Name</label>
-                    <input type="text" id="input-first-name"  class="form-control form-control-alternative" >
+                    <label class="form-control-label"  for="input-first-name">Nom Machine</label>
+                    <input [(ngModel)] = "machine.nomMachine" type="text" id="input-first-name"  class="form-control form-control-alternative" >
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">Login </label>
-                    <input type="text" id="input-email"  class="form-control form-control-alternative">
+                    <label class="form-control-label" for="input-last-etat">Etape Production</label>
+                    <select [(ngModel)] = "machine.nomEtapeProduction" type="text"  id="input-last-nomEtapeProduction" name="nomEtapeProduction" class="form-control form-control-alternative" >
+                      <option>--Select--</option>
+                      <option  class="input-options"  *ngFor="let nomEtape  of nomEtapes">
+                        {{nomEtape}}
+                      </option>
+                    </select>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-nomMachine">Machine</label>
-                    <select type="text"  id="input-last-nomMachine" name="nomMachine" class="form-control form-control-alternative" >
+                    <label class="form-control-label" for="input-last-etat">Etat</label>
+                    <select [(ngModel)] = "machine.etat" type="text"  id="input-last-etat" name="etat" class="form-control form-control-alternative" >
                       <option>--Select--</option>
-                      <option  class="input-options" >
+                      <option  class="input-options"  *ngFor="let listE of listEtat">
+                        {{listE}}
                       </option>
                     </select>
                     <!--                    <input type="text" id="input-last-genre" [(ngModel)]="personnel.genre" class="form-control form-control-alternative">-->
@@ -116,89 +122,45 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-dateNaissance">Date Naissance</label>
-                    <input type="Date" id="input-last-dateNaissance"  class="form-control form-control-alternative" >
+                      <label class="form-control-label" for="input-last-Creation">Date Creation</label>
+                    <input [(ngModel)] = "machine.dateCreation" type="Date" id="input-last-Creation"  class="form-control form-control-alternative" >
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-nomMachine">Genre</label>
-                    <select type="text"id="input-last-genre" name="nomMachine" class="form-control form-control-alternative" >
-                      <option>--Select--</option>
-                      <option  class="input-options" >
-                      </option>
-                    </select>
+                    <label class="form-control-label" for="input-last-dateMaintenance">Date Maintenance</label>
+                    <input [(ngModel)] = "machine.dateMaintenance" type="Date" id="input-last-dateMaintenance"  class="form-control form-control-alternative" >
                     <!--                    <input type="text" id="input-last-genre" [(ngModel)]="personnel.genre" class="form-control form-control-alternative">-->
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-password">Password</label>
-                    <input type="password" id="input-last-password"  class="form-control form-control-alternative" >
+                    <label class="form-control-label" for="input-last-reference">Réference</label>
+                    <input [(ngModel)] = "machine.reference" type="text" id="input-last-reference"  class="form-control form-control-alternative" >
                   </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Last Name</label>
-                    <input type="text" id="input-last-name"  class="form-control form-control-alternative">
+                    <label class="form-control-label" for="input-last-nombreConducteur">Nombre Conducteur</label>
+                    <input [(ngModel)] = "machine.nombreConducteur" type="text" id="input-last-nombreConducteur"  class="form-control form-control-alternative">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-last-phone">Phone</label>
-                    <input type="text" id="input-last-phone"  class="form-control form-control-alternative" >
-                  </div>
-                </div>
+<!--                <div class="col-lg-6">-->
+<!--                  <div class="form-group">-->
+<!--                    <label class="form-control-label" for="input-last-phone">Phone</label>-->
+<!--                    <input type="text" id="input-last-phone"  class="form-control form-control-alternative" >-->
+<!--                  </div>-->
+<!--                </div>-->
               </div>
             </div>
             <hr class="my-4" />
-            <!-- Address -->
-            <h6 class="heading-small text-muted mb-4">Contact information</h6>
-            <div class="pl-lg-4">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-address">Address</label>
-                    <input id="input-address" class="form-control form-control-alternative"  placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-city">Company</label>
-                    <input type="text" id="input-city"  class="form-control form-control-alternative" placeholder="City" value="New York">
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-country">Country</label>
-                    <input type="text" id="input-country" class="form-control  form-control-alternative" placeholder="Country" value="United States">
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-country">CIN</label>
-                    <input type="number" id="input-postal-code"  class="form-control form-control-alternative" placeholder="cin">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr class="my-4" />
+<!---->
             <!-- Description -->
-            <h6 class="heading-small text-muted mb-4">About Personnel</h6>
-            <div class="pl-lg-4">
-              <div class="form-group">
-                <label>About Personnel</label>
-                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-              </div>
-            </div>
+<!---->
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonnelServiceService} from '../services/personnel-service.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,13 +10,15 @@ import {PersonnelServiceService} from '../services/personnel-service.service';
 })
 export class MachineComponent implements OnInit {
   listMachine: any ;
-
-  constructor( private  personnelService: PersonnelServiceService) { }
+id: any;
+  constructor(private  personnelService: PersonnelServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.getListMachine();
   }
-
+  updateMachine(myObj: any) {
+      this.router.navigate(['/update-machine' + '/' + myObj['id']]);
+  }
 
   openDialogToAdd() {
     // this.dialogRef.open(UpdateMachineComponent);
