@@ -101,54 +101,54 @@
           <h3 class="mb-0">Machine tables</h3>
 
           <div class="col text-right">
-            <button  (click)="openDialogToAdd()" class="btn btn-sm btn-primary">Ajouter Machine</button>
+            <button   class="btn btn-sm btn-primary">Ajouter Article</button>
           </div>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
-              <th scope="col">Nom Machine</th>
-              <th scope="col">Réference</th>
-              <th scope="col">Etape Production</th>
-              <th scope="col">NombreConducteur</th>
-              <th scope="col">Date Maintenance</th>
-              <th scope="col">Date Création</th>
-              <th scope="col">Etat</th>
+<!--              <th scope="col">Nom Machine</th>-->
+<!--              <th scope="col">Réference</th>-->
+<!--              <th scope="col">Etape Production</th>-->
+<!--              <th scope="col">NombreConducteur</th>-->
+              <th scope="col">Code</th>
+              <th scope="col">Designation</th>
+              <th scope="col">Etapes Production</th>
               <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let l of listMachine">
-              <th scope="row">
-                <div class="media align-items-center">
-                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                    <img  src="../assets/img/theme/logoMachine2.png">
-                  </a>
-                  <div class="media-body">
-                    <span class="mb-0 text-sm">{{l.nomMachine}}</span>
-                  </div>
-                </div>
-              </th>
+            <tr *ngFor="let l of listArticle">
+<!--              <th scope="row">-->
+<!--                <div class="media align-items-center">-->
+<!--                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">-->
+<!--                    <img  src="../assets/img/theme/logoMachine2.png">-->
+<!--                  </a>-->
+<!--                  <div class="media-body">-->
+<!--                    <span class="mb-0 text-sm">{{l.codeArticle}}</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </th>-->
+<!--              <td>-->
+<!--                {{l.reference}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                  <span class="badge badge-dot mr-4">-->
+<!--                    <i class="bg-warning"></i> {{l.nomEtapeProduction}}-->
+<!--                  </span>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{l.nombreConducteur}}-->
+<!--              </td>-->
               <td>
-                {{l.reference}}
+                {{l.codeArticle}}
               </td>
               <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> {{l.nomEtapeProduction}}
-                  </span>
+                {{l.designation}}
               </td>
               <td>
-                {{l.nombreConducteur}}
-              </td>
-              <td>
-                {{l.dateMaintenance}}
-              </td>
-              <td>
-                {{l.dateCreation}}
-              </td>
-              <td>
-                {{l.etat}}
+                {{l.nomEtapeProductions}}
               </td>
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
@@ -160,7 +160,7 @@
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
                   <!--                  </div>-->
-                  <a (click)="updateMachine(l)" class="btn btn-sm btn-primary">Edit</a>
+                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Edit</a>
 
                 </div>
             </tr>

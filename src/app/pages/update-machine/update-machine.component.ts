@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MachineServiceService} from '../services/machine-service.service';
-import {Personnel} from '../pages/user-profile/user-profile.component';
+import {MachineServiceService} from '../../services/machine-service.service';
+import {Personnel} from '../user-profile/user-profile.component';
 import {DatePipe} from '@angular/common';
-import {EtapeProductionServiceService} from '../services/etape-production-service.service';
+import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
 
 export class Machine {
   id: any;

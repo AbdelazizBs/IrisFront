@@ -1,4 +1,4 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/atelier.webp); background-size: cover; background-position: center top;">
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(../../../assets/img/theme/atelier.webp); background-size: cover; background-position: center top;">
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
@@ -51,7 +51,7 @@
           </div>
           <div class="text-center">
             <h3>
-             <span class="font-weight-light">, 27</span>
+              <span class="font-weight-light">, 27</span>
             </h3>
             <div class="h5 font-weight-300">
               <i class="ni location_pin mr-2"></i>
@@ -78,7 +78,7 @@
             </div>
             <div class="col-4 text-right">
               <!--              <a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
-              <button (click)="updateMachine()" class="btn btn-info">Edit machine</button>
+              <button (click)="ajoutMachine()" class="btn btn-info">Ajouter machine</button>
 
             </div>
           </div>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                      <label class="form-control-label" for="input-last-Creation">Date Creation</label>
+                    <label class="form-control-label" for="input-last-Creation">Date Creation</label>
                     <input [(ngModel)] = "machine.dateCreation" type="Date" id="input-last-Creation"  class="form-control form-control-alternative" >
                   </div>
                 </div>
@@ -149,18 +149,18 @@
                     <input [(ngModel)] = "machine.nombreConducteur" type="text" id="input-last-nombreConducteur"  class="form-control form-control-alternative">
                   </div>
                 </div>
-<!--                <div class="col-lg-6">-->
-<!--                  <div class="form-group">-->
-<!--                    <label class="form-control-label" for="input-last-phone">Phone</label>-->
-<!--                    <input type="text" id="input-last-phone"  class="form-control form-control-alternative" >-->
-<!--                  </div>-->
-<!--                </div>-->
+                <!--                <div class="col-lg-6">-->
+                <!--                  <div class="form-group">-->
+                <!--                    <label class="form-control-label" for="input-last-phone">Phone</label>-->
+                <!--                    <input type="text" id="input-last-phone"  class="form-control form-control-alternative" >-->
+                <!--                  </div>-->
+                <!--                </div>-->
               </div>
             </div>
             <hr class="my-4" />
-<!---->
+            <!---->
             <!-- Description -->
-<!---->
+            <!---->
           </div>
         </div>
       </div>

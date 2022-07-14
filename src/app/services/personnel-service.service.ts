@@ -10,7 +10,8 @@ export class PersonnelServiceService {
   constructor(private http: HttpClient) { }
 
 
-  getLisMachine() {
-    return this.http.get(this.url + 'machine/getListMachine');
+  getListArticles() {
+    return this.http.get(this.url + 'article/articles');
   }
+
 }

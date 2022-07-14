@@ -8,8 +8,14 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import {AuthGuardService} from '../../services/auth-guard.service';
 import {CommandeComponent} from '../../pages/commande/commande.component';
 import {LogoutComponent} from '../../pages/logout/logout.component';
-import {MachineComponent} from '../../machine/machine.component';
-import {UpdateMachineComponent} from '../../update-machine/update-machine.component';
+import {MachineComponent} from '../../pages/machine/machine.component';
+import {UpdateMachineComponent} from '../../pages/update-machine/update-machine.component';
+import {ArticleComponent} from '../../pages/article/article.component';
+import {UpdateArticleComponent} from '../../pages/update-article/update-article.component';
+import {EtapeProductionComponent} from '../../pages/etape-production/etape-production.component';
+import {UpdateEtapeProductionComponent} from '../../pages/update-etape-production/update-etape-production.component';
+import {AjouterEtapeComponent} from '../../pages/ajouter-etape/ajouter-etape.component';
+import {AjouterMachineComponent} from '../../pages/ajouter-machine/ajouter-machine.component';
 
 export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
@@ -17,6 +23,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent  , canActivate : [AuthGuardService]},
     { path: 'icons',          component: IconsComponent , canActivate : [AuthGuardService] },
     { path: 'maps',           component: MapsComponent  , canActivate : [AuthGuardService]}*/
+
+  { path: 'article',      component: ArticleComponent },
+  { path: 'etape-production',      component: EtapeProductionComponent },
   { path: 'dashboard',      component: DashboardComponent },
   { path: 'user-profile',   component: UserProfileComponent  },
   { path: 'tables',         component: TablesComponent  },
@@ -24,5 +33,9 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'logout',          component: LogoutComponent  },
   { path: 'machine',          component: MachineComponent  },
   { path: 'update-machine/:id',    component: UpdateMachineComponent  },
+  { path: 'update-article/:id',    component: UpdateArticleComponent  },
+  { path: 'update-etape-production/:id',    component: UpdateEtapeProductionComponent  },
+  { path: 'ajouter-etape',    component: AjouterEtapeComponent  },
+  { path: 'ajouter-machine',    component: AjouterMachineComponent  },
   { path: 'commande',           component: CommandeComponent  }
 ];

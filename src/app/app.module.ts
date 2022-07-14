@@ -12,8 +12,14 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { CommandeComponent } from './pages/commande/commande.component';
-import { MachineComponent } from './machine/machine.component';
-import {UpdateMachineComponent} from './update-machine/update-machine.component';
+import { MachineComponent } from './pages/machine/machine.component';
+import {UpdateMachineComponent} from './pages/update-machine/update-machine.component';
+import { ArticleComponent } from './pages/article/article.component';
+import { UpdateArticleComponent } from './pages/update-article/update-article.component';
+import { EtapeProductionComponent } from './pages/etape-production/etape-production.component';
+import { UpdateEtapeProductionComponent } from './pages/update-etape-production/update-etape-production.component';
+import { AjouterEtapeComponent } from './pages/ajouter-etape/ajouter-etape.component';
+import { AjouterMachineComponent } from './pages/ajouter-machine/ajouter-machine.component';
 
 
 @NgModule({
@@ -34,6 +40,12 @@ import {UpdateMachineComponent} from './update-machine/update-machine.component'
     CommandeComponent,
     MachineComponent,
     UpdateMachineComponent,
+    ArticleComponent,
+    UpdateArticleComponent,
+    EtapeProductionComponent,
+    UpdateEtapeProductionComponent,
+    AjouterEtapeComponent,
+    AjouterMachineComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

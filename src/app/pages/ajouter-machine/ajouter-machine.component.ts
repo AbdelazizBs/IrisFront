@@ -1,0 +1,71 @@
+import { Component, OnInit } from '@angular/core';
+import {MachineServiceService} from '../../services/machine-service.service';
+import {Router} from '@angular/router';
+import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
+import {DatePipe} from '@angular/common';
+
+export class Machine {
+  id: any;
+  nomMachine: any;
+  reference: any;
+  nomEtapeProduction: any;
+  nombreConducteur: any;
+  dateMaintenance: any;
+  dateCreation: any;
+  etat: any ;
+}
+@Component({
+  selector: 'app-ajouter-machine',
+  templateUrl: './ajouter-machine.component.html',
+  styleUrls: ['./ajouter-machine.component.scss']
+})
+export class AjouterMachineComponent implements OnInit {
+machine: Machine ;
+  idMachine: any;
+  listEtat: any[];
+  nomEtapes: any[];
+  listNomEtapeProduction: any[];
+  response: any ;
+  constructor(private etapeProductionService: EtapeProductionServiceService , private route: Router, private machineService: MachineServiceService, public datepipe: DatePipe) {
+    this.machine = new Machine();
+  }
+
+  ngOnInit(): void {
+    this.etapeProductionService.getNomEtapes().subscribe(response => {
+        console.log(response);
+        this.response = response,
+          this.nomEtapes = this.response;
+        console.log(this.machine); },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.listEtat = ['En Maintenance',
+      'En repos',
+      'En marche',
+      'En panne'
+    ];
+  }
+
+  ajoutMachine() {
+    const f: FormData = new FormData();
+    f.append('nomMachine', this.machine.nomMachine);
+    f.append('reference', this.machine.reference);
+    f.append('nomEtapeProduction', this.machine.nomEtapeProduction);
+    f.append('nombreConducteur', this.machine.nombreConducteur);
+    f.append('dateMaintenance' , this.datepipe.transform( this.machine.dateMaintenance, 'yyyy/MM/dd'));
+    f.append('dateCreation', this.datepipe.transform( this.machine.dateCreation, 'yyyy/MM/dd'));
+    f.append('etat', this.machine.etat);
+    this.machineService.ajoutMachine(f).subscribe(
+      (res) => {
+        console.log(res);
+        this.route.navigate(['/machine']);
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
+  }
+
+}

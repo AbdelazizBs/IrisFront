@@ -20,4 +20,17 @@ export class MachineServiceService {
     return this.http.put<any>(this.url + 'machine/updateMachine/' + id, machine);
   }
 
+
+  getLisMachine() {
+    return this.http.get(this.url + 'machine/getListMachine');
+  }
+
+
+  delete(id: any) {
+    return this.http.delete<any>(this.url + 'machine/deleteMachine/' + id);
+
+  }
+  ajoutMachine(machine: any) {
+    return this.http.post(this.url + 'machine/addMachine' , machine);
+  }
 }
