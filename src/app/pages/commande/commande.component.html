@@ -162,16 +162,36 @@
                 </div>
               </td>
               <td class="text-right">
+<!--                <div ngbDropdown placement="bottom-right">-->
+<!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
+<!--                    <i class="fas fa-ellipsis-v"></i>-->
+<!--                  </a>-->
+<!--&lt;!&ndash;                  <a routerLink="/tables" class="btn btn-sm btn-primary">Detailles</a>&ndash;&gt;-->
+<!--                  <div ngbDropdown placement="bottom-right">-->
+<!--                    &lt;!&ndash;                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <i class="fas fa-ellipsis-v"></i>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Action</a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--                    <a routerLink="/" class="btn btn-sm btn-primary">OF</a>-->
+
+<!--                  </div>-->
+
+<!--                </div>-->
                 <div ngbDropdown placement="bottom-right">
-                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                    <i class="fas fa-ellipsis-v"></i>
-                  </a>
-<!--                  <a routerLink="/tables" class="btn btn-sm btn-primary">Detailles</a>-->
-                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                  </div>
+                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
+                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
+                  <!--                  </a>-->
+                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
+                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
+                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
+                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
+                  <!--                  </div>-->
+                  <a (click)="updateCmd(commande)" class="btn btn-sm btn-primary">Article</a>
+
                 </div>
               </td>
             </tr>

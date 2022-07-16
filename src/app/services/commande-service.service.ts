@@ -18,4 +18,6 @@ export class CommandeServiceService {
   }
   getListCommandes() {
     return this.http.get(this.url + 'commande/commandes' );  }
+  getCmdById(id: any) {
+    return this.http.get(this.url + 'commande/' + id  );  }
 }

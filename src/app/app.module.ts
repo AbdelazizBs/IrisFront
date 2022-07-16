@@ -20,6 +20,9 @@ import { EtapeProductionComponent } from './pages/etape-production/etape-product
 import { UpdateEtapeProductionComponent } from './pages/update-etape-production/update-etape-production.component';
 import { AjouterEtapeComponent } from './pages/ajouter-etape/ajouter-etape.component';
 import { AjouterMachineComponent } from './pages/ajouter-machine/ajouter-machine.component';
+import { AjouterArticleComponent } from './pages/ajouter-article/ajouter-article.component';
+import { OrdreFabricationComponent } from './pages/ordre-fabrication/ordre-fabrication.component';
+import { UpdateOrdreFabricationComponent } from './pages/update-ordre-fabrication/update-ordre-fabrication.component';
 
 
 @NgModule({
@@ -46,6 +49,9 @@ import { AjouterMachineComponent } from './pages/ajouter-machine/ajouter-machine
     UpdateEtapeProductionComponent,
     AjouterEtapeComponent,
     AjouterMachineComponent,
+    AjouterArticleComponent,
+    OrdreFabricationComponent,
+    UpdateOrdreFabricationComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

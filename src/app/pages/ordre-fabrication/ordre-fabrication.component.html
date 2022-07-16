@@ -98,84 +98,28 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Article tables</h3>
+          <h3 class="mb-0">Articles Commande :{{cmd.numCmd}}</h3>
 
           <div class="col text-right">
-            <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>
+<!--            <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>-->
           </div>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
-<!--              <th scope="col">Nom Machine</th>-->
-<!--              <th scope="col">Réference</th>-->
-<!--              <th scope="col">Etape Production</th>-->
-<!--              <th scope="col">NombreConducteur</th>-->
-              <th scope="col">Code</th>
-              <th scope="col">Designation</th>
-              <th scope="col">Etapes Production</th>
-              <th scope="col"></th>
+              <th scope="col">Code Article</th>
               <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let l of listArticle">
-<!--              <th scope="row">-->
-<!--                <div class="media align-items-center">-->
-<!--                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">-->
-<!--                    <img  src="../assets/img/theme/logoMachine2.png">-->
-<!--                  </a>-->
-<!--                  <div class="media-body">-->
-<!--                    <span class="mb-0 text-sm">{{l.codeArticle}}</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </th>-->
-<!--              <td>-->
-<!--                {{l.reference}}-->
-<!--              </td>-->
-<!--              <td>-->
-<!--                  <span class="badge badge-dot mr-4">-->
-<!--                    <i class="bg-warning"></i> {{l.nomEtapeProduction}}-->
-<!--                  </span>-->
-<!--              </td>-->
-<!--              <td>-->
-<!--                {{l.nombreConducteur}}-->
-<!--              </td>-->
               <td>
-                {{l.codeArticle}}
-              </td>
-              <td>
-                {{l.designation}}
-              </td>
-              <td>
-                {{l.nomEtapeProductions}}
+                {{l}}
               </td>
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
-                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
-                  <!--                  </a>-->
-                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
-                  <!--                  </div>-->
-                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Edit</a>
-
-                </div>
-              <td class="text-right">
-                <div ngbDropdown placement="bottom-right">
-                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
-                  <!--                  </a>-->
-                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
-                  <!--                  </div>-->
-                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Delete</a>
-
+                  <a (click)="of(l)"  class="btn btn-sm btn-primary">OF</a>
                 </div>
             </tr>
             </tbody>

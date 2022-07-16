@@ -10,8 +10,4 @@ export class PersonnelServiceService {
   constructor(private http: HttpClient) { }
 
 
-  getListArticles() {
-    return this.http.get(this.url + 'article/articles');
-  }
-
 }

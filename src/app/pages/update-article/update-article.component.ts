@@ -22,7 +22,7 @@ export class UpdateArticleComponent implements OnInit {
 article: Article ;
   nomEtapes: any[];
   response: any ;
-
+  codeArticles: any;
   constructor(private articleService: ArticleServiceService , private etapeProductionService: EtapeProductionServiceService , private router: Router,  private route: ActivatedRoute) {
     this.article = new Article();
 
@@ -35,6 +35,7 @@ article: Article ;
         this.idArticle = params.get('id');
       }
     );
+
 
 
     this.etapeProductionService.getNomEtapes().subscribe(response => {
@@ -56,6 +57,17 @@ article: Article ;
   console.log(err);
 
 });
+
+
+    this.articleService.getArticleByCodeArticles(this.codeArticles).subscribe(response => {
+        console.log(response);
+        this.response = response,
+          this.article = this.response;
+        console.log(this.article); },
+      (err) => {
+        console.log(err);
+
+      });
   }
 
 

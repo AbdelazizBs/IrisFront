@@ -31,4 +31,8 @@ export class EtapeProductionServiceService {
   ajoutEtape(etape: any) {
     return this.http.post(this.url + 'etapeProduction/processEtapeProduction' , etape);
   }
+  delete(id: any) {
+    return this.http.delete<any>(this.url + 'etapeProduction/deleteEtape/' + id);
+
+  }
 }

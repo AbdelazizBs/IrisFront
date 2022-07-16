@@ -28,4 +28,24 @@ listEtape: any ;
     });
   }
 
+  delete(id: any) {
+    this.etapeService.delete(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.refreshListachines();
+        this.router.navigate(['/etape-production']);
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
+  }
+  refreshListachines() {
+    this.etapeService.getLisEtape().subscribe(
+      response => {
+        this.listEtape = response;      }
+    );
+  }
+
 }

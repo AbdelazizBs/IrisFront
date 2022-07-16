@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PersonnelServiceService} from '../../services/personnel-service.service';
 import {Router} from '@angular/router';
+import {ArticleServiceService} from '../../services/article-service.service';
 
 @Component({
   selector: 'app-article',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 export class ArticleComponent implements OnInit {
   listArticle: any ;
   id: any;
-  constructor(private  personnelService: PersonnelServiceService, private router: Router) { }
+  constructor(private  articleService: ArticleServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.getListArticle();
@@ -21,10 +22,30 @@ export class ArticleComponent implements OnInit {
   }
 
   getListArticle() {
-    this.personnelService.getListArticles().subscribe((data: any) => {
+    this.articleService.getListArticles().subscribe((data: any) => {
       this.listArticle = data;
       console.warn('*---**', this.listArticle);
     });
+  }
+
+  delete(id: any) {
+    this.articleService.delete(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.refreshListachines();
+        this.router.navigate(['/article']);
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
+  }
+  refreshListachines() {
+    this.articleService.getListArticles().subscribe(
+      response => {
+        this.listArticle = response;      }
+    );
   }
 
 }

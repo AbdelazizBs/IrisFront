@@ -98,7 +98,7 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Machine tables</h3>
+          <h3 class="mb-0">Etape Production tables</h3>
 
           <div class="col text-right">
             <button routerLink="/ajouter-etape"  class="btn btn-sm btn-primary">Ajouter Etape</button>
@@ -172,7 +172,7 @@
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
                   <!--                  </div>-->
-                  <a class="btn btn-sm btn-primary">Delete</a>
+                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Delete</a>
 
                 </div>
 

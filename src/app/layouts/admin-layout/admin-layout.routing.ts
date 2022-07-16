@@ -16,6 +16,9 @@ import {EtapeProductionComponent} from '../../pages/etape-production/etape-produ
 import {UpdateEtapeProductionComponent} from '../../pages/update-etape-production/update-etape-production.component';
 import {AjouterEtapeComponent} from '../../pages/ajouter-etape/ajouter-etape.component';
 import {AjouterMachineComponent} from '../../pages/ajouter-machine/ajouter-machine.component';
+import {AjouterArticleComponent} from '../../pages/ajouter-article/ajouter-article.component';
+import {OrdreFabricationComponent} from '../../pages/ordre-fabrication/ordre-fabrication.component';
+import {UpdateOrdreFabricationComponent} from '../../pages/update-ordre-fabrication/update-ordre-fabrication.component';
 
 export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
@@ -34,8 +37,13 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'machine',          component: MachineComponent  },
   { path: 'update-machine/:id',    component: UpdateMachineComponent  },
   { path: 'update-article/:id',    component: UpdateArticleComponent  },
+  { path: 'update-ordre-fabrication/:codeArticle',    component: UpdateOrdreFabricationComponent  },
   { path: 'update-etape-production/:id',    component: UpdateEtapeProductionComponent  },
   { path: 'ajouter-etape',    component: AjouterEtapeComponent  },
   { path: 'ajouter-machine',    component: AjouterMachineComponent  },
-  { path: 'commande',           component: CommandeComponent  }
+  { path: 'commande',           component: CommandeComponent  },
+  { path: 'ajouter-article',           component: AjouterArticleComponent  },
+  { path: 'ordre-fabrication/:id',           component: OrdreFabricationComponent  }
+
+
 ];

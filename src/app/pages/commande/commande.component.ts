@@ -78,5 +78,7 @@ validate: any ;
         this.listCommande = response;      }
     );
   }
-
+  updateCmd(myObj: any) {
+    this.router.navigate(['/ordre-fabrication' + '/' + myObj['id']]);
+  }
 }

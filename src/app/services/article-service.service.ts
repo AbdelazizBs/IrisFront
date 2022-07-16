@@ -10,13 +10,26 @@ export class ArticleServiceService {
 
   constructor(private http: HttpClient) { }
 
-
+  ajoutArticle(article: any) {
+    return this.http.post(this.url + 'article/addArticle' , article);
+  }
   getArticleById(id: any) {
     return this.http.get(this.url + 'article/getArticleById/' + id);
+  }
+  getArticleByCodeArticles(codeArticle: any) {
+    return this.http.get(this.url + 'article/getArticleByCodeArticle/' + codeArticle);
   }
 
   updateArticle(id: any, article: any): Observable<any> {
     return this.http.put<any>(this.url + 'article/updateArticle/' + id, article);
+  }
+
+  getListArticles() {
+    return this.http.get(this.url + 'article/articles');
+  }
+  delete(id: any) {
+    return this.http.delete<any>(this.url + 'article/deleteArticle/' + id);
+
   }
 
 }
