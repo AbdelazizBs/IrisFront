@@ -64,7 +64,7 @@
             <!--            </div>-->
             <hr class="my-4" />
             <!--            <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>-->
-            <a href="javascript:void(0)">Show more</a>
+<!--            <a href="javascript:void(0)">Show more</a>-->
           </div>
         </div>
       </div>
@@ -74,11 +74,11 @@
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
             <div class="col-8">
-                            <h3 class="mb-0">Article :  {{article.codeArticle}}</h3>
+<!--                            <h3 class="mb-0">My account</h3>-->
             </div>
             <div class="col-4 text-right">
               <!--              <a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
-              <button (click)="lancerOf()" class="btn btn-info">Lancement OF</button>
+              <button class="btn btn-info">Ajouter Commande </button>
 
             </div>
           </div>
@@ -86,67 +86,56 @@
         <div class="card-body">
 
           <div>
-            <h6 class="heading-small text-muted mb-4">Personnel information</h6>
+            <h6 class="heading-small text-muted mb-4">Commande  information</h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label"  for="input-first-name">Commentaire</label>
-                    <input [(ngModel)] = "of.commentaire" type="text" id="input-first-name"  class="form-control form-control-alternative" >
+                    <label class="form-control-label"  for="input-first-name">Nom Client</label>
+                    <input [(ngModel)] = "commande.nomClient" type="text" id="input-first-name"  class="form-control form-control-alternative" >
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-dateLancement">Date Lancement</label>
-                    <input [(ngModel)] = "of.dateLancement" type="Date" id="input-last-dateLancement"  class="form-control form-control-alternative" >
-
+                    <label class="form-control-label" for="input-last-numCmd">Num</label>
+                    <input [(ngModel)] = "commande.numCmd" type="text" id="input-last-numCmd"  class="form-control form-control-alternative" >
                   </div>
                 </div>
+              </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-debutHeure">Debut Heure</label>
-                      <input [(ngModel)] = "of.debutHeure" type="datetime-local" id="input-last-debutHeure"  class="form-control form-control-alternative" >
-
+                    <label class="form-control-label" for="input-last-dateMaintenance">Type</label>
+                    <input [(ngModel)] = "commande.typeCmd" type="text" id="input-last-dateMaintenance"  class="form-control form-control-alternative" >
                     <!--                    <input type="text" id="input-last-genre" [(ngModel)]="personnel.genre" class="form-control form-control-alternative">-->
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-finHeure">Fin Heure</label>
-                    <input [(ngModel)] = "of.finHeure" type="datetime-local" id="input-last-finHeure"  class="form-control form-control-alternative" >
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-last-dateCmd">Type</label>
+                      <input [(ngModel)] = "commande.dateCmd" type="Date" id="input-last-dateCmd"  class="form-control form-control-alternative" >
+                      <!--                    <input type="text" id="input-last-genre" [(ngModel)]="personnel.genre" class="form-control form-control-alternative">-->
+                    </div>
                   </div>
                 </div>
+
               </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-last-dateMaintenance">Quentité Non Conforme</label>
-                    <input [(ngModel)] = "of.qteNonConforme" type="text" id="input-last-dateMaintenance"  class="form-control form-control-alternative" >
-                    <!--                    <input type="text" id="input-last-genre" [(ngModel)]="personnel.genre" class="form-control form-control-alternative">-->
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-last-reference">Quentité Premier Choix</label>
-                    <input [(ngModel)] = "of.qtePremierChoix" type="text" id="input-last-reference"  class="form-control form-control-alternative" >
-                  </div>
-                </div>
+            <div class="row">
+              <div class="col-lg-6">
+
+                <label class="form-control-label" for="input-last-nomEtapeProductions">Code Articles</label>
+                <select multiple required   [(ngModel)] = "commande" type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
+                  <option>--Select--</option>
+                  <option  class="input-options"  *ngFor="let c of codeArticles ">
+                    {{c}}
+                  </option>
+                </select>
               </div>
-<!--              <div class="row">-->
-<!--                <div class="col-lg-6">-->
-<!--                  <div class="form-group">-->
-<!--                    <label class="form-control-label" for="input-last-nombreConducteur">Nombre Conducteur</label>-->
-<!--                    <input [(ngModel)] = "machine.nombreConducteur" type="text" id="input-last-nombreConducteur"  class="form-control form-control-alternative">-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
             </div>
+
             <hr class="my-4" />
-            <!---->
-            <!-- Description -->
-            <!---->
           </div>
         </div>
       </div>

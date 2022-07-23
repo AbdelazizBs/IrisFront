@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         //   this.client = this.response;
         localStorage.setItem('login', data.login);
         localStorage.setItem('id', data.id);
-        localStorage.setItem('firstName', data.firstName);
+        localStorage.setItem('name', data.name);
         this.router.navigate(['dashboard']);
         this.invalidLogin = false;
 

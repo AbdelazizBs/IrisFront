@@ -23,6 +23,7 @@ import { AjouterMachineComponent } from './pages/ajouter-machine/ajouter-machine
 import { AjouterArticleComponent } from './pages/ajouter-article/ajouter-article.component';
 import { OrdreFabricationComponent } from './pages/ordre-fabrication/ordre-fabrication.component';
 import { UpdateOrdreFabricationComponent } from './pages/update-ordre-fabrication/update-ordre-fabrication.component';
+import { AjouterCommandeComponent } from './pages/ajouter-commande/ajouter-commande.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { UpdateOrdreFabricationComponent } from './pages/update-ordre-fabricatio
     AjouterArticleComponent,
     OrdreFabricationComponent,
     UpdateOrdreFabricationComponent,
+    AjouterCommandeComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

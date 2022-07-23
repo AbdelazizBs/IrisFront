@@ -14,12 +14,17 @@ export class MachineServiceService {
       return this.http.get(this.url + 'machine/getMachineById/' + id);
     }
 
-
+  getEtat() {
+    return this.http.get(this.url + 'machine/getEtat');
+  }
 
   updateMachine(id: any, machine: any): Observable<any> {
     return this.http.put<any>(this.url + 'machine/updateMachine/' + id, machine);
   }
 
+  updateEtatMachine(id: any, machine: any): Observable<any> {
+    return this.http.put<any>(this.url + 'machine/updateMachine/' + id, machine);
+  }
 
   getLisMachine() {
     return this.http.get(this.url + 'machine/getListMachine');

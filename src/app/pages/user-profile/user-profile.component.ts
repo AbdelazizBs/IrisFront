@@ -20,8 +20,7 @@ export class Client {
 export class Personnel {
   id: number;
   cin: string ;
-  firstName: string ;
-  lastName: string ;
+  name: string ;
   company: string ;
   address: string ;
   country: string ;
@@ -30,7 +29,6 @@ export class Personnel {
   phone: string ;
   genre: string ;
   dateNaissance: any ;
-  nomMachine: any;
 }
 @Component({
   selector: 'app-user-profile',
@@ -47,7 +45,6 @@ export class UserProfileComponent implements OnInit {
 id: any ;
 response: any ;
   personnel: Personnel ;
-  nomMachines: any ;
   genres = [];
   // cin : any ;
   // firstName: any ;
@@ -74,9 +71,6 @@ response: any ;
   //   dateNaissance: ''
   // };
   ngOnInit() {
-    this.clientService.getNomMachine().subscribe((d: any) => {
-      this.nomMachines = d;
-    });
 this.genres = ['homme',
   'femme'];
 
@@ -96,8 +90,7 @@ this.genres = ['homme',
   update() {
     const f: FormData = new FormData();
     f.append('address', this.personnel.address);
-    f.append('firstName', this.personnel.firstName);
-    f.append('lastName', this.personnel.lastName);
+    f.append('name', this.personnel.name);
     f.append('country', this.personnel.country);
     f.append('company', this.personnel.company);
     f.append('login', this.personnel.login);
@@ -105,7 +98,7 @@ this.genres = ['homme',
     f.append('phone', this.personnel.phone);
     f.append('cin', this.personnel.cin);
     f.append('genre', this.personnel.genre);
-    f.append('nomMachine', this.personnel.nomMachine);
+    // f.append('nomMachine', this.personnel.nomMachine);
     f.append('dateNaissance', this.datepipe.transform(this.personnel.dateNaissance, 'dd/MM/yyyy'));
     f.append('password', this.personnel.password);
 

@@ -13,14 +13,14 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
-  public firstName: any;
+  public name: any;
   constructor(private loginService: AuthenticationService, location: Location,  private element: ElementRef, private router: Router) {
     this.location = location;
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
-    this.firstName = localStorage.getItem('firstName');
+    this.name = localStorage.getItem('name');
   }
 
   logout() {

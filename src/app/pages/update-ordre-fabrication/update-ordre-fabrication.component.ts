@@ -3,6 +3,8 @@ import {ArticleServiceService} from '../../services/article-service.service';
 import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Article} from '../update-article/update-article.component';
+import {OrdreFabricationServiceService} from '../../services/ordre-fabrication-service.service';
+import {DatePipe} from '@angular/common';
 export class OrdreFabrication {
   id: any;
   dateLancement: any;
@@ -24,7 +26,8 @@ export class UpdateOrdreFabricationComponent implements OnInit {
   response: any;
   nomEtapes: any[];
 of: OrdreFabrication;
-  constructor(private articleService: ArticleServiceService, private etapeProductionService: EtapeProductionServiceService, private router: Router, private route: ActivatedRoute) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private   datepipe: DatePipe , private ordreFabricationService: OrdreFabricationServiceService  , private articleService: ArticleServiceService, private etapeProductionService: EtapeProductionServiceService, private router: Router, private route: ActivatedRoute) {
     this.article = new Article();
     this.of = new OrdreFabrication();
   }
@@ -59,7 +62,7 @@ of: OrdreFabrication;
 
   lancerOf() {
     const f: FormData = new FormData();
-    f.append('dateLancement', this.of.dateLancement);
+    f.append('dateLancement', this.datepipe.transform( this.of.dateLancement, 'yyyy/MM/dd'));
     f.append('debutHeure', this.of.debutHeure);
     f.append('finHeure', this.of.finHeure);
     f.append('commentaire', this.of.commentaire);
@@ -67,12 +70,12 @@ of: OrdreFabrication;
     f.append('qteNonConforme', this.of.qteNonConforme);
     f.append('codeArticles', this.article.codeArticle);
 
-    // this.articleService.updateArticle(this.idArticle, f).subscribe(
-    //   response => {
-    //     console.log(response);
-    //     this.router.navigate(['article']);
-    //   }
-    // );
+    this.ordreFabricationService.addOf(f).subscribe(
+      response => {
+        console.log(response);
+        this.router.navigate(['article']);
+      }
+    );
   }
 
 }

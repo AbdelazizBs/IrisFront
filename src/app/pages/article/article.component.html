@@ -121,27 +121,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let l of listArticle">
-<!--              <th scope="row">-->
-<!--                <div class="media align-items-center">-->
-<!--                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">-->
-<!--                    <img  src="../assets/img/theme/logoMachine2.png">-->
-<!--                  </a>-->
-<!--                  <div class="media-body">-->
-<!--                    <span class="mb-0 text-sm">{{l.codeArticle}}</span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </th>-->
-<!--              <td>-->
-<!--                {{l.reference}}-->
-<!--              </td>-->
-<!--              <td>-->
-<!--                  <span class="badge badge-dot mr-4">-->
-<!--                    <i class="bg-warning"></i> {{l.nomEtapeProduction}}-->
-<!--                  </span>-->
-<!--              </td>-->
-<!--              <td>-->
-<!--                {{l.nombreConducteur}}-->
-<!--              </td>-->
+
               <td>
                 {{l.codeArticle}}
               </td>
@@ -161,7 +141,7 @@
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
                   <!--                  </div>-->
-                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Edit</a>
+                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Modifier</a>
 
                 </div>
               <td class="text-right">
@@ -174,7 +154,7 @@
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
                   <!--                  </div>-->
-                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Delete</a>
+                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Supprimer</a>
 
                 </div>
             </tr>

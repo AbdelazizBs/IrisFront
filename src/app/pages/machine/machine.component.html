@@ -98,7 +98,7 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Machine tables</h3>
+          <h3 class="mb-0">tables des Machines </h3>
 
           <div class="col text-right">
             <button  routerLink="/ajouter-machine" class="btn btn-sm btn-primary">Ajouter Machine</button>
@@ -108,15 +108,14 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
-              <th scope="col">Nom Machine</th>
+              <th scope="col">Désignation</th>
               <th scope="col">Réference</th>
               <th scope="col">Etape Production</th>
-              <th scope="col">NombreConducteur</th>
+              <th scope="col">Nom Personnel</th>
               <th scope="col">Date Maintenance</th>
-              <th scope="col">Date Création</th>
               <th scope="col">Etat</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
+              <th scope="col">Modifier</th>
+              <th scope="col">Supprimer</th>
 
             </tr>
             </thead>
@@ -128,7 +127,7 @@
                     <img  src="../assets/img/theme/logoMachine2.png">
                   </a>
                   <div class="media-body">
-                    <span class="mb-0 text-sm">{{l.nomMachine}}</span>
+                    <span class="mb-0 text-sm" >{{l.designation}}</span>
                   </div>
                 </div>
               </th>
@@ -141,16 +140,27 @@
                   </span>
               </td>
               <td>
-                {{l.nombreConducteur}}
+                {{l.nomPersonnel}}
               </td>
               <td>
                 {{l.dateMaintenance}}
               </td>
               <td>
-                {{l.dateCreation}}
-              </td>
-              <td>
-                {{l.etat}}
+                <div ngbDropdown placement="bottom-right">
+                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
+                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
+                  <!--                  </a>-->
+                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
+                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
+                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
+                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
+                  <!--                  </div>-->
+                 <select class="btn btn-sm btn-primary" (click)="updateEtatMachine(l.id,l)" [(ngModel)] = "l.etat">
+                   <option  class="input-options"  *ngFor="let et  of listEtat">
+                    {{et}}
+                  </option>
+                  </select>
+                </div>
               </td>
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
@@ -162,7 +172,7 @@
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
                   <!--                  </div>-->
-                  <a (click)="updateMachine(l)" class="btn btn-sm btn-primary">Edit</a>
+                  <a (click)="updateMachine(l)" class="btn btn-sm btn-primary">Modifier</a>
 
                 </div>
               <td class="text-right">
@@ -175,7 +185,7 @@
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
                   <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
                   <!--                  </div>-->
-                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Delete</a>
+                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Supprimer</a>
 
                 </div>
             </tr>

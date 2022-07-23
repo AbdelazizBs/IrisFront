@@ -19,6 +19,7 @@ import {AjouterMachineComponent} from '../../pages/ajouter-machine/ajouter-machi
 import {AjouterArticleComponent} from '../../pages/ajouter-article/ajouter-article.component';
 import {OrdreFabricationComponent} from '../../pages/ordre-fabrication/ordre-fabrication.component';
 import {UpdateOrdreFabricationComponent} from '../../pages/update-ordre-fabrication/update-ordre-fabrication.component';
+import {AjouterCommandeComponent} from '../../pages/ajouter-commande/ajouter-commande.component';
 
 export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
@@ -43,6 +44,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'ajouter-machine',    component: AjouterMachineComponent  },
   { path: 'commande',           component: CommandeComponent  },
   { path: 'ajouter-article',           component: AjouterArticleComponent  },
+  { path: 'ajouter-commande',           component: AjouterCommandeComponent  },
   { path: 'ordre-fabrication/:id',           component: OrdreFabricationComponent  }
 
 

@@ -4,16 +4,17 @@ import {MachineServiceService} from '../../services/machine-service.service';
 import {Personnel} from '../user-profile/user-profile.component';
 import {DatePipe} from '@angular/common';
 import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
+import {PersonnelServiceService} from '../../services/personnel-service.service';
 
 export class Machine {
   id: any;
-   nomMachine: any;
+  designation: any;
    reference: any;
    nomEtapeProduction: any;
    nombreConducteur: any;
    dateMaintenance: any;
    dateCreation: any;
-  machineToUpdate: any ;
+  nomPersonnel: any ;
   etat: any ;
 }
 @Component({
@@ -25,14 +26,16 @@ export class UpdateMachineComponent implements OnInit {
 idMachine: any;
   listEtat: any[];
   nomEtapes: any[];
-  listNomEtapeProduction: any[];
+  nomPersonnels: any ;
   response: any ;
-  constructor(private etapeProductionService: EtapeProductionServiceService , private machineService: MachineServiceService , private router: Router,  private route: ActivatedRoute, public datepipe: DatePipe) {
+  constructor(private etapeProductionService: EtapeProductionServiceService, private personnelServiceService: PersonnelServiceService , private machineService: MachineServiceService , private router: Router,  private route: ActivatedRoute, public datepipe: DatePipe) {
     this.machine = new Machine();
   }
   machine: Machine;
   ngOnInit(): void {
-
+    this.personnelServiceService.getNomPersonnel().subscribe((d: any) => {
+      this.nomPersonnels = d;
+    });
     this.route.paramMap.subscribe(
       params => {
         this.idMachine = params.get('id');
@@ -68,10 +71,11 @@ this.machineService.getMachineById(this.idMachine).subscribe(response => {
 
 updateMachine() {
   const f: FormData = new FormData();
-  f.append('nomMachine', this.machine.nomMachine);
+  f.append('designation', this.machine.designation);
   f.append('reference', this.machine.reference);
   f.append('nomEtapeProduction', this.machine.nomEtapeProduction);
   f.append('nombreConducteur', this.machine.nombreConducteur);
+  f.append('nomPersonnel', this.machine.nomPersonnel);
   f.append('dateMaintenance',  this.datepipe.transform(this.machine.dateMaintenance , 'yyyy/MM/dd'));
   f.append('dateCreation',  this.datepipe.transform(this.machine.dateCreation , 'yyyy/MM/dd'));
   f.append('etat', this.machine.etat);
