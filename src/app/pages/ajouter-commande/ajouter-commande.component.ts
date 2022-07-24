@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from '../ajouter-article/ajouter-article.component';
 import {Commande} from '../ordre-fabrication/ordre-fabrication.component';
+import {CommandeServiceService} from '../../services/commande-service.service';
+import {ClientServiceService} from '../../services/client-service.service';
+import {ArticleServiceService} from '../../services/article-service.service';
+import {Router} from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-ajouter-commande',
@@ -9,12 +14,55 @@ import {Commande} from '../ordre-fabrication/ordre-fabrication.component';
 })
 export class AjouterCommandeComponent implements OnInit {
 commande: Commande ;
-  codeArticles:any ;
-  constructor() {
+  refIriss: any ;
+  nomClients: any ;
+  response: any ;
+  constructor(private articleService: ArticleServiceService, private route: Router, private clientService: ClientServiceService, private datepipe: DatePipe
+              , private commandeService: CommandeServiceService) {
     this.commande = new Commande();
   }
 
   ngOnInit(): void {
+
+    this.articleService.getCodeArticles().subscribe(response => {
+        console.log(response);
+        this.response = response,
+          this.refIriss = this.response;
+     },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.clientService.getNomClients().subscribe(response => {
+        console.log(response);
+        this.response = response,
+          this.nomClients = this.response;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
+  }
+
+  ajoutCommande() {
+    const f: FormData = new FormData();
+    f.append('codeArticles', this.commande.codeArticles);
+    f.append('dateCmd', this.datepipe.transform(this.commande.dateCmd, 'yyyy/MM/dd'));
+    f.append('nomClient', this.commande.nomClient);
+    f.append('typeCmd', this.commande.typeCmd);
+    f.append('numCmd', this.commande.numCmd);
+    // f.append('accepted', this.commande.accepted);
+    this.commandeService.ajoutCommande(f).subscribe(
+      (res) => {
+        console.log(res);
+        this.route.navigate(['/commande']);
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
   }
 
 }

@@ -20,4 +20,8 @@ export class CommandeServiceService {
     return this.http.get(this.url + 'commande/commandes' );  }
   getCmdById(id: any) {
     return this.http.get(this.url + 'commande/' + id  );  }
+
+  ajoutCommande(machine: any) {
+    return this.http.post(this.url + 'commande/addCommande' , machine);
+  }
 }

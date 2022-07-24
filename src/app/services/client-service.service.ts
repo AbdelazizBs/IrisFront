@@ -23,6 +23,11 @@ export class ClientServiceService {
     return this.http.get(this.url + 'client/getbyid/' + id);
   }
 
+  getNomClients() {
+    return this.http.get(this.url + 'client/getNomClients');
+  }
+
+
   getPersonnelById(id: any) {
     return this.http.get(this.url + 'personnel/getPersonnelById/' + id);
   }

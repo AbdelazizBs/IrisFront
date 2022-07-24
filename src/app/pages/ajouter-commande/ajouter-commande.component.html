@@ -78,7 +78,7 @@
             </div>
             <div class="col-4 text-right">
               <!--              <a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
-              <button class="btn btn-info">Ajouter Commande </button>
+              <button (click)="ajoutCommande()" class="btn btn-info">Ajouter Commande </button>
 
             </div>
           </div>
@@ -91,8 +91,13 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label"  for="input-first-name">Nom Client</label>
-                    <input [(ngModel)] = "commande.nomClient" type="text" id="input-first-name"  class="form-control form-control-alternative" >
+                    <label class="form-control-label"  for="input-last-nomClient">Nom Client</label>
+                    <select multiple required   [(ngModel)] = "commande.nomClient" type="text"  id="input-last-nomClient" name="nomEtapeProduction" class="form-control form-control-alternative" >
+                      <option>--Select--</option>
+                      <option  class="input-options"  *ngFor="let n of nomClients ">
+                        {{n}}
+                      </option>
+                    </select>
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -125,11 +130,11 @@
             <div class="row">
               <div class="col-lg-6">
 
-                <label class="form-control-label" for="input-last-nomEtapeProductions">Code Articles</label>
-                <select multiple required   [(ngModel)] = "commande" type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
+                <label class="form-control-label" for="input-last-codeArticles">Code Articles</label>
+                <select multiple required   [(ngModel)] = "commande.codeArticles" type="text"  id="input-last-codeArticles" name="codeArticles" class="form-control form-control-alternative" >
                   <option>--Select--</option>
-                  <option  class="input-options"  *ngFor="let c of codeArticles ">
-                    {{c}}
+                  <option  class="input-options"  *ngFor="let r of refIriss ">
+                    {{r}}
                   </option>
                 </select>
               </div>
