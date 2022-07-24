@@ -147,19 +147,17 @@
               </td>
               <td>
                 <div ngbDropdown placement="bottom-right">
-                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
-                  <!--                  </a>-->
-                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
+                  <a (click)="getEtat(l.id,l)"  *ngIf="l.etat == 'En marche'" class="btn btn-sm btn-success">{{l.etat}}</a>
+                  <a (click)="getEtat(l.id,l)"  *ngIf="l.etat == 'En Maintenance'" class="btn btn-sm btn-warning">{{l.etat}}</a>
+                  <a (click)="getEtat(l.id,l)"  *ngIf="l.etat == 'En panne'" class="btn btn-sm btn-danger">{{l.etat}}</a>
+                  <a (click)="getEtat(l.id,l)"  *ngIf="l.etat == 'En repos'" class="btn btn-sm btn-info">{{l.etat}}</a>
+
                   <!--                  </div>-->
-                 <select class="btn btn-sm btn-primary" (click)="updateEtatMachine(l.id,l)" [(ngModel)] = "l.etat">
-                   <option  class="input-options"  *ngFor="let et  of listEtat">
-                    {{et}}
-                  </option>
-                  </select>
+<!--                 <select class="btn btn-sm btn-primary" (click)="getEtat(l.id,l)" [(ngModel)] = "l.etat">-->
+<!--                   <option  class="input-options"  *ngFor="let et  of listEtat">-->
+<!--                    {{et}}-->
+<!--                  </option>-->
+<!--                  </select>-->
                 </div>
               </td>
               <td class="text-right">
@@ -175,6 +173,7 @@
                   <a (click)="updateMachine(l)" class="btn btn-sm btn-primary">Modifier</a>
 
                 </div>
+              </td>
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
                   <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
@@ -188,6 +187,7 @@
                   <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Supprimer</a>
 
                 </div>
+              </td>
             </tr>
             </tbody>
           </table>

@@ -10,8 +10,8 @@ export class ArticleServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getCodeArticles() {
-    return this.http.get(this.url + 'article/getCodeArticles');
+  refIris() {
+    return this.http.get(this.url + 'article/getRefIris');
   }
 
   ajoutArticle(article: any) {

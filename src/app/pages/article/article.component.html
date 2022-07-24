@@ -98,7 +98,7 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Article tables</h3>
+          <h3 class="mb-0">tables des Article </h3>
 
           <div class="col text-right">
             <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>
@@ -112,8 +112,8 @@
 <!--              <th scope="col">Réference</th>-->
 <!--              <th scope="col">Etape Production</th>-->
 <!--              <th scope="col">NombreConducteur</th>-->
-              <th scope="col">Code</th>
-              <th scope="col">Designation</th>
+              <th scope="col">Reference Iris</th>
+              <th scope="col">Reference Client</th>
               <th scope="col">Etapes Production</th>
               <th scope="col"></th>
               <th scope="col"></th>
@@ -123,10 +123,10 @@
             <tr *ngFor="let l of listArticle">
 
               <td>
-                {{l.codeArticle}}
+                {{l.refClient}}
               </td>
               <td>
-                {{l.designation}}
+                {{l.refIris}}
               </td>
               <td>
                 {{l.nomEtapeProductions}}

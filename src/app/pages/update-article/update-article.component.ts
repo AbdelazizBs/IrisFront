@@ -7,8 +7,8 @@ import {Machine} from '../update-machine/update-machine.component';
 import {ArticleServiceService} from '../../services/article-service.service';
 export class Article {
   id: any;
-  codeArticle: any;
-  designation: any;
+  refIris: any;
+  refClient: any;
   nomEtapeProductions: any;
 
 }
@@ -74,8 +74,8 @@ article: Article ;
 
   updateArticle() {
     const f: FormData = new FormData();
-    f.append('codeArticle', this.article.codeArticle);
-    f.append('designation', this.article.designation);
+    f.append('refIris', this.article.refIris);
+    f.append('refClient', this.article.refClient);
     f.append('nomEtapeProductions', this.article.nomEtapeProductions);
     this.articleService.updateArticle(this.idArticle, f).subscribe(
       response => {

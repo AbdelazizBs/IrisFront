@@ -9,7 +9,7 @@ export class Commande {
   numCmd: any ;
   typeCmd: any ;
   nomClient: any ;
-  codeArticles: any;
+  refIris: any;
   accepted: any ;
 }
 @Component({
@@ -51,7 +51,7 @@ export class OrdreFabricationComponent implements OnInit {
         console.log(response);
         this.response = response,
           this.cmd = this.response;
-        this.listArticle = this.cmd.codeArticles ;
+        this.listArticle = this.cmd.refIris ;
         console.log(this.cmd); },
       (err) => {
         console.log(err);

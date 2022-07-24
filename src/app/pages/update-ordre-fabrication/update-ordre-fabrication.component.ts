@@ -13,7 +13,7 @@ export class OrdreFabrication {
   commentaire: any;
   qtePremierChoix: any;
   qteNonConforme: any;
-  codeArticle: any ;
+  refClient: any ;
 }
 @Component({
   selector: 'app-update-ordre-fabrication',
@@ -68,7 +68,7 @@ of: OrdreFabrication;
     f.append('commentaire', this.of.commentaire);
     f.append('qtePremierChoix', this.of.qtePremierChoix);
     f.append('qteNonConforme', this.of.qteNonConforme);
-    f.append('codeArticles', this.article.codeArticle);
+    f.append('refClient', this.article.refClient);
 
     this.ordreFabricationService.addOf(f).subscribe(
       response => {

@@ -24,22 +24,13 @@ id: any;
   ngOnInit(): void {
     this.getListMachine();
 
-    // this.listEtat = ['En Maintenance',
-    //   'En repos',
-    //   'En marche',
-    //   'En panne'
-    // ];
+    this.listEtat = ['En Maintenance',
+      'En repos',
+      'En marche',
+      'En panne'
+    ];
 
 
-    this.machineService.getEtat().subscribe(response => {
-        console.log(response);
-        this.response = response,
-          this.listEtat = this.response;
-    },
-      (err) => {
-        console.log(err);
-      }
-    );
   }
   updateMachine(myObj: any) {
       this.router.navigate(['/update-machine' + '/' + myObj['id']]);
@@ -65,6 +56,18 @@ id: any;
 
   openDialogToAdd() {
     // this.dialog.open(UpdateMachineComponent);
+  }
+  getEtat(id: any, machine: any) {
+      this.machineService.getEtat(id, machine).subscribe(response => {
+          console.log(response);
+          this.response = response;
+          this.refreshListachines();
+          // this.listEtat = this.response;
+      },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
   getListMachine() {

@@ -130,8 +130,8 @@
             <div class="row">
               <div class="col-lg-6">
 
-                <label class="form-control-label" for="input-last-codeArticles">Code Articles</label>
-                <select multiple required   [(ngModel)] = "commande.codeArticles" type="text"  id="input-last-codeArticles" name="codeArticles" class="form-control form-control-alternative" >
+                <label class="form-control-label" for="input-last-codeArticles">Reference Iris</label>
+                <select multiple required   [(ngModel)] = "commande.refIris" type="text"  id="input-last-codeArticles" name="codeArticles" class="form-control form-control-alternative" >
                   <option>--Select--</option>
                   <option  class="input-options"  *ngFor="let r of refIriss ">
                     {{r}}

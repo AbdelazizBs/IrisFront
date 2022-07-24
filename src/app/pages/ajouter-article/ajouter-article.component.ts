@@ -4,8 +4,8 @@ import {Router} from '@angular/router';
 import {ArticleServiceService} from '../../services/article-service.service';
 export class Article {
   id: any;
-  codeArticle: any;
-  designation: any;
+  refIris: any;
+  refClient: any;
   nomEtapeProductions: any ;
 }
 @Component({
@@ -35,8 +35,8 @@ article: Article;
 
   ajoutArticle() {
     const f: FormData = new FormData();
-    f.append('codeArticle', this.article.codeArticle);
-    f.append('designation', this.article.designation);
+    f.append('refIris', this.article.refIris);
+    f.append('refClient', this.article.refClient);
     f.append('nomEtapeProductions', this.article.nomEtapeProductions);
     this.articleService.ajoutArticle(f).subscribe(
       (res) => {

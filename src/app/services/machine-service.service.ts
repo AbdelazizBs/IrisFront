@@ -14,8 +14,8 @@ export class MachineServiceService {
       return this.http.get(this.url + 'machine/getMachineById/' + id);
     }
 
-  getEtat() {
-    return this.http.get(this.url + 'machine/getEtat');
+  getEtat(id: any, machine: any) {
+    return this.http.put(this.url + 'machine/etat/' + id , machine);
   }
 
   updateMachine(id: any, machine: any): Observable<any> {

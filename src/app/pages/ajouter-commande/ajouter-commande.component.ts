@@ -24,7 +24,7 @@ commande: Commande ;
 
   ngOnInit(): void {
 
-    this.articleService.getCodeArticles().subscribe(response => {
+    this.articleService.refIris().subscribe(response => {
         console.log(response);
         this.response = response,
           this.refIriss = this.response;
@@ -47,7 +47,7 @@ commande: Commande ;
 
   ajoutCommande() {
     const f: FormData = new FormData();
-    f.append('codeArticles', this.commande.codeArticles);
+    f.append('refIris', this.commande.refIris);
     f.append('dateCmd', this.datepipe.transform(this.commande.dateCmd, 'yyyy/MM/dd'));
     f.append('nomClient', this.commande.nomClient);
     f.append('typeCmd', this.commande.typeCmd);
