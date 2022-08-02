@@ -98,8 +98,8 @@
                                 <div class="col-lg-6">
                                   <div class="form-group">
                                     <label class="form-control-label" for="input-last-nomEtapeProductions">Etapes Production</label>
-                                    <select multiple required   [(ngModel)] = "article.nomEtapeProductions" type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
-                                      <option>--Select--</option>
+                                    <select multiple     [(ngModel)] = "article.nomEtapeProductions" type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
+<!--                                      <option>&#45;&#45;Select&#45;&#45;</option>-->
                                       <option  class="input-options"  *ngFor="let nomEtape  of nomEtapes">
                                         {{nomEtape}}
                                       </option>

@@ -23,6 +23,7 @@ article: Article ;
   nomEtapes: any[];
   response: any ;
   codeArticles: any;
+  // tslint:disable-next-line:max-line-length
   constructor(private articleService: ArticleServiceService , private etapeProductionService: EtapeProductionServiceService , private router: Router,  private route: ActivatedRoute) {
     this.article = new Article();
 

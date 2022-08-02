@@ -94,108 +94,66 @@
 <!-- Page content -->
 <div class="container-fluid mt--7">
   <!-- Table -->
-
-  <!-- Dark table -->
-  <div class="row mt-5">
+  <div class="row">
     <div class="col">
-      <div class="card bg-default shadow">
-        <div class="card-header bg-transparent border-0">
-          <h3 class="text-white mb-0">tables des Commandes</h3>
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">tables des Clients </h3>
+
           <div class="col text-right">
-            <button  routerLink="/ajouter-commande" class="btn btn-sm btn-primary">Ajouter Commande</button>
+            <button  routerLink="/ajouter-client" class="btn btn-sm btn-primary">Ajouter Client</button>
           </div>
         </div>
-        <div class="table-responsive"  >
-          <table class="table align-items-center table-dark table-flush" >
-            <thead class="thead-dark">
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
             <tr>
-              <th scope="col">Num</th>
-              <th scope="col">Type</th>
-              <th scope="col">Acceptation</th>
-              <th scope="col">Date</th>
-              <th scope="col">Client</th>
-              <th scope="col">Completion</th>
-              <th scope="col"></th>
+              <th scope="col">Nom</th>
+              <th scope="col">Compagnie</th>
+              <th scope="col">Téléphone</th>
+              <th scope="col">Réference </th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
             </tr>
             </thead>
-
-            <tbody *ngFor="let commande of listCommande">
-
-            <tr>
-              <td>
-                {{commande.numCmd}}
-              </td>
-              <td>
-                {{commande.typeCmd}}
-              </td>
-
+            <tbody>
+            <tr *ngFor="let c of listClient">
               <th scope="row">
                 <div class="media align-items-center">
-                  <a (click)="inverse(commande)" href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                    <img *ngIf="commande.accepted" alt="Image placeholder" src="../assets/img/theme/accept-button1.jpg">
-                    <img *ngIf="!commande.accepted" alt="Image placeholder" src="../assets/img/theme/refused1.jpg">
+                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img  src="../assets/img/theme/logoMachine2.png">
                   </a>
-<!--                  <div class="media-body">-->
-<!--                    <span class="mb-0 text-sm">{{validate}}</span>-->
-<!--                  </div>-->
+                  <div class="media-body">
+                    <span class="mb-0 text-sm" >{{c.nom}}</span>
+                  </div>
                 </div>
               </th>
               <td>
+                {{c.company}}
+              </td>
+              <td>
                   <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> {{commande.dateCmd}}
+                    <i class="bg-warning"></i> {{c.phone}}
                   </span>
               </td>
-              <td>
-                <div class="avatar-group">
-<!--                  <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">-->
-<!--                    <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">-->
-<!--                  </a>-->
-                  {{commande.nomClient}}
 
-                </div>
-              </td>
               <td>
-                <div class="d-flex align-items-center">
-                  <span class="mr-2">60%</span>
-                  <div>
-                    <div class="progress">
-                      <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                    </div>
-                  </div>
-                </div>
+                {{c.reference}}
+              </td>
+
+              <td>
+                {{c.email}}
               </td>
               <td class="text-right">
-<!--                <div ngbDropdown placement="bottom-right">-->
-<!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-<!--                    <i class="fas fa-ellipsis-v"></i>-->
-<!--                  </a>-->
-<!--&lt;!&ndash;                  <a routerLink="/tables" class="btn btn-sm btn-primary">Detailles</a>&ndash;&gt;-->
-<!--                  <div ngbDropdown placement="bottom-right">-->
-<!--                    &lt;!&ndash;                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <i class="fas fa-ellipsis-v"></i>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                  </a>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Action</a>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                  </div>&ndash;&gt;-->
-<!--                    <a routerLink="/" class="btn btn-sm btn-primary">OF</a>-->
-
-<!--                  </div>-->
-
-<!--                </div>-->
                 <div ngbDropdown placement="bottom-right">
                                     <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                                       <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                      <a (click)="updateCmd(commande)"class="dropdown-item" >Article</a>
-<!--                                      <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                      <a class="dropdown-item" (click)="articleClient(c)" >Article</a>
+                                      <a class="dropdown-item"(click)="updateClient(c)">Modifier</a>
+                                      <a class="dropdown-item"(click)="delete(c.id)">Supprimer</a>
                                     </div>
-<!--                  <a (click)="updateCmd(commande)" class="btn btn-sm btn-primary">Article</a>-->
-
                 </div>
               </td>
             </tr>

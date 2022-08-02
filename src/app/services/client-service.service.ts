@@ -20,11 +20,14 @@ export class ClientServiceService {
 
 
   getClientById(id: any) {
-    return this.http.get(this.url + 'client/getbyid/' + id);
+    return this.http.get(this.url + 'client/getClientById/' + id);
   }
 
   getNomClients() {
     return this.http.get(this.url + 'client/getNomClients');
+  }
+  getListClient() {
+    return this.http.get(this.url + 'client/getListClient');
   }
 
 
@@ -40,5 +43,14 @@ export class ClientServiceService {
    getNomMachine() {
       return this.http.get<any>(this.url + 'machine/getNomMachine');
     }
+  ajouterClient(client: any) {
+    return this.http.post(this.url + 'client/addClient' , client);
+  }
+  delete(id: any) {
+    return this.http.delete<any>(this.url + 'client/deleteClient/' + id);
 
+  }
+  updateClient(id: any, client: any): Observable<any> {
+    return this.http.put<any>(this.url + 'client/updateClient/' + id, client);
+  }
 }

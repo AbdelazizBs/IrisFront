@@ -64,7 +64,7 @@
             <!--            </div>-->
             <hr class="my-4" />
             <!--            <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>-->
-<!--            <a href="javascript:void(0)">Show more</a>-->
+            <!--            <a href="javascript:void(0)">Show more</a>-->
           </div>
         </div>
       </div>
@@ -74,11 +74,11 @@
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
             <div class="col-8">
-<!--              <h3 class="mb-0">My account</h3>-->
+              <!--              <h3 class="mb-0">My account</h3>-->
             </div>
             <div class="col-4 text-right">
               <!--              <a href="#!" class="btn btn-sm btn-primary">Settings</a>-->
-              <button (click)="ajoutMachine()" class="btn btn-info">Ajouter machine</button>
+              <button (click)="ajouterClient()" class="btn btn-info">Ajouter client</button>
 
             </div>
           </div>
@@ -91,73 +91,55 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label"  for="input-first-name">Nom Machine</label>
-                    <input [(ngModel)] = "machine.designation" type="text" id="input-first-name"  class="form-control form-control-alternative" >
+                    <label class="form-control-label"  for="input-first-name">Nom</label>
+                    <input [(ngModel)] = "client.nom" type="text" id="input-first-name"  class="form-control form-control-alternative" >
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-etat">Etape Production</label>
-                    <select [(ngModel)] = "machine.nomEtapeProduction" type="text"  id="input-last-nomEtapeProduction" name="nomEtapeProduction" class="form-control form-control-alternative" >
-                      <option>--Select--</option>
-                      <option  class="input-options"  *ngFor="let nomEtape  of nomEtapes">
-                        {{nomEtape}}
-                      </option>
-                    </select>
+                    <label class="form-control-label"  for="input-first-address">Addresse</label>
+                    <input [(ngModel)] = "client.address" type="text" id="input-first-address"  class="form-control form-control-alternative" >
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-etat">Etat</label>
-                    <select [(ngModel)] = "machine.etat" type="text"  id="input-last-etat" name="etat" class="form-control form-control-alternative" >
-                      <option>--Select--</option>
-                      <option  class="input-options"  *ngFor="let listE of listEtat">
-                        {{listE}}
-                      </option>
-                    </select>
-                    <!--                    <input type="text" id="input-last-genre" [(ngModel)]="personnel.genre" class="form-control form-control-alternative">-->
+                    <label class="form-control-label"  for="input-first-country">Pays</label>
+                    <input [(ngModel)] = "client.country" type="text" id="input-first-country"  class="form-control form-control-alternative" >
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-Creation">Date Creation</label>
-                    <input [(ngModel)] = "machine.dateCreation" type="Date" id="input-last-Creation"  class="form-control form-control-alternative" >
+                    <label class="form-control-label" for="input-last-company">Compagnie</label>
+                    <input [(ngModel)] = "client.company" type="text" id="input-last-company"  class="form-control form-control-alternative" >
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-dateMaintenance">Date Maintenance</label>
-                    <input [(ngModel)] = "machine.dateMaintenance" type="Date" id="input-last-dateMaintenance"  class="form-control form-control-alternative" >
-                    <!--                    <input type="text" id="input-last-genre" [(ngModel)]="personnel.genre" class="form-control form-control-alternative">-->
+                    <label class="form-control-label" for="input-last-phone">Téléphone</label>
+                    <input [(ngModel)] = "client.phone" type="text" id="input-last-phone"  class="form-control form-control-alternative" >
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-reference">Réference</label>
-                    <input [(ngModel)] = "machine.reference" type="text" id="input-last-reference"  class="form-control form-control-alternative" >
+                    <label class="form-control-label" for="input-last-email">Email</label>
+                    <input [(ngModel)] = "client.email" type="text" id="input-last-email"  class="form-control form-control-alternative" >
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-nombreConducteur">Nombre Conducteur</label>
-                    <input [(ngModel)] = "machine.nombreConducteur" type="text" id="input-last-nombreConducteur"  class="form-control form-control-alternative">
+                    <label class="form-control-label" for="input-last-reference">Reference</label>
+                    <input [(ngModel)] = "client.reference" type="text" id="input-last-reference"  class="form-control form-control-alternative">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-nomPersonnel">Nom Personnel</label>
-                    <select [(ngModel)] = "machine.nomPersonnel" type="text"  id="input-last-nomPersonnel" name="nomPersonnel" class="form-control form-control-alternative" >
-                      <option>--Select--</option>
-                      <option  class="input-options"  *ngFor="let n  of nomPersonnels">
-                        {{n}}
-                      </option>
-                    </select>
+<!---->
                   </div>
                 </div>
               </div>

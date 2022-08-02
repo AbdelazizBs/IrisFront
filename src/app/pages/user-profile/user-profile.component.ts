@@ -6,15 +6,19 @@ import {DatePipe} from '@angular/common';
 
 export class Client {
   id: number;
-  firstName: any ;
-  lastName: any ;
+  nom: any ;
   company: any ;
   address: any ;
   country: any ;
   email: any ;
-  password: any ;
+  reference: any ;
   phone: any ;
 
+}
+export class Compte {
+  id: number;
+  email: any;
+  password;
 }
 
 export class Personnel {
@@ -24,8 +28,7 @@ export class Personnel {
   company: string ;
   address: string ;
   country: string ;
-  login: any ;
-  password: string ;
+compte: Compte;
   phone: string ;
   genre: string ;
   dateNaissance: any ;
@@ -93,14 +96,13 @@ this.genres = ['homme',
     f.append('name', this.personnel.name);
     f.append('country', this.personnel.country);
     f.append('company', this.personnel.company);
-    f.append('login', this.personnel.login);
-    f.append('password', this.personnel.password);
+    f.append('email', this.personnel.compte.email);
+    f.append('password', this.personnel.compte.password);
     f.append('phone', this.personnel.phone);
     f.append('cin', this.personnel.cin);
     f.append('genre', this.personnel.genre);
     // f.append('nomMachine', this.personnel.nomMachine);
     f.append('dateNaissance', this.datepipe.transform(this.personnel.dateNaissance, 'dd/MM/yyyy'));
-    f.append('password', this.personnel.password);
 
     this.clientService.update(this.id, f).subscribe(
       (res) => {
