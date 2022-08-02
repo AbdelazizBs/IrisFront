@@ -10,13 +10,13 @@ export class AuthenticationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  authenticate(login: any, password: string): Observable<any> {
+  authenticate(email: any, password: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Basic' + btoa('pfa' + ':' + '123') }),
     };
     // tslint:disable-next-line:prefer-const
     const formData: any = new FormData();
-    formData.append('login', login);
+    formData.append('email', email);
     formData.append('password', password);
     // let headers=new HttpHeaders({'Authorization':'Basic' + btoa("pfa" + ':' + "123") });
     return this.httpClient.post( 'http://127.0.0.1:8080/personnel/login' , formData);

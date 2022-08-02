@@ -20,6 +20,10 @@ export class ArticleServiceService {
   getArticleById(id: any) {
     return this.http.get(this.url + 'article/getArticleById/' + id);
   }
+
+  getListArticleClient(id: any) {
+    return this.http.get(this.url + 'article/getArticle/' + id);
+  }
   getArticleByCodeArticles(codeArticle: any) {
     return this.http.get(this.url + 'article/getArticleByCodeArticle/' + codeArticle);
   }

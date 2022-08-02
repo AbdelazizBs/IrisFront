@@ -24,6 +24,10 @@ import { AjouterArticleComponent } from './pages/ajouter-article/ajouter-article
 import { OrdreFabricationComponent } from './pages/ordre-fabrication/ordre-fabrication.component';
 import { UpdateOrdreFabricationComponent } from './pages/update-ordre-fabrication/update-ordre-fabrication.component';
 import { AjouterCommandeComponent } from './pages/ajouter-commande/ajouter-commande.component';
+import { ClientComponent } from './pages/client/client.component';
+import { AjouterClientComponent } from './pages/ajouter-client/ajouter-client.component';
+import { ArticleClientComponent } from './pages/article-client/article-client.component';
+import { UpdateClientComponent } from './pages/update-client/update-client.component';
 
 
 @NgModule({
@@ -54,6 +58,10 @@ import { AjouterCommandeComponent } from './pages/ajouter-commande/ajouter-comma
     OrdreFabricationComponent,
     UpdateOrdreFabricationComponent,
     AjouterCommandeComponent,
+    ClientComponent,
+    AjouterClientComponent,
+    ArticleClientComponent,
+    UpdateClientComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -108,14 +108,9 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
-<!--              <th scope="col">Nom Machine</th>-->
-<!--              <th scope="col">Réference</th>-->
-<!--              <th scope="col">Etape Production</th>-->
-<!--              <th scope="col">NombreConducteur</th>-->
               <th scope="col">Reference Client</th>
               <th scope="col">Reference Iris</th>
               <th scope="col">Etapes Production</th>
-              <th scope="col"></th>
               <th scope="col"></th>
             </tr>
             </thead>
@@ -133,29 +128,15 @@
               </td>
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
-                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
-                  <!--                  </a>-->
-                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
-                  <!--                  </div>-->
-                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Modifier</a>
-
-                </div>
-              <td class="text-right">
-                <div ngbDropdown placement="bottom-right">
-                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
-                  <!--                  </a>-->
-                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
-                  <!--                  </div>-->
-                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Supprimer</a>
-
+                                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                      <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+<!--                                      <a class="dropdown-item" href="javascript:void(0)">Modifier</a>-->
+                                      <a class="dropdown-item" (click)="delete(l.id)" >Supprimer</a>
+                                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                    </div>
+<!--                  <a  class="btn btn-sm btn-primary">Modifier</a>-->
                 </div>
             </tr>
             </tbody>

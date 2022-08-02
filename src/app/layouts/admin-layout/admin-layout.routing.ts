@@ -20,6 +20,10 @@ import {AjouterArticleComponent} from '../../pages/ajouter-article/ajouter-artic
 import {OrdreFabricationComponent} from '../../pages/ordre-fabrication/ordre-fabrication.component';
 import {UpdateOrdreFabricationComponent} from '../../pages/update-ordre-fabrication/update-ordre-fabrication.component';
 import {AjouterCommandeComponent} from '../../pages/ajouter-commande/ajouter-commande.component';
+import {ClientComponent} from '../../pages/client/client.component';
+import {ArticleClientComponent} from '../../pages/article-client/article-client.component';
+import {AjouterClientComponent} from '../../pages/ajouter-client/ajouter-client.component';
+import {UpdateClientComponent} from '../../pages/update-client/update-client.component';
 
 export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
@@ -45,7 +49,11 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'commande',           component: CommandeComponent  },
   { path: 'ajouter-article',           component: AjouterArticleComponent  },
   { path: 'ajouter-commande',           component: AjouterCommandeComponent  },
-  { path: 'ordre-fabrication/:id',           component: OrdreFabricationComponent  }
+  { path: 'client',           component: ClientComponent},
+  { path: 'ordre-fabrication/:id',           component: OrdreFabricationComponent  },
+  { path: 'article-client/:id',           component: ArticleClientComponent  },
+  { path: 'update-client/:id',           component: UpdateClientComponent  },
+  { path: 'ajouter-client',           component: AjouterClientComponent  }
 
 
 ];

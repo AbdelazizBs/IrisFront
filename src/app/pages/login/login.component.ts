@@ -22,7 +22,7 @@ import {EmailValidator} from '@angular/forms';
 
 export class LoginComponent implements OnInit, OnDestroy {
 
-  login: any;
+  email: any;
   password: string;
   invalidLogin = false;
   // client: Client ;
@@ -36,11 +36,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
   checkLoginPersonnel() {
-    this.loginservice.authenticate(this.login, this.password).subscribe(
+    this.loginservice.authenticate(this.email, this.password).subscribe(
       data => {
         // this.response = data,
         //   this.client = this.response;
-        localStorage.setItem('login', data.login);
+        localStorage.setItem('email', data.email);
         localStorage.setItem('id', data.id);
         localStorage.setItem('name', data.name);
         this.router.navigate(['dashboard']);
