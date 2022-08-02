@@ -116,7 +116,7 @@
               <th scope="col">Reference Iris</th>
               <th scope="col">Etapes Production</th>
               <th scope="col"></th>
-              <th scope="col"></th>
+<!--              <th scope="col"></th>-->
             </tr>
             </thead>
             <tbody>
@@ -131,30 +131,63 @@
               <td>
                 {{l.nomEtapeProductions}}
               </td>
-              <td class="text-right">
-                <div ngbDropdown placement="bottom-right">
-                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
-                  <!--                  </a>-->
-                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
-                  <!--                  </div>-->
-                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Modifier</a>
+<!--              <td class="text-right">-->
+<!--                <div ngbDropdown placement="bottom-right">-->
+<!--                  &lt;!&ndash;                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>&ndash;&gt;-->
+<!--                  &lt;!&ndash;                    <i class="fas fa-ellipsis-v"></i>&ndash;&gt;-->
+<!--                  &lt;!&ndash;                  </a>&ndash;&gt;-->
+<!--                  &lt;!&ndash;                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">&ndash;&gt;-->
+<!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Action</a>&ndash;&gt;-->
+<!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>&ndash;&gt;-->
+<!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>&ndash;&gt;-->
+<!--                  &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Modifier</a>-->
 
-                </div>
+<!--                </div>-->
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
-                  <!--                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
-                  <!--                    <i class="fas fa-ellipsis-v"></i>-->
-                  <!--                  </a>-->
-                  <!--                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>-->
-                  <!--                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>-->
-                  <!--                  </div>-->
-                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Supprimer</a>
+                                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                                      <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                                      <a class="dropdown-item" (click)="updateArticle(l)">Modifier</a>
+                                      <a class="dropdown-item" (click)="delete(l.id)">Supprimer</a>
+                                      <a class="dropdown-item" (click)="openPopup()">Relier a client</a>
+                                    </div>
+                  <div *ngFor="let cl of listClient"
+                    class="modal"
+                    tabindex="-1"
+                    role="dialog"
+                    [ngStyle]="{'display':displayStyle}">
+                    <div class="modal-dialog" role="document">
+                      <div  class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Liste des Clients</h4>
+                        </div>
+                        <div  class="modal-body">
+                          <select    type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
+                            <option>--Select--</option>
+                            <option  class="input-options"  *ngFor="let cl  of listClient">
+                              {{cl}}
+                            </option>
+                          </select>
+                          <p>Article : {{l.refIris}}</p>
+                        </div>
+                        <div  class="modal-footer">
+                          <button type="button" class="btn btn-success"
+                                  (click)="addToClient(l ,cl)">
+                            Validé
+                          </button>
+                          <button type="button" class="btn btn-danger"
+                                  (click)="closePopup()">
+                            fermer
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+<!--                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Supprimer</a>-->
 
                 </div>
             </tr>

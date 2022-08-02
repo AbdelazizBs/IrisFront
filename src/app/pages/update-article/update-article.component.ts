@@ -9,6 +9,7 @@ export class Article {
   id: any;
   refIris: any;
   refClient: any;
+  refArticle: any;
   nomEtapeProductions: any;
 
 }
@@ -58,7 +59,6 @@ article: Article ;
   console.log(err);
 
 });
-
 
     this.articleService.getArticleByCodeArticles(this.codeArticles).subscribe(response => {
         console.log(response);

@@ -14,6 +14,9 @@ export class ArticleServiceService {
     return this.http.get(this.url + 'article/getRefIris');
   }
 
+  addToClient( article: any, nomClient: any) {
+    return this.http.put(this.url + 'article/addToClient/' + nomClient , article);
+  }
   ajoutArticle(article: any) {
     return this.http.post(this.url + 'article/addArticle' , article);
   }
