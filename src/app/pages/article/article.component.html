@@ -103,8 +103,11 @@
           <div class="col text-right">
             <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>
           </div>
+          <div *ngIf="listArticle.length==0" >
+            <h2 style="color: red">Liste des Articles  vide ..!!</h2>
+          </div>
         </div>
-        <div class="table-responsive">
+        <div *ngIf="listArticle.length>0"  class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
@@ -150,9 +153,9 @@
                                       <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                      <a class="dropdown-item" (click)="updateArticle(l)">Modifier</a>
-                                      <a class="dropdown-item" (click)="delete(l.id)">Supprimer</a>
-                                      <a class="dropdown-item" (click)="openPopup()">Relier a client</a>
+                                      <button class="dropdown-item" (click)="openPopup(l.id)">Relier a client</button>
+                                      <button class="dropdown-item" (click)="updateArticle(l)">Modifier</button>
+                                      <button class="dropdown-item" (click)="delete(l.id)">Supprimer</button>
                                     </div>
                   <div *ngFor="let cl of listClient"
                     class="modal"
@@ -166,8 +169,8 @@
                         </div>
                         <div  class="modal-body">
                           <select    type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
-                            <option>--Select--</option>
-                            <option  class="input-options"  *ngFor="let cl  of listClient">
+                            <option>nom client ..</option>
+                            <option  class="input-options"  >
                               {{cl}}
                             </option>
                           </select>
@@ -175,7 +178,7 @@
                         </div>
                         <div  class="modal-footer">
                           <button type="button" class="btn btn-success"
-                                  (click)="addToClient(l ,cl)">
+                                  (click)="addToClient(cl)">
                             Validé
                           </button>
                           <button type="button" class="btn btn-danger"
@@ -187,14 +190,12 @@
                       </div>
                     </div>
                   </div>
-<!--                  <a (click)="delete(l.id)" class="btn btn-sm btn-primary">Supprimer</a>-->
-
                 </div>
             </tr>
             </tbody>
           </table>
         </div>
-        <div class="card-footer py-4">
+        <div *ngIf="listArticle.length>0" class="card-footer py-4">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
               <li class="page-item disabled">

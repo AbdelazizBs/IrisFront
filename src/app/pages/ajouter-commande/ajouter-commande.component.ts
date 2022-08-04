@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Article} from '../ajouter-article/ajouter-article.component';
 import {Commande} from '../ordre-fabrication/ordre-fabrication.component';
 import {CommandeServiceService} from '../../services/commande-service.service';
 import {ClientServiceService} from '../../services/client-service.service';
@@ -17,6 +16,7 @@ commande: Commande ;
   refIriss: any ;
   nomClients: any ;
   response: any ;
+  // tslint:disable-next-line:max-line-length
   constructor(private articleService: ArticleServiceService, private route: Router, private clientService: ClientServiceService, private datepipe: DatePipe
               , private commandeService: CommandeServiceService) {
     this.commande = new Commande();
@@ -26,7 +26,7 @@ commande: Commande ;
 
     this.articleService.refIris().subscribe(response => {
         console.log(response);
-        this.response = response,
+        this.response = response;
           this.refIriss = this.response;
      },
       (err) => {
@@ -35,7 +35,7 @@ commande: Commande ;
     );
     this.clientService.getNomClients().subscribe(response => {
         console.log(response);
-        this.response = response,
+        this.response = response;
           this.nomClients = this.response;
       },
       (err) => {
@@ -47,12 +47,11 @@ commande: Commande ;
 
   ajoutCommande() {
     const f: FormData = new FormData();
-    f.append('refIris', this.commande.refIris);
+    f.append('articles', '');
     f.append('dateCmd', this.datepipe.transform(this.commande.dateCmd, 'yyyy/MM/dd'));
     f.append('nomClient', this.commande.nomClient);
     f.append('typeCmd', this.commande.typeCmd);
     f.append('numCmd', this.commande.numCmd);
-    // f.append('accepted', this.commande.accepted);
     this.commandeService.ajoutCommande(f).subscribe(
       (res) => {
         console.log(res);

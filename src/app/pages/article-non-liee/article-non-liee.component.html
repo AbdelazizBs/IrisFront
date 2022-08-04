@@ -94,36 +94,102 @@
 <!-- Page content -->
 <div class="container-fluid mt--7">
   <!-- Table -->
-  <div   class="row">
+  <div class="row">
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Commande num  :{{cmd.numCmd}}</h3>
-          <h3 class="mb-0">Nom Client   :{{cmd.nomClient}}</h3>
+          <h3 class="mb-0">tables des Article </h3>
+
           <div class="col text-right">
-            <button (click)="articleClient(cmd.nomClient,cmd.id)"  class="btn btn-sm btn-primary">Voir Articles de  : {{cmd.nomClient}} </button>
-            <button routerLink="/commande" class="btn btn-sm btn-primary">Liste des Commandes</button>
+            <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>
           </div>
           <div *ngIf="listArticle.length==0" >
-            <h2 style="color: red">Commande Vide ..!!</h2>
+            <h2 style="color: red">Liste des Articles  vide ..!!</h2>
           </div>
         </div>
-        <div *ngIf="listArticle.length>0" class="table-responsive">
+        <div *ngIf="listArticle.length>0"  class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
+              <!--              <th scope="col">Nom Machine</th>-->
+              <!--              <th scope="col">Réference</th>-->
+              <!--              <th scope="col">Etape Production</th>-->
+              <!--              <th scope="col">NombreConducteur</th>-->
+              <th scope="col">Reference Client</th>
               <th scope="col">Reference Iris</th>
+              <th scope="col">Etapes Production</th>
               <th scope="col"></th>
+              <!--              <th scope="col"></th>-->
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let l of listArticle">
+
               <td>
-                {{l}}
+                {{l.refClient}}
               </td>
+              <td>
+                {{l.refIris}}
+              </td>
+              <td>
+                {{l.nomEtapeProductions}}
+              </td>
+              <!--              <td class="text-right">-->
+              <!--                <div ngbDropdown placement="bottom-right">-->
+              <!--                  &lt;!&ndash;                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>&ndash;&gt;-->
+              <!--                  &lt;!&ndash;                    <i class="fas fa-ellipsis-v"></i>&ndash;&gt;-->
+              <!--                  &lt;!&ndash;                  </a>&ndash;&gt;-->
+              <!--                  &lt;!&ndash;                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">&ndash;&gt;-->
+              <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Action</a>&ndash;&gt;-->
+              <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>&ndash;&gt;-->
+              <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>&ndash;&gt;-->
+              <!--                  &lt;!&ndash;                  </div>&ndash;&gt;-->
+              <!--                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Modifier</a>-->
+
+              <!--                </div>-->
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
-                  <a (click)="of(l)"  class="btn btn-sm btn-primary">OF</a>
+                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                    <button class="dropdown-item" (click)="openPopup(l.id)">Relier a client</button>
+                    <button class="dropdown-item" (click)="updateArticle(l)">Modifier</button>
+                    <button class="dropdown-item" >Supprimer</button>
+                  </div>
+                  <div *ngFor="let cl of listClient"
+                       class="modal"
+                       tabindex="-1"
+                       role="dialog"
+                       [ngStyle]="{'display':displayStyle}">
+                    <div class="modal-dialog" role="document">
+                      <div  class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Liste des Clients</h4>
+                        </div>
+                        <div  class="modal-body">
+                          <select    type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
+                            <option>nom client ..</option>
+                            <option  class="input-options"  >
+                              {{cl}}
+                            </option>
+                          </select>
+                          <p>Article : {{l.refIris}}</p>
+                        </div>
+                        <div  class="modal-footer">
+                          <button type="button" class="btn btn-success"
+                                  (click)="addToClient(cl)">
+                            Validé
+                          </button>
+                          <button type="button" class="btn btn-danger"
+                                  (click)="closePopup()">
+                            fermer
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </tr>
             </tbody>

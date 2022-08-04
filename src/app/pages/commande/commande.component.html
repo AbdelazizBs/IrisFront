@@ -104,16 +104,19 @@
           <div class="col text-right">
             <button  routerLink="/ajouter-commande" class="btn btn-sm btn-primary">Ajouter Commande</button>
           </div>
+          <div *ngIf="listCommande.length==0" >
+            <h2 style="color: red">Commande vide ..!!</h2>
+          </div>
         </div>
-        <div class="table-responsive"  >
+        <div *ngIf="listCommande.length>0" class="table-responsive"  >
           <table class="table align-items-center table-dark table-flush" >
             <thead class="thead-dark">
             <tr>
               <th scope="col">Num</th>
               <th scope="col">Type</th>
-              <th scope="col">Acceptation</th>
-              <th scope="col">Date</th>
               <th scope="col">Client</th>
+              <th scope="col">Date</th>
+              <th scope="col">Acceptation</th>
               <th scope="col">Completion</th>
               <th scope="col"></th>
             </tr>
@@ -128,32 +131,32 @@
               <td>
                 {{commande.typeCmd}}
               </td>
+              <td>
+                <div class="avatar-group">
+                  <!--                  <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">-->
+                  <!--                    <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">-->
+                  <!--                  </a>-->
+                  {{commande.nomClient}}
 
+                </div>
+              </td>
+
+              <td>
+                  <span class="badge badge-dot mr-4">
+                    <i class="bg-warning"></i> {{commande.dateCmd}}
+                  </span>
+              </td>
               <th scope="row">
                 <div class="media align-items-center">
                   <a (click)="inverse(commande)" href="javascript:void(0)" class="avatar rounded-circle mr-3">
                     <img *ngIf="commande.accepted" alt="Image placeholder" src="../assets/img/theme/accept-button1.jpg">
                     <img *ngIf="!commande.accepted" alt="Image placeholder" src="../assets/img/theme/refused1.jpg">
                   </a>
-<!--                  <div class="media-body">-->
-<!--                    <span class="mb-0 text-sm">{{validate}}</span>-->
-<!--                  </div>-->
+                  <!--                  <div class="media-body">-->
+                  <!--                    <span class="mb-0 text-sm">{{validate}}</span>-->
+                  <!--                  </div>-->
                 </div>
               </th>
-              <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> {{commande.dateCmd}}
-                  </span>
-              </td>
-              <td>
-                <div class="avatar-group">
-<!--                  <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">-->
-<!--                    <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">-->
-<!--                  </a>-->
-                  {{commande.nomClient}}
-
-                </div>
-              </td>
               <td>
                 <div class="d-flex align-items-center">
                   <span class="mr-2">60%</span>
@@ -189,10 +192,9 @@
                                       <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                      <a (click)="updateCmd(commande)"class="dropdown-item" >Article</a>
-<!--                                      <a class="dropdown-item" href="javascript:void(0)">Action</a>-->
-                                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                      <button (click)="updateCmd(commande)"class="dropdown-item" >Article</button>
+                                      <button class="dropdown-item" (click)="delete(commande.id)">Supprimer</button>
+                                      <button class="dropdown-item" href="javascript:void(0)">Something else here</button>
                                     </div>
 <!--                  <a (click)="updateCmd(commande)" class="btn btn-sm btn-primary">Article</a>-->
 
@@ -203,7 +205,7 @@
           </table>
         </div>
       </div>
-      <div class="card-footer py-4">
+      <div *ngIf="listCommande.length>0" class="card-footer py-4">
         <nav aria-label="...">
           <ul class="pagination justify-content-end mb-0">
             <li class="page-item disabled">

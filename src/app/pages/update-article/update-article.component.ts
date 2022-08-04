@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
-import {MachineServiceService} from '../../services/machine-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DatePipe} from '@angular/common';
-import {Machine} from '../update-machine/update-machine.component';
 import {ArticleServiceService} from '../../services/article-service.service';
 export class Article {
   id: any;
@@ -42,7 +39,7 @@ article: Article ;
 
     this.etapeProductionService.getNomEtapes().subscribe(response => {
         console.log(response);
-        this.response = response,
+        this.response = response;
           this.nomEtapes = this.response;
         console.log(this.article); },
       (err) => {
@@ -52,7 +49,7 @@ article: Article ;
 
   this.articleService.getArticleById(this.idArticle).subscribe(response => {
   console.log(response);
-  this.response = response,
+  this.response = response;
   this.article = this.response;
   console.log(this.article); },
 (err) => {
@@ -62,7 +59,7 @@ article: Article ;
 
     this.articleService.getArticleByCodeArticles(this.codeArticles).subscribe(response => {
         console.log(response);
-        this.response = response,
+        this.response = response;
           this.article = this.response;
         console.log(this.article); },
       (err) => {

@@ -14,9 +14,25 @@ export class MachineServiceService {
       return this.http.get(this.url + 'machine/getMachineById/' + id);
     }
 
-  getEtat(id: any, machine: any) {
-    return this.http.put(this.url + 'machine/etat/' + id , machine);
+  // getEtat(id: any, machine: any) {
+  //   return this.http.put(this.url + 'machine/etat/' + id , machine);
+  // }
+
+  setEtatEnMaintenance(id: any) {
+    return this.http.put(this.url + 'machine/setEtatEnMaintenance/' + id , {});
   }
+  setEtatEnPanne(id: any) {
+    return this.http.put(this.url + 'machine/setEtatEnPanne/' + id , {});
+  }
+
+  setEtatEnRepos(id: any) {
+    return this.http.put(this.url + 'machine/setEtatEnRepos/' + id , {});
+  }
+
+  setEtatEnmarche(id: any) {
+    return this.http.put(this.url + 'machine/setEtatEnmarche/' + id , {});
+  }
+
 
   updateMachine(id: any, machine: any): Observable<any> {
     return this.http.put<any>(this.url + 'machine/updateMachine/' + id, machine);

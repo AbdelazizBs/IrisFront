@@ -26,7 +26,7 @@ this.client = new Client();
   }
 
   articleClient(myObj: any) {
-    this.router.navigate(['/article-client' + '/' + myObj['id']]);
+    this.router.navigate(['/article-client' + '/' + myObj['nom'] + '/' + myObj['id']]);
   }
 
   updateClient(myObj: any) {

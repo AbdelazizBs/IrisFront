@@ -28,6 +28,8 @@ import { ClientComponent } from './pages/client/client.component';
 import { AjouterClientComponent } from './pages/ajouter-client/ajouter-client.component';
 import { ArticleClientComponent } from './pages/article-client/article-client.component';
 import { UpdateClientComponent } from './pages/update-client/update-client.component';
+import { ArticleCommandeComponent } from './pages/article-commande/article-commande.component';
+import { ArticleNonLieeComponent } from './pages/article-non-liee/article-non-liee.component';
 
 
 @NgModule({
@@ -62,6 +64,8 @@ import { UpdateClientComponent } from './pages/update-client/update-client.compo
     AjouterClientComponent,
     ArticleClientComponent,
     UpdateClientComponent,
+    ArticleCommandeComponent,
+    ArticleNonLieeComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

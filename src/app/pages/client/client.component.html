@@ -103,8 +103,11 @@
           <div class="col text-right">
             <button  routerLink="/ajouter-client" class="btn btn-sm btn-primary">Ajouter Client</button>
           </div>
+          <div *ngIf="listClient.length==0" >
+            <h2 style="color: red">Liste Client vide ..!!</h2>
+          </div>
         </div>
-        <div class="table-responsive">
+        <div *ngIf="listClient.length>0" class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
@@ -150,9 +153,9 @@
                                       <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                      <a class="dropdown-item" (click)="updateClient(c)" >Modifier</a>
-                                      <a class="dropdown-item"(click)="delete(c.id)">Supprimer</a>
-                                      <a class="dropdown-item" (click)="articleClient(c)">Liste Article</a>
+                                      <button class="dropdown-item" (click)="articleClient(c)">Articles de {{c.nom}}</button>
+                                      <button class="dropdown-item" (click)="updateClient(c)" >Modifier</button>
+                                      <button class="dropdown-item"(click)="delete(c.id)">Supprimer</button>
                                     </div>
                 </div>
               </td>

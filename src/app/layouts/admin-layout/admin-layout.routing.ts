@@ -24,6 +24,8 @@ import {ClientComponent} from '../../pages/client/client.component';
 import {ArticleClientComponent} from '../../pages/article-client/article-client.component';
 import {AjouterClientComponent} from '../../pages/ajouter-client/ajouter-client.component';
 import {UpdateClientComponent} from '../../pages/update-client/update-client.component';
+import {ArticleCommandeComponent} from '../../pages/article-commande/article-commande.component';
+import {ArticleNonLieeComponent} from '../../pages/article-non-liee/article-non-liee.component';
 
 export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
@@ -50,9 +52,11 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'ajouter-article',           component: AjouterArticleComponent  },
   { path: 'ajouter-commande',           component: AjouterCommandeComponent  },
   { path: 'client',           component: ClientComponent},
+  { path: 'article-non-liee',           component: ArticleNonLieeComponent},
   { path: 'ordre-fabrication/:id',           component: OrdreFabricationComponent  },
-  { path: 'article-client/:id',           component: ArticleClientComponent  },
+  { path: 'article-client/:nom/:id',           component: ArticleClientComponent  },
   { path: 'update-client/:id',           component: UpdateClientComponent  },
+  { path: 'article-commande/:idCmd/:nomClient/:numCmd',           component: ArticleCommandeComponent  },
   { path: 'ajouter-client',           component: AjouterClientComponent  }
 
 

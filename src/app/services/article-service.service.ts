@@ -14,8 +14,12 @@ export class ArticleServiceService {
     return this.http.get(this.url + 'article/getRefIris');
   }
 
-  addToClient( article: any, nomClient: any) {
-    return this.http.put(this.url + 'article/addToClient/' + nomClient , article);
+  addToClient( idArticle: any, nomClient: any) {
+    return this.http.put(this.url + 'article/addToClient/' + nomClient + '/' + idArticle, {});
+  }
+
+  ajouterAcmd(idArticle: any, idCmd: any) {
+    return this.http.put(this.url + 'commande/ajouterAcmd/' + idArticle + '/' + idCmd, {});
   }
   ajoutArticle(article: any) {
     return this.http.post(this.url + 'article/addArticle' , article);
@@ -24,9 +28,14 @@ export class ArticleServiceService {
     return this.http.get(this.url + 'article/getArticleById/' + id);
   }
 
-  getListArticleClient(id: any) {
-    return this.http.get(this.url + 'article/getArticle/' + id);
+  getArticleByIdClient(id: any) {
+    return this.http.get(this.url + 'client/getArticleByIdClient/' + id);
   }
+
+  getListArticleClientByNomClient(nomClient: any) {
+    return this.http.get(this.url + 'client/getListArticleClientByNomClient/' + nomClient);
+  }
+
   getArticleByCodeArticles(codeArticle: any) {
     return this.http.get(this.url + 'article/getArticleByCodeArticle/' + codeArticle);
   }
@@ -37,6 +46,10 @@ export class ArticleServiceService {
 
   getListArticles() {
     return this.http.get(this.url + 'article/articles');
+  }
+
+  getListArticlesNonLiée() {
+    return this.http.get(this.url + 'article/getListArticlesNonLiée');
   }
   delete(id: any) {
     return this.http.delete<any>(this.url + 'article/deleteArticle/' + id);

@@ -11,6 +11,7 @@ export class ArticleClientComponent implements OnInit {
 
   listArticle: any ;
   idClient: any;
+  nom: any;
   id: any;
   constructor(private  articleService: ArticleServiceService, private router: Router,  private route: ActivatedRoute) { }
 
@@ -19,19 +20,23 @@ export class ArticleClientComponent implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         this.idClient = params.get('id');
+        this.nom = params.get('nom');
       }
     );
-
-    this.getListArticleClient();
+    this.getArticleByIdClient();
 
   }
 
 
-  getListArticleClient() {
-    this.articleService.getListArticleClient(this.idClient).subscribe((data: any) => {
+  getArticleByIdClient() {
+    this.articleService.getArticleByIdClient(this.idClient).subscribe((data: any) => {
       this.listArticle = data;
-      console.warn('*---**', this.listArticle);
+      console.warn('listArticle', this.listArticle);
     });
+  }
+
+  updateArticle(myObj: any) {
+    this.router.navigate(['/update-article' + '/' + myObj['id']]);
   }
 
   delete(id: any) {
@@ -48,7 +53,7 @@ export class ArticleClientComponent implements OnInit {
     );
   }
   refreshListachines() {
-    this.articleService.getListArticleClient(this.idClient).subscribe(
+    this.articleService.getArticleByIdClient(this.idClient).subscribe(
       response => {
         this.listArticle = response;      }
     );

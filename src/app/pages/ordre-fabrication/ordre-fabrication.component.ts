@@ -9,7 +9,7 @@ export class Commande {
   numCmd: any ;
   typeCmd: any ;
   nomClient: any ;
-  refIris: any;
+  articles: any;
   accepted: any ;
 }
 @Component({
@@ -19,12 +19,12 @@ export class Commande {
 })
 export class OrdreFabricationComponent implements OnInit {
     listArticle: any;
-  idArticle: any;
   response: any;
   nomEtapes: any[];
   idCmd: any;
   cmd: Commande;
 
+  // tslint:disable-next-line:max-line-length
   constructor(private etapeProductionService: EtapeProductionServiceService, private commandService: CommandeServiceService, private articleService: ArticleServiceService, private router: Router, private route: ActivatedRoute) {
     this.cmd = new Commande();
   }
@@ -40,7 +40,7 @@ export class OrdreFabricationComponent implements OnInit {
 
     this.etapeProductionService.getNomEtapes().subscribe(response => {
         console.log(response);
-        this.response = response,
+        this.response = response;
           this.nomEtapes = this.response;
       },
       (err) => {
@@ -49,9 +49,9 @@ export class OrdreFabricationComponent implements OnInit {
     );
     this.commandService.getCmdById(this.idCmd).subscribe(response => {
         console.log(response);
-        this.response = response,
+        this.response = response;
           this.cmd = this.response;
-        this.listArticle = this.cmd.refIris ;
+        this.listArticle = this.cmd.articles ;
         console.log(this.cmd); },
       (err) => {
         console.log(err);
@@ -60,6 +60,9 @@ export class OrdreFabricationComponent implements OnInit {
   }
   of(codeArticle: any) {
     this.router.navigate(['/update-ordre-fabrication' + '/' + codeArticle]);
+  }
+  articleClient(nomClient: any, id: any) {
+    this.router.navigate(['/article-commande' + '/' + id + '/' + nomClient + '/' + this.cmd.numCmd]);
   }
 
 }

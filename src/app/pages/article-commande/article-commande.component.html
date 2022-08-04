@@ -94,42 +94,63 @@
 <!-- Page content -->
 <div class="container-fluid mt--7">
   <!-- Table -->
-  <div   class="row">
+  <div class="row">
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Commande num  :{{cmd.numCmd}}</h3>
-          <h3 class="mb-0">Nom Client   :{{cmd.nomClient}}</h3>
+          <h3 class="mb-1">Commande num : {{numCmd}}</h3>
+          <h3 class="mb-1">Nom Client   : {{nomClient}}</h3>
+
           <div class="col text-right">
-            <button (click)="articleClient(cmd.nomClient,cmd.id)"  class="btn btn-sm btn-primary">Voir Articles de  : {{cmd.nomClient}} </button>
-            <button routerLink="/commande" class="btn btn-sm btn-primary">Liste des Commandes</button>
+            <button routerLink="/article-non-liee"  class="btn btn-sm btn-primary">Article non-liée</button>
+            <button routerLink="/commande"  class="btn btn-sm btn-primary">Liste des Commandes</button>
+
           </div>
+
           <div *ngIf="listArticle.length==0" >
-            <h2 style="color: red">Commande Vide ..!!</h2>
+            <h2 style="color: red">Commande vide ..!!</h2>
           </div>
         </div>
         <div *ngIf="listArticle.length>0" class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
+              <th scope="col">Reference Client</th>
               <th scope="col">Reference Iris</th>
+              <th scope="col">Etapes Production</th>
               <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let l of listArticle">
+
               <td>
-                {{l}}
+                {{l.refClient}}
+              </td>
+              <td>
+                {{l.refIris}}
+              </td>
+              <td>
+                {{l.nomEtapeProductions}}
               </td>
               <td class="text-right">
                 <div ngbDropdown placement="bottom-right">
-                  <a (click)="of(l)"  class="btn btn-sm btn-primary">OF</a>
+                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                    <!--                                      <a class="dropdown-item" href="javascript:void(0)">Modifier</a>-->
+                    <button class="dropdown-item" (click)="ajouterAcmd(l.id)" >Ajouter à cette commande</button>
+                    <button class="dropdown-item"  >Supprimer</button>
+                    <button class="dropdown-item" href="javascript:void(0)">Something else here</button>
+                  </div>
+                  <!--                  <a  class="btn btn-sm btn-primary">Modifier</a>-->
                 </div>
             </tr>
             </tbody>
           </table>
         </div>
-        <div *ngIf="listArticle.length>0" class="card-footer py-4">
+        <div  *ngIf="listArticle.length>0" class="card-footer py-4">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
               <li class="page-item disabled">

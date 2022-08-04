@@ -24,4 +24,8 @@ export class CommandeServiceService {
   ajoutCommande(machine: any) {
     return this.http.post(this.url + 'commande/addCommande' , machine);
   }
+  delete(id: any) {
+    return this.http.delete<any>(this.url + 'commande/deleteCommande/' + id);
+
+  }
 }

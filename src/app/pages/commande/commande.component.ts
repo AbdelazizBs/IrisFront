@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Client} from '../user-profile/user-profile.component';
 import {CommandeServiceService} from '../../services/commande-service.service';
 import {Router} from '@angular/router';
 
@@ -17,36 +16,16 @@ import {Router} from '@angular/router';
   styleUrls: ['./commande.component.scss']
 })
 export class CommandeComponent implements OnInit {
-
+  validate: any ;
+  id: any;
+  listCommande: any ;
   constructor(private  commandeService: CommandeServiceService, private router: Router) {
-  //  this.commande = new Commande();
     this.getListCommandes();
 
   }
-validate: any ;
-  id: any;
-  listCommande: any ;
- // commande : Commande ;
   ngOnInit(): void {
-//     this.id = localStorage.getItem('id');
-//     this.commandeService.getMyListCommandes(this.id).subscribe(data => {
-//       // console.log(data.body)
-//       const cmd = data.body;
-//       this.listCommande = [];
-//
-//       for (let i = 0; i < cmd.length; i++) {
-//         this.listCommande.push(cmd[i]);
-//
-//       }
-//
-// });
   }
-
-
   getListCommandes() {
-    // this.clientId =  localStorage.getItem('id');
-    // console.warn('*---**', this.clientId);
-    // if (this.clientId) {
       this.commandeService.getListCommandes().subscribe((data: any) => {
         this.listCommande = data;
         console.warn('*---**', this.listCommande);
@@ -60,7 +39,6 @@ validate: any ;
         }
       });
     }
-
   inverse(cmd: any) {
     const f: FormData = new FormData();
     this.commandeService.inverse(cmd['id'], f).subscribe(
@@ -70,8 +48,19 @@ validate: any ;
       }
     );
     }
+  delete(id: any) {
+    this.commandeService.delete(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.refreshLisCommandes();
+        this.router.navigate(['/commmande']);
+      },
+      err => {
+        console.log(err);
 
-
+      }
+    );
+  }
   refreshLisCommandes() {
     this.commandeService.getListCommandes().subscribe(
       response => {

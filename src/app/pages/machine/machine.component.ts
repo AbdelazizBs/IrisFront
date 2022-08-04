@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonnelServiceService} from '../../services/personnel-service.service';
 import {Router} from '@angular/router';
-import {Machine, UpdateMachineComponent} from '../update-machine/update-machine.component';
+import {Machine} from '../update-machine/update-machine.component';
 import {MachineServiceService} from '../../services/machine-service.service';
 import {DatePipe} from '@angular/common';
 
@@ -53,12 +52,8 @@ id: any;
      }
    );
   }
-
-  openDialogToAdd() {
-    // this.dialog.open(UpdateMachineComponent);
-  }
-  getEtat(id: any, machine: any) {
-      this.machineService.getEtat(id, machine).subscribe(response => {
+  setEtatEnmarche(id: any) {
+      this.machineService.setEtatEnmarche(id).subscribe(response => {
           console.log(response);
           this.response = response;
           this.refreshListachines();
@@ -68,6 +63,42 @@ id: any;
           console.log(err);
         }
       );
+  }
+  setEtatEnMaintenance(id: any) {
+    this.machineService.setEtatEnMaintenance(id).subscribe(response => {
+        console.log(response);
+        this.response = response;
+        this.refreshListachines();
+        // this.listEtat = this.response;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  setEtatEnPanne(id: any) {
+    this.machineService.setEtatEnPanne(id).subscribe(response => {
+        console.log(response);
+        this.response = response;
+        this.refreshListachines();
+        // this.listEtat = this.response;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  setEtatEnRepos(id: any) {
+    this.machineService.setEtatEnRepos(id).subscribe(response => {
+        console.log(response);
+        this.response = response;
+        this.refreshListachines();
+        // this.listEtat = this.response;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   getListMachine() {

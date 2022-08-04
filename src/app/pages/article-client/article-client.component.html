@@ -98,13 +98,17 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">tables des Article </h3>
+          <h3 class="mb-0"> Articles de : {{nom}} </h3>
 
           <div class="col text-right">
-            <button routerLink="/article"  class="btn btn-sm btn-primary">Liste Article</button>
+            <button routerLink="/article"  class="btn btn-sm btn-primary">Tous les Articles</button>
+            <button routerLink="/client"  class="btn btn-sm btn-primary">Liste des Clients</button>
+          </div>
+          <div *ngIf="listArticle.length==0" >
+            <h2 style="color: red">{{nom}} n'a pas des Articles ..!!</h2>
           </div>
         </div>
-        <div class="table-responsive">
+        <div *ngIf="listArticle.length>0"  class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
@@ -133,8 +137,9 @@
                                     </a>
                                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
 <!--                                      <a class="dropdown-item" href="javascript:void(0)">Modifier</a>-->
-                                      <a class="dropdown-item" (click)="delete(l.id)" >Supprimer</a>
-                                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                      <button class="dropdown-item" (click)="updateArticle(l)" >Modifier</button>
+                                      <button class="dropdown-item"  >Désactiver</button>
+                                      <button class="dropdown-item" href="javascript:void(0)">Something else here</button>
                                     </div>
 <!--                  <a  class="btn btn-sm btn-primary">Modifier</a>-->
                 </div>
@@ -142,7 +147,7 @@
             </tbody>
           </table>
         </div>
-        <div class="card-footer py-4">
+        <div *ngIf="listArticle.length>0" class="card-footer py-4">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
               <li class="page-item disabled">
