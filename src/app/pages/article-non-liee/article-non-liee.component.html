@@ -101,35 +101,31 @@
           <h3 class="mb-0">tables des Article </h3>
 
           <div class="col text-right">
+            <button routerLink="/article-non-liee"  class="btn btn-sm btn-primary">Article non-liée</button>
             <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>
           </div>
-          <div *ngIf="listArticle.length==0" >
+          <div *ngIf="listArticleNonLiee.length==0" >
             <h2 style="color: red">Liste des Articles  vide ..!!</h2>
           </div>
         </div>
-        <div *ngIf="listArticle.length>0"  class="table-responsive">
+        <div   class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
-              <!--              <th scope="col">Nom Machine</th>-->
-              <!--              <th scope="col">Réference</th>-->
-              <!--              <th scope="col">Etape Production</th>-->
-              <!--              <th scope="col">NombreConducteur</th>-->
-              <th scope="col">Reference Client</th>
               <th scope="col">Reference Iris</th>
+              <th scope="col">Reference Client</th>
               <th scope="col">Etapes Production</th>
               <th scope="col"></th>
-              <!--              <th scope="col"></th>-->
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let l of listArticle">
+            <tr *ngFor="let l of listArticleNonLiee">
 
               <td>
-                {{l.refClient}}
+                {{l.refIris}}
               </td>
               <td>
-                {{l.refIris}}
+                {{l.refClient}}
               </td>
               <td>
                 {{l.nomEtapeProductions}}
@@ -195,7 +191,7 @@
             </tbody>
           </table>
         </div>
-        <div *ngIf="listArticle.length>0" class="card-footer py-4">
+        <div *ngIf="listArticleNonLiee.length>0" class="card-footer py-4">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
               <li class="page-item disabled">

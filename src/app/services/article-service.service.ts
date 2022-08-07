@@ -29,11 +29,11 @@ export class ArticleServiceService {
   }
 
   getArticleByIdClient(id: any) {
-    return this.http.get(this.url + 'client/getArticleByIdClient/' + id);
+    return this.http.get(this.url + 'article/getArticleByIdClient/' + id);
   }
 
   getListArticleClientByNomClient(nomClient: any) {
-    return this.http.get(this.url + 'client/getListArticleClientByNomClient/' + nomClient);
+    return this.http.get(this.url + 'article/getListArticleClientByNomClient/' + nomClient);
   }
 
   getArticleByCodeArticles(codeArticle: any) {
@@ -48,8 +48,8 @@ export class ArticleServiceService {
     return this.http.get(this.url + 'article/articles');
   }
 
-  getListArticlesNonLiée() {
-    return this.http.get(this.url + 'article/getListArticlesNonLiée');
+  getListArticlesNonLiee() {
+    return this.http.get(this.url + 'article/getListArticlesNonLiee');
   }
   delete(id: any) {
     return this.http.delete<any>(this.url + 'article/deleteArticle/' + id);

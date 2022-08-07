@@ -3,10 +3,13 @@ import {EtapeProductionServiceService} from '../../services/etape-production-ser
 import {Router} from '@angular/router';
 import {ArticleServiceService} from '../../services/article-service.service';
 import {any} from 'codelyzer/util/function';
+import {Client} from '../user-profile/user-profile.component';
+import {empty} from 'rxjs';
 export class Article {
   id: any;
   refIris: any;
   refClient: any;
+  clientName: any;
   nomEtapeProductions: any ;
 }
 @Component({
@@ -26,7 +29,7 @@ article: Article;
   ngOnInit(): void {
     this.etapeProductionService.getNomEtapes().subscribe(response => {
         console.log(response);
-        this.response = response,
+        this.response = response;
           this.nomEtapes = this.response;
         console.log(this.article); },
       (err) => {
@@ -36,16 +39,21 @@ article: Article;
   }
 
   ajoutArticle() {
-    const ar = [] ;
     const f: FormData = new FormData();
     f.append('refIris', this.article.refIris);
     f.append('refClient', this.article.refClient);
-    // if (this.article.nomEtapeProductions == null) {
-    //   f.append('nomEtapeProductions', ar);
-    // } else {
-    f.append('nomEtapeProductions', this.article.nomEtapeProductions);
-    // }
-    this.articleService.ajoutArticle(f).subscribe(
+    // tslint:disable-next-line:triple-equals
+    if (!this.article.clientName) {
+      f.append('clientName', '');
+    } else {
+      f.append('clientName', this.article.clientName);
+    }
+      if (!this.article.nomEtapeProductions) {
+        f.append('nomEtapeProductions', '');
+      } else {
+        f.append('nomEtapeProductions', this.article.nomEtapeProductions);
+      }
+      this.articleService.ajoutArticle(f).subscribe(
       (res) => {
         console.log(res);
         this.route.navigate(['/article']);

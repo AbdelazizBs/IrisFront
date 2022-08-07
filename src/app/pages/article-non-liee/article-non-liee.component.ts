@@ -10,27 +10,21 @@ import {Router} from '@angular/router';
 })
 export class ArticleNonLieeComponent implements OnInit {
 
-  listArticle: any ;
+  listArticleNonLiee: any ;
   listClient: any ;
-  id: any;
   idArticle: any;
+  id: any;
   displayStyle = 'none';
   response: any;
   constructor(private  articleService: ArticleServiceService, private clientService: ClientServiceService , private router: Router) { }
-
   ngOnInit(): void {
-    this.getListArticlesNonLiée();
+    this.getListArticlesNonLiee();
     this.getListClient();
+
   }
   updateArticle(myObj: any) {
     this.router.navigate(['/update-article' + '/' + myObj['id']]);
   }
-  // open2ndPopup() {
-  //   this.displayStyle = 'block';
-  // }
-  // close2ndPopup() {
-  //   this.displayStyle = 'none';
-  // }
   openPopup(idArticle: any) {
     this.displayStyle = 'block';
     this.idArticle = idArticle;
@@ -49,10 +43,10 @@ export class ArticleNonLieeComponent implements OnInit {
   closePopup() {
     this.displayStyle = 'none';
   }
-  getListArticlesNonLiée() {
-    this.articleService.getListArticlesNonLiée().subscribe((data: any) => {
-      this.listArticle = data;
-      console.warn('listArticle', this.listArticle);
+  getListArticlesNonLiee() {
+    this.articleService.getListArticlesNonLiee().subscribe((data: any) => {
+      this.listArticleNonLiee = data;
+      console.warn('listArticle', this.listArticleNonLiee);
     });
   }
   getListClient() {
@@ -61,14 +55,10 @@ export class ArticleNonLieeComponent implements OnInit {
       console.warn('listClient', this.listClient);
     } );
   }
-
-
   refreshListachines() {
-    this.articleService.getListArticlesNonLiée().subscribe(
+    this.articleService.getListArticlesNonLiee().subscribe(
       response => {
-        this.listArticle = response;      }
+        this.listArticleNonLiee = response;      }
     );
   }
-
-
 }

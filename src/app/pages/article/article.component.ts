@@ -12,43 +12,15 @@ import {Article} from '../update-article/update-article.component';
 })
 export class ArticleComponent implements OnInit {
   listArticle: any ;
-  listClient: any ;
   id: any;
-  idArticle: any;
-  displayStyle = 'none';
   response: any;
   constructor(private  articleService: ArticleServiceService, private clientService: ClientServiceService , private router: Router) { }
 
   ngOnInit(): void {
     this.getListArticle();
-this.getListClient();
   }
   updateArticle(myObj: any) {
     this.router.navigate(['/update-article' + '/' + myObj['id']]);
-  }
-  // open2ndPopup() {
-  //   this.displayStyle = 'block';
-  // }
-  // close2ndPopup() {
-  //   this.displayStyle = 'none';
-  // }
-  openPopup(idArticle: any) {
-    this.displayStyle = 'block';
-this.idArticle = idArticle;
-  }
-  addToClient(nomClient: any) {
-    this.articleService.addToClient(this.idArticle, nomClient).subscribe((response: any) => {
-       console.log(nomClient);
-        console.log(this.idArticle);
-        // this.open2ndPopup();
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-  closePopup() {
-    this.displayStyle = 'none';
   }
   getListArticle() {
     this.articleService.getListArticles().subscribe((data: any) => {
@@ -56,13 +28,6 @@ this.idArticle = idArticle;
       console.warn('listArticle', this.listArticle);
     });
   }
-  getListClient() {
-    this.clientService.getNomClients().subscribe((data: any) => {
-      this.listClient = data;
-      console.warn('listClient', this.listClient);
-    } );
-  }
-
   delete(id: any) {
     this.articleService.delete(id).subscribe(
       (res) => {

@@ -98,14 +98,15 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0"> Articles de : {{nom}} </h3>
+          <h3 *ngIf="listArticle.length>0" class="mb-0"> Articles de : {{nom}} </h3>
 
           <div class="col text-right">
             <button routerLink="/article"  class="btn btn-sm btn-primary">Tous les Articles</button>
+            <button routerLink="/article-non-liee"  class="btn btn-sm btn-primary">Article non-liée</button>
             <button routerLink="/client"  class="btn btn-sm btn-primary">Liste des Clients</button>
           </div>
           <div *ngIf="listArticle.length==0" >
-            <h2 style="color: red">{{nom}} n'a pas des Articles ..!!</h2>
+            <h2 style="color: red">{{nom}} n'a pas des Articles..!!</h2>
           </div>
         </div>
         <div *ngIf="listArticle.length>0"  class="table-responsive">

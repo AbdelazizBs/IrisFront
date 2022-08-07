@@ -153,43 +153,9 @@
                                       <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                                      <button class="dropdown-item" (click)="openPopup(l.id)">Relier a client</button>
                                       <button class="dropdown-item" (click)="updateArticle(l)">Modifier</button>
                                       <button class="dropdown-item" (click)="delete(l.id)">Supprimer</button>
                                     </div>
-                  <div *ngFor="let cl of listClient"
-                    class="modal"
-                    tabindex="-1"
-                    role="dialog"
-                    [ngStyle]="{'display':displayStyle}">
-                    <div class="modal-dialog" role="document">
-                      <div  class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Liste des Clients</h4>
-                        </div>
-                        <div  class="modal-body">
-                          <select    type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
-                            <option>nom client ..</option>
-                            <option  class="input-options"  >
-                              {{cl}}
-                            </option>
-                          </select>
-                          <p>Article : {{l.refIris}}</p>
-                        </div>
-                        <div  class="modal-footer">
-                          <button type="button" class="btn btn-success"
-                                  (click)="addToClient(cl)">
-                            Validé
-                          </button>
-                          <button type="button" class="btn btn-danger"
-                                  (click)="closePopup()">
-                            fermer
-                          </button>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
                 </div>
             </tr>
             </tbody>
