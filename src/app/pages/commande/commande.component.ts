@@ -29,45 +29,18 @@ export class CommandeComponent implements OnInit {
   }
 
   getListCommandes() {
-    // this.commandeService.getListCommandes().subscribe((data: any) => {
-    //   this.listCommande = data;
-    this.listCommande = [
-      {
-        'numCmd': '1',
-        'typeCmd': 'commande',
-        'nomClient': 'client1',
-        'dateCmd': '2020-01-01',
-        'accepted': true,
-      }, {
-        'numCmd': '2',
-        'typeCmd': 'commande',
-        'nomClient': 'client2',
-        'dateCmd': '2020-01-01',
-        'accepted': true,
-      }, {
-        'numCmd': '3',
-        'typeCmd': 'commande',
-        'nomClient': 'client3',
-        'dateCmd': '2020-01-01',
-        'accepted': true,
-      }, {
-        'numCmd': '4',
-        'typeCmd': 'commande',
-        'nomClient': 'client4',
-        'dateCmd': '2020-01-01',
-        'accepted': false,
-      },
-    ];
-    console.warn('*---**', this.listCommande);
-    for (let i = 0; i < this.listCommande.length; i++) {
-      console.log(this.listCommande[i].accepted);
-      if (this.listCommande[i].accepted === true) {
-        this.validate = 'Accepted';
-      } else {
-        this.validate = 'Rejected';
+    this.commandeService.getListCommandes().subscribe((data: any) => {
+      this.listCommande = data;
+      console.warn('*---**', this.listCommande);
+      for (let i = 0; i < this.listCommande.length; i++) {
+        console.log(this.listCommande[i].accepted);
+        if (this.listCommande[i].accepted === true) {
+          this.validate = 'Accepted';
+        } else {
+          this.validate = 'Rejected';
+        }
       }
-    }
-    // });
+    });
   }
 
   inverse(cmd: any) {
@@ -108,10 +81,6 @@ export class CommandeComponent implements OnInit {
 
   show(i: number) {
     const elem = document.getElementById('nested_table' + i);
-    if (elem.style.display === 'none') {
-      elem.style.display = 'block';
-    } else {
-      elem.style.display = 'none';
-    }
+    elem.style.display === 'none' ? elem.style.display = 'block' : elem.style.display = 'none';
   }
 }
