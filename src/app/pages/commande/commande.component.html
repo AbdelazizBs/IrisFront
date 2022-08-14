@@ -186,9 +186,7 @@
                         <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
                       </div>
                       <a routerLink="/" class="btn btn-sm btn-primary">OF</a>
-
                     </div>
-
                   </div>
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
@@ -203,26 +201,73 @@
                   </div>
                 </td>
               </tr>
-
               </tbody>
             </table>
-            <table id="nested_table{{i}}" style="display:none">
+
+
+            <table id="nested_table{{i}}" style="display:none;" class="table align-items-center table-flush">
+              <thead class="thead-light">
               <tr>
-                <th>Company</th>
-                <th>Contact</th>
-                <th>Country</th>
+                <th scope="col">Reference Client</th>
+                <th scope="col">Reference Iris</th>
+                <th scope="col">Etapes Production</th>
+                <th scope="col"></th>
               </tr>
-              <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-              </tr>
-              <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-              </tr>
+              </thead>
+              <tbody>
+              <!--         TODO: Add the list of article in command -->
+              <!--         TODO: replace command -->
+
+<!--
+
+              <tr *ngFor="let article of command  ">
+
+                <td>
+                  {{article.refClient}}
+                </td>
+                <td>
+                  {{article.refIris}}
+                </td>
+                <td>
+                  {{article.nomEtapeProductions}}
+                </td>
+
+                -->
+
+
+
+
+
+                <!--              <td class="text-right">-->
+                <!--                <div ngbDropdown placement="bottom-right">-->
+                <!--                  &lt;!&ndash;                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>&ndash;&gt;-->
+                <!--                  &lt;!&ndash;                    <i class="fas fa-ellipsis-v"></i>&ndash;&gt;-->
+                <!--                  &lt;!&ndash;                  </a>&ndash;&gt;-->
+                <!--                  &lt;!&ndash;                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">&ndash;&gt;-->
+                <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Action</a>&ndash;&gt;-->
+                <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>&ndash;&gt;-->
+                <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>&ndash;&gt;-->
+                <!--                  &lt;!&ndash;                  </div>&ndash;&gt;-->
+                <!--                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Modifier</a>-->
+
+                <!--                </div>-->
+
+<!--                <td class="text-right">-->
+<!--                  <div ngbDropdown placement="bottom-right">-->
+<!--                    <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>-->
+<!--                      <i class="fas fa-ellipsis-v"></i>-->
+<!--                    </a>-->
+<!--                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
+<!--                      <button class="dropdown-item" (click)="updateArticle(l)">Modifier</button>-->
+<!--                      <button class="dropdown-item" (click)="delete(l.id)">Supprimer</button>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--              </tr>-->
+              </tbody>
             </table>
+
+
+
           </div>
         </div>
       </div>
