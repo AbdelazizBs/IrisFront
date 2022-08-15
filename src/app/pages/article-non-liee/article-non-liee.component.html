@@ -101,8 +101,7 @@
           <h3 class="mb-0">tables des Article </h3>
 
           <div class="col text-right">
-            <button routerLink="/article-non-liee"  class="btn btn-sm btn-primary">Article non-liée</button>
-            <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>
+            <button routerLink="/article"  class="btn btn-sm btn-primary">Tous les Article</button>
           </div>
           <div *ngIf="listArticleNonLiee.length==0" >
             <h2 style="color: red">Liste des Articles  vide ..!!</h2>
@@ -119,74 +118,71 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let l of listArticleNonLiee">
+            <tr  *ngFor="let article of listArticleNonLiee">
 
+              <th scope="row">
+                <div class="media align-items-center">
+                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img  src="../assets/img/icons/common/logoArticle.png">
+                  </a>
+                  <div class="media-body">
+                    <span class="mb-0 text-sm" >{{article.refIris}}</span>
+                  </div>
+                </div>
+              </th>
               <td>
-                {{l.refIris}}
+                {{article.refClient}}
               </td>
               <td>
-                {{l.refClient}}
+                {{article.nomEtapeProductions}}
               </td>
-              <td>
-                {{l.nomEtapeProductions}}
-              </td>
-              <!--              <td class="text-right">-->
-              <!--                <div ngbDropdown placement="bottom-right">-->
-              <!--                  &lt;!&ndash;                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>&ndash;&gt;-->
-              <!--                  &lt;!&ndash;                    <i class="fas fa-ellipsis-v"></i>&ndash;&gt;-->
-              <!--                  &lt;!&ndash;                  </a>&ndash;&gt;-->
-              <!--                  &lt;!&ndash;                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">&ndash;&gt;-->
-              <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Action</a>&ndash;&gt;-->
-              <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Another action</a>&ndash;&gt;-->
-              <!--                  &lt;!&ndash;                    <a class="dropdown-item" href="javascript:void(0)">Something else here</a>&ndash;&gt;-->
-              <!--                  &lt;!&ndash;                  </div>&ndash;&gt;-->
-              <!--                  <a (click)="updateArticle(l)" class="btn btn-sm btn-primary">Modifier</a>-->
-
-              <!--                </div>-->
               <td class="text-right">
+
                 <div ngbDropdown placement="bottom-right">
                   <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                     <i class="fas fa-ellipsis-v"></i>
                   </a>
                   <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                    <button class="dropdown-item" (click)="openPopup(l.id)">Relier a client</button>
-                    <button class="dropdown-item" (click)="updateArticle(l)">Modifier</button>
+                    <button class="dropdown-item" (click)="openPopup(article)">Relier a client</button>
+                    <button class="dropdown-item" (click)="updateArticle(article)">Modifier</button>
                     <button class="dropdown-item" >Supprimer</button>
                   </div>
-                  <div *ngFor="let cl of listClient"
+                </div>
+                <div
                        class="modal"
                        tabindex="-1"
                        role="dialog"
                        [ngStyle]="{'display':displayStyle}">
-                    <div class="modal-dialog" role="document">
-                      <div  class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title">Liste des Clients</h4>
-                        </div>
-                        <div  class="modal-body">
-                          <select    type="text"  id="input-last-nomEtapeProductions" name="nomEtapeProduction" class="form-control form-control-alternative" >
-                            <option>nom client ..</option>
-                            <option  class="input-options"  >
-                              {{cl}}
-                            </option>
-                          </select>
-                          <p>Article : {{l.refIris}}</p>
-                        </div>
-                        <div  class="modal-footer">
-                          <button type="button" class="btn btn-success"
-                                  (click)="addToClient(cl)">
-                            Validé
-                          </button>
-                          <button type="button" class="btn btn-danger"
-                                  (click)="closePopup()">
-                            fermer
-                          </button>
-                        </div>
-
+                  <div class="modal-dialog" role="document">
+                    <div  class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Liste des Clients</h4>
+                      </div>
+                      <div  class="modal-body">
+                        <select  #client (change)="onSelected(client.value)" type="text"  id="input-last-client" name="client" class="form-control form-control-alternative" >
+                          <option  default >{{optionClient}}</option>
+                          <option  *ngFor="let client of listClient" class="input-options"  >
+                            {{client}}
+                          </option>
+                        </select>
+                        <h3>Article : {{refArticle}}</h3>
+                      </div>
+                      <div  class="modal-footer">
+                        <button  type="button" class="btn btn-success"
+                                 (click)="addToClient(client.value)">
+                          Validé
+                        </button>
+                        <button type="button" class="btn btn-danger"
+                                (click)="closePopup()">
+                          fermer
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
+
+              </td>
+
             </tr>
             </tbody>
           </table>

@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -30,17 +30,32 @@ import { ArticleClientComponent } from './pages/article-client/article-client.co
 import { UpdateClientComponent } from './pages/update-client/update-client.component';
 import { ArticleCommandeComponent } from './pages/article-commande/article-commande.component';
 import { ArticleNonLieeComponent } from './pages/article-non-liee/article-non-liee.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {allIcons, HeroIconModule} from 'ng-heroicon';
 
 
 @NgModule({
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+      HeroIconModule.withIcons({
+        ...allIcons
+      })
   ],
   declarations: [
     AppComponent,

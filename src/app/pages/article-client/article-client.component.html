@@ -113,8 +113,8 @@
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
-              <th scope="col">Reference Client</th>
               <th scope="col">Reference Iris</th>
+              <th scope="col">Reference Client</th>
               <th scope="col">Etapes Production</th>
               <th scope="col"></th>
             </tr>
@@ -122,11 +122,18 @@
             <tbody>
             <tr *ngFor="let l of listArticle">
 
+              <th scope="row">
+                <div class="media align-items-center">
+                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img  src="../assets/img/icons/common/logoArticle.png">
+                  </a>
+                  <div class="media-body">
+                    <span class="mb-0 text-sm" >{{l.refIris}}</span>
+                  </div>
+                </div>
+              </th>
               <td>
                 {{l.refClient}}
-              </td>
-              <td>
-                {{l.refIris}}
               </td>
               <td>
                 {{l.nomEtapeProductions}}

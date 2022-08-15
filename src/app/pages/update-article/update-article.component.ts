@@ -6,7 +6,7 @@ export class Article {
   id: any;
   refIris: any;
   refClient: any;
-  refArticle: any;
+  clientName: any;
   nomEtapeProductions: any;
 
 }
@@ -74,7 +74,16 @@ article: Article ;
     const f: FormData = new FormData();
     f.append('refIris', this.article.refIris);
     f.append('refClient', this.article.refClient);
-    f.append('nomEtapeProductions', this.article.nomEtapeProductions);
+    if (!this.article.clientName) {
+      f.append('clientName', '');
+    } else {
+      f.append('clientName', this.article.clientName);
+    }
+    if (!this.article.nomEtapeProductions) {
+      f.append('nomEtapeProductions', '');
+    } else {
+      f.append('nomEtapeProductions', this.article.nomEtapeProductions);
+    }
     this.articleService.updateArticle(this.idArticle, f).subscribe(
       response => {
         console.log(response);

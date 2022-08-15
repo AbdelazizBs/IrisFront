@@ -31,7 +31,8 @@ export class ArticleServiceService {
   getArticleByIdClient(id: any) {
     return this.http.get(this.url + 'article/getArticleByIdClient/' + id);
   }
-
+  getArticlesByIdCommande(idcmd: any) {
+    return this.http.get(this.url + 'article/' + idcmd  );  }
   getListArticleClientByNomClient(nomClient: any) {
     return this.http.get(this.url + 'article/getListArticleClientByNomClient/' + nomClient);
   }

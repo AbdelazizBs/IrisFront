@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ArticleServiceService} from '../../services/article-service.service';
 import {ClientServiceService} from '../../services/client-service.service';
 import {Router} from '@angular/router';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-article-non-liee',
@@ -12,29 +13,42 @@ export class ArticleNonLieeComponent implements OnInit {
 
   listArticleNonLiee: any ;
   listClient: any ;
-  idArticle: any;
+  optionClient = 'selectionner un client';
   id: any;
   displayStyle = 'none';
   response: any;
+  refArticle: any;
+  clientName = '';
   constructor(private  articleService: ArticleServiceService, private clientService: ClientServiceService , private router: Router) { }
   ngOnInit(): void {
     this.getListArticlesNonLiee();
     this.getListClient();
 
   }
+  onSelected(value: string): void {
+    this.clientName = value;
+    console.log(this.clientName);
+  }
   updateArticle(myObj: any) {
     this.router.navigate(['/update-article' + '/' + myObj['id']]);
   }
-  openPopup(idArticle: any) {
+  openPopup(article: any) {
     this.displayStyle = 'block';
-    this.idArticle = idArticle;
+    console.log(article);
+    this.refArticle = article.refIris;
+    this.id = article.id;
   }
   addToClient(nomClient: any) {
-    this.articleService.addToClient(this.idArticle, nomClient).subscribe((response: any) => {
-        console.log(nomClient);
-        console.log(this.idArticle);
-        // this.open2ndPopup();
-      },
+    console.log(nomClient);
+    console.log(this.id);
+   if (!nomClient || nomClient === this.optionClient) {
+      nomClient = 'NoClient';
+    }
+    this.articleService.addToClient(this.id, nomClient).subscribe((response: any) => {
+      console.log(response);
+this.refreshListachines();
+this.closePopup();
+},
       (err) => {
         console.log(err);
       }

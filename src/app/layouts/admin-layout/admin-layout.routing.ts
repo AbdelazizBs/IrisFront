@@ -5,7 +5,6 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
-import {AuthGuardService} from '../../services/auth-guard.service';
 import {CommandeComponent} from '../../pages/commande/commande.component';
 import {LogoutComponent} from '../../pages/logout/logout.component';
 import {MachineComponent} from '../../pages/machine/machine.component';
@@ -31,9 +30,8 @@ export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
     { path: 'user-profile',   component: UserProfileComponent , canActivate : [AuthGuardService] },
     { path: 'tables',         component: TablesComponent  , canActivate : [AuthGuardService]},
-    { path: 'icons',          component: IconsComponent , canActivate : [AuthGuardService] },
-    { path: 'maps',           component: MapsComponent  , canActivate : [AuthGuardService]}*/
-
+    { path: 'icons',          component: IconsComponent , canActivate : [AuthGuardService] },*/
+    { path: 'maps',           component: MapsComponent  },
   { path: 'article',      component: ArticleComponent },
   { path: 'etape-production',      component: EtapeProductionComponent },
   { path: 'dashboard',      component: DashboardComponent },

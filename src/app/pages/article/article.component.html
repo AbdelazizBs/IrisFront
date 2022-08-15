@@ -102,6 +102,7 @@
 
           <div class="col text-right">
             <button routerLink="/ajouter-article"  class="btn btn-sm btn-primary">Ajouter Article</button>
+            <button routerLink="/article-non-liee"  class="btn btn-sm btn-primary">Article non-liée</button>
           </div>
           <div *ngIf="listArticle.length==0" >
             <h2 style="color: red">Liste des Articles  vide ..!!</h2>
@@ -125,9 +126,16 @@
             <tbody>
             <tr *ngFor="let l of listArticle">
 
-              <td>
-                {{l.refClient}}
-              </td>
+              <th scope="row">
+                <div class="media align-items-center">
+                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                    <img  src="../assets/img/icons/common/logoArticle.png">
+                  </a>
+                  <div class="media-body">
+                    <span class="mb-0 text-sm" >{{l.refIris}}</span>
+                  </div>
+                </div>
+              </th>
               <td>
                 {{l.refIris}}
               </td>
