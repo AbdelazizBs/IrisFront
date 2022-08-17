@@ -36,6 +36,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {allIcons, HeroIconModule} from 'ng-heroicon';
+import { UpdateCommandeComponent } from './update-commande/update-commande.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import {allIcons, HeroIconModule} from 'ng-heroicon';
     UpdateClientComponent,
     ArticleCommandeComponent,
     ArticleNonLieeComponent,
+    UpdateCommandeComponent,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -13,4 +13,7 @@ export class OrdreFabricationServiceService {
   addOf( of: any) {
     return this.http.post(this.url + 'ordreFabrication/addOf' , of);
   }
+  articlehaveOf(idArticle: any) {
+    return this.http.get(this.url + 'ordreFabrication/articlehaveOf/' + idArticle);
+  }
 }

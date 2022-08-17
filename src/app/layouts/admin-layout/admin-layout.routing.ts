@@ -25,6 +25,7 @@ import {AjouterClientComponent} from '../../pages/ajouter-client/ajouter-client.
 import {UpdateClientComponent} from '../../pages/update-client/update-client.component';
 import {ArticleCommandeComponent} from '../../pages/article-commande/article-commande.component';
 import {ArticleNonLieeComponent} from '../../pages/article-non-liee/article-non-liee.component';
+import {UpdateCommandeComponent} from '../../update-commande/update-commande.component';
 
 export const AdminLayoutRoutes: Routes = [
   /* { path: 'dashboard',      component: DashboardComponent , canActivate : [AuthGuardService]},
@@ -42,7 +43,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'machine',          component: MachineComponent  },
   { path: 'update-machine/:id',    component: UpdateMachineComponent  },
   { path: 'update-article/:id',    component: UpdateArticleComponent  },
-  { path: 'update-ordre-fabrication/:codeArticle',    component: UpdateOrdreFabricationComponent  },
+  { path: 'update-ordre-fabrication/:idArticle',    component: UpdateOrdreFabricationComponent  },
   { path: 'update-etape-production/:id',    component: UpdateEtapeProductionComponent  },
   { path: 'ajouter-etape',    component: AjouterEtapeComponent  },
   { path: 'ajouter-machine',    component: AjouterMachineComponent  },
@@ -51,11 +52,12 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'ajouter-commande',           component: AjouterCommandeComponent  },
   { path: 'client',           component: ClientComponent},
   { path: 'article-non-liee',           component: ArticleNonLieeComponent},
-  { path: 'ordre-fabrication/:id',           component: OrdreFabricationComponent  },
+  { path: 'ordre-fabrication/:idArticle',           component: OrdreFabricationComponent  },
   { path: 'article-client/:nom/:id',           component: ArticleClientComponent  },
   { path: 'update-client/:id',           component: UpdateClientComponent  },
   { path: 'article-commande/:idCmd/:nomClient/:numCmd',           component: ArticleCommandeComponent  },
-  { path: 'ajouter-client',           component: AjouterClientComponent  }
+  { path: 'ajouter-client',           component: AjouterClientComponent  },
+  { path: 'update-commande/:id',           component: UpdateCommandeComponent  }
 
 
 ];

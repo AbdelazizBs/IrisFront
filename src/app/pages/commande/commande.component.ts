@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit} from '@angular/core';
 import {CommandeServiceService} from '../../services/commande-service.service';
 import {Router} from '@angular/router';
 import {ArticleServiceService} from '../../services/article-service.service';
+import {OrdreFabricationServiceService} from '../../services/ordre-fabrication-service.service';
 
 @Component({
   selector: 'app-commande',
@@ -9,7 +10,7 @@ import {ArticleServiceService} from '../../services/article-service.service';
   styleUrls: ['./commande.component.scss'],
 })
 export class CommandeComponent implements OnInit {
-  constructor(private articleService: ArticleServiceService, private  commandeService: CommandeServiceService, private router: Router) {
+  constructor(private ordreFab: OrdreFabricationServiceService, private articleService: ArticleServiceService, private  commandeService: CommandeServiceService, private router: Router) {
     this.getListCommandes();
   }
   cmd: any;
@@ -56,7 +57,6 @@ export class CommandeComponent implements OnInit {
       (res) => {
         console.log(res);
         this.refreshLisCommandes();
-        this.router.navigate(['/commmande']);
       },
       err => {
         console.log(err);
@@ -71,7 +71,17 @@ export class CommandeComponent implements OnInit {
     );
   }
   updateCmd(myObj: any) {
-    this.router.navigate(['/ordre-fabrication' + '/' + myObj['id']]);
+    this.router.navigate(['/update-commande' + '/' + myObj['id']]);
+  }
+  haveOf(idArticle: any) {
+    return this.ordreFab.articlehaveOf(idArticle);
+  }
+  of(idArticle: any) {
+    console.log(this.haveOf(idArticle));
+    if (this.ordreFab.articlehaveOf(idArticle)) {
+      this.router.navigate(['/update-ordre-fabrication', idArticle]);
+    }
+    this.router.navigate(['/ordre-fabrication' + '/' + idArticle]);
   }
   show(i: number, idCmd) {
    const arr = [];

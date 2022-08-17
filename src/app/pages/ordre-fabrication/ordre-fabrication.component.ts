@@ -3,6 +3,19 @@ import {ArticleServiceService} from '../../services/article-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
 import {CommandeServiceService} from '../../services/commande-service.service';
+import {Article} from '../update-article/update-article.component';
+import {DatePipe} from '@angular/common';
+import {OrdreFabricationServiceService} from '../../services/ordre-fabrication-service.service';
+export class OrdreFabrication {
+  id: any;
+  dateLancement: any;
+  debutHeure: any;
+  finHeure: any;
+  commentaire: any;
+  qtePremierChoix: any;
+  qteNonConforme: any;
+  refClient: any ;
+}
 export class Commande {
   id: number;
   dateCmd: any ;
@@ -18,53 +31,53 @@ export class Commande {
   styleUrls: ['./ordre-fabrication.component.scss']
 })
 export class OrdreFabricationComponent implements OnInit {
-    listArticle: any;
+  idArticle: any;
+  article: Article;
   response: any;
   nomEtapes: any[];
-  idCmd: any;
-  cmd: Commande;
-
+  of: OrdreFabrication;
   // tslint:disable-next-line:max-line-length
-  constructor(private etapeProductionService: EtapeProductionServiceService, private commandService: CommandeServiceService, private articleService: ArticleServiceService, private router: Router, private route: ActivatedRoute) {
-    this.cmd = new Commande();
+  constructor(private   datepipe: DatePipe , private ordreFabricationService: OrdreFabricationServiceService  , private articleService: ArticleServiceService, private etapeProductionService: EtapeProductionServiceService, private router: Router, private route: ActivatedRoute) {
+    this.article = new Article();
+    this.of = new OrdreFabrication();
+
   }
 
   ngOnInit(): void {
-    // this.getListArticleCmd();
-
     this.route.paramMap.subscribe(
       params => {
-        this.idCmd = params.get('id');
+        this.idArticle = params.get('idArticle');
       }
     );
-
     this.etapeProductionService.getNomEtapes().subscribe(response => {
         console.log(response);
-        this.response = response;
+        this.response = response,
           this.nomEtapes = this.response;
+        console.log(this.article);
       },
       (err) => {
         console.log(err);
       }
     );
-    this.commandService.getCmdById(this.idCmd).subscribe(response => {
+  }
+  // ken article andou of temchi l update of si nn temchi tamallou of ;
+  lancerOf() {
+    const f: FormData = new FormData();
+    f.append('dateLancement', this.datepipe.transform( this.of.dateLancement, 'yyyy/MM/dd'));
+    f.append('debutHeure', this.of.debutHeure);
+    f.append('finHeure', this.of.finHeure);
+    f.append('commentaire', this.of.commentaire);
+    f.append('qtePremierChoix', this.of.qtePremierChoix);
+    f.append('qteNonConforme', this.of.qteNonConforme);
+    f.append('idArticle', this.idArticle);
+
+    this.ordreFabricationService.addOf(f).subscribe(
+      response => {
         console.log(response);
-        this.response = response;
-          this.cmd = this.response;
-        this.listArticle = this.cmd.articles ;
-        console.log(this.cmd); },
-      (err) => {
-        console.log(err);
-      });
-
+        this.router.navigate(['commande']);
+      }
+    );
   }
-  of(codeArticle: any) {
-    this.router.navigate(['/update-ordre-fabrication' + '/' + codeArticle]);
-  }
-  articleClient(nomClient: any, id: any) {
-    this.router.navigate(['/article-commande' + '/' + id + '/' + nomClient + '/' + this.cmd.numCmd]);
-  }
-
 }
 
 
