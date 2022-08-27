@@ -2,77 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import {ClientServiceService} from '../../services/client-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
-
-
-export class Client {
-  id: number;
-  nom: any ;
-  company: any ;
-  address: any ;
-  country: any ;
-  email: any ;
-  reference: any ;
-  phone: any ;
-
-}
-export class Compte {
-  id: number;
-  email: any;
-  password;
-}
-
-export class Personnel {
-  id: number;
-  cin: string ;
-  name: string ;
-  company: string ;
-  address: string ;
-  country: string ;
-compte: Compte;
-  phone: string ;
-  genre: string ;
-  dateNaissance: any ;
-}
+import {Personnel} from '../../model/Personnel.model';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-
 export class UserProfileComponent implements OnInit {
 
   constructor(private  clientService: ClientServiceService , private route: Router, public datepipe: DatePipe) {
   this.personnel = new Personnel();
   }
-
 id: any ;
 response: any ;
   personnel: Personnel ;
   genres = [];
-  // cin : any ;
-  // firstName: any ;
-  // lastName: any ;
-  // company: any ;
-  // address: any ;
-  // country: any ;
-  // login: any ;
-  // password: any ;
-  // phone: any ;
-  // genre: any ;
-  // dateNaissance: any ;
-  // personnel = {
-  //   cin : '',
-  //   firstName:  '',
-  //   lastName: '',
-  //   company: '',
-  //   address: '',
-  //   country:  '',
-  //   login: '',
-  //   password: '',
-  //   phone: '',
-  //   genre: '',
-  //   dateNaissance: ''
-  // };
   ngOnInit() {
 this.genres = ['homme',
   'femme'];

@@ -21,12 +21,12 @@
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
         <div class="card-header bg-transparent pb-5">
-          <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
+          <div class="text-muted text-center mt-2 mb-3"><small>Connecter avec</small></div>
           <div class="btn-wrapper text-center">
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
-              <span class="btn-inner--text">Github</span>
-            </a>
+<!--            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">-->
+<!--              <span class="btn-inner&#45;&#45;icon"><img src="../assets/img/icons/common/github.svg"></span>-->
+<!--              <span class="btn-inner&#45;&#45;text">Github</span>-->
+<!--            </a>-->
             <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
               <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
               <span class="btn-inner--text">Google</span>
@@ -36,9 +36,6 @@
         <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
 
         <div class="card-body px-lg-5 py-lg-5">
-          <div class="text-center text-muted mb-4">
-            <small>Or sign in with credentials</small>
-          </div>
           <form role="form">
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
@@ -61,11 +58,11 @@
             <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
               <label class="custom-control-label" for=" customCheckLogin">
-                <span class="text-muted">Remember me</span>
+                <span class="text-muted">Enregistrer</span>
               </label>
             </div>
             <div class="text-center">
-              <button (click)=checkLoginPersonnel()   type="button" class="btn btn-primary my-4">Sign in</button>
+              <button (click)=checkLoginPersonnel()   type="button" class="btn btn-primary my-4">Connecter</button>
             </div>
           </form>
         </div>

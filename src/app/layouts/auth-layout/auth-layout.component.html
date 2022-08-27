@@ -2,7 +2,7 @@
   <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
       <a class="navbar-brand" routerLinkActive="active" [routerLink]="['/dashboard']">
-        <img src="assets/img/brand/LOGO1.png" />
+        <img src="assets/img/brand/logoIris-removebg-preview.png" width="150" height="350"/>
       </a>
       <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
          aria-controls="sidenav-collapse-main">
@@ -12,7 +12,7 @@
         <!-- Collapse header -->
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
-            <div class="col-6 collapse-brand">
+            <div class="col-6 collapse-b  rand">
               <a routerLinkActive="active" [routerLink]="['/dashboard']">
                 <img src="assets/img/brand/logoIrisRede.png">
               </a>
@@ -36,13 +36,13 @@
           <li class="nav-item">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/register']">
               <i class="ni ni-circle-08"></i>
-              <span class="nav-link-inner--text">Register</span>
+              <span class="nav-link-inner--text">Inscrption</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/login']">
               <i class="ni ni-key-25"></i>
-              <span class="nav-link-inner--text">Login</span>
+              <span class="nav-link-inner--text">Connecter</span>
             </a>
           </li>
           <li *ngIf="loginService.isUserLoggedIn()"  class="nav-item">

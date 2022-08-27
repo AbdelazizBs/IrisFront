@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ArticleServiceService} from '../../services/article-service.service';
 import {ClientServiceService} from '../../services/client-service.service';
 import {Router} from '@angular/router';
-import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-article-non-liee',

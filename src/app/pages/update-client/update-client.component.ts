@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ClientServiceService} from '../../services/client-service.service';
-import {Article} from '../update-article/update-article.component';
-import {Client} from '../user-profile/user-profile.component';
+import {Client} from '../../model/Client.model';
 
 @Component({
   selector: 'app-update-client',

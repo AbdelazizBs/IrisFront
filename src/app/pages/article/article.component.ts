@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonnelServiceService} from '../../services/personnel-service.service';
 import {Router} from '@angular/router';
 import {ArticleServiceService} from '../../services/article-service.service';
-import {ClientServiceService} from '../../services/client-service.service';
-import {Article} from '../update-article/update-article.component';
+import {Article} from '../../model/Article.model';
 
 @Component({
   selector: 'app-article',
@@ -14,26 +12,65 @@ export class ArticleComponent implements OnInit {
   listArticle: any ;
   id: any;
   response: any;
-  constructor(private  articleService: ArticleServiceService, private clientService: ClientServiceService , private router: Router) { }
+  dataArticle: Article [];
+  constructor(private route: Router,
+              private  articleService: ArticleServiceService) { }
 
   ngOnInit(): void {
     this.getListArticle();
   }
-  updateArticle(myObj: any) {
-    this.router.navigate(['/update-article' + '/' + myObj['id']]);
+  updateArticle(data: any) {
+    const f: FormData = new FormData();
+    f.append('refIris', data.data.refIris);
+    f.append('refClient', data.data.refClient);
+    // tslint:disable-next-line:triple-equals
+    !data.data.clientName ?  f.append('clientName', '') : f.append('clientName', data.data.clientName);
+    !data.data.nomEtapeProductions ? f.append('nomEtapeProductions', '') : f.append('nomEtapeProductions', data.data.nomEtapeProductions);
+    !data.data.idOf ? f.append('idOf', '') : f.append('idOf', data.data.idOf);
+    this.articleService.ajoutArticle(f).subscribe(
+      (res) => {
+        console.log(res);
+        this.refreshListachines() ;
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
   }
+  addArticle(data: any) {
+      const f: FormData = new FormData();
+      f.append('refIris', data.data.refIris);
+      f.append('refClient', data.data.refClient);
+      // tslint:disable-next-line:triple-equals
+    !data.data.clientName ?  f.append('clientName', '') : f.append('clientName', data.data.clientName);
+    !data.data.nomEtapeProductions ? f.append('nomEtapeProductions', '') : f.append('nomEtapeProductions', data.data.nomEtapeProductions);
+    !data.data.idOf ? f.append('idOf', '') : f.append('idOf', data.data.idOf);
+      this.articleService.ajoutArticle(f).subscribe(
+        (res) => {
+          console.log(res);
+          this.refreshListachines() ;
+        },
+        err => {
+          console.log(err);
+
+        }
+      );
+    }
+
+
   getListArticle() {
     this.articleService.getListArticles().subscribe((data: any) => {
       this.listArticle = data;
+      this.dataArticle = this.listArticle;
       console.warn('listArticle', this.listArticle);
     });
   }
-  delete(id: any) {
-    this.articleService.delete(id).subscribe(
+  delete(data: any) {
+    this.articleService.delete(data.data.id).subscribe(
       (res) => {
         console.log(res);
         this.refreshListachines();
-        this.router.navigate(['/article']);
       },
       err => {
         console.log(err);

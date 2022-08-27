@@ -3,28 +3,11 @@ import {ArticleServiceService} from '../../services/article-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
 import {CommandeServiceService} from '../../services/commande-service.service';
-import {Article} from '../update-article/update-article.component';
 import {DatePipe} from '@angular/common';
 import {OrdreFabricationServiceService} from '../../services/ordre-fabrication-service.service';
-export class OrdreFabrication {
-  id: any;
-  dateLancement: any;
-  debutHeure: any;
-  finHeure: any;
-  commentaire: any;
-  qtePremierChoix: any;
-  qteNonConforme: any;
-  refClient: any ;
-}
-export class Commande {
-  id: number;
-  dateCmd: any ;
-  numCmd: any ;
-  typeCmd: any ;
-  nomClient: any ;
-  articles: any;
-  accepted: any ;
-}
+import {OrdreFabrication} from '../../model/OrdreFabrication.model';
+import {Article} from '../../model/Article.model';
+
 @Component({
   selector: 'app-ordre-fabrication',
   templateUrl: './ordre-fabrication.component.html',
@@ -37,7 +20,11 @@ export class OrdreFabricationComponent implements OnInit {
   nomEtapes: any[];
   of: OrdreFabrication;
   // tslint:disable-next-line:max-line-length
-  constructor(private   datepipe: DatePipe , private ordreFabricationService: OrdreFabricationServiceService  , private articleService: ArticleServiceService, private etapeProductionService: EtapeProductionServiceService, private router: Router, private route: ActivatedRoute) {
+  constructor(private   datepipe: DatePipe ,
+              private ordreFabricationService: OrdreFabricationServiceService  ,
+              private articleService: ArticleServiceService,
+              private etapeProductionService: EtapeProductionServiceService,
+              private router: Router, private route: ActivatedRoute) {
     this.article = new Article();
     this.of = new OrdreFabrication();
 

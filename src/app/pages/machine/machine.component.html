@@ -1,201 +1,74 @@
-<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-  <div class="container-fluid">
-    <div class="header-body">
-      <!-- Card stats -->
-      <div class="row">
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                  <span class="h2 font-weight-bold mb-0">350,897</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                    <i class="fas fa-chart-bar"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                  <span class="h2 font-weight-bold mb-0">2,356</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                    <i class="fas fa-chart-pie"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                <span class="text-nowrap">Since last week</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                  <span class="h2 font-weight-bold mb-0">924</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                    <i class="fas fa-users"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                  <span class="h2 font-weight-bold mb-0">49,65%</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                    <i class="fas fa-percent"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Page content -->
+<div class="header  pb-4 pt-5 pt-md-8"></div>
+<!-- Page content-->
 <div class="container-fluid mt--7">
   <!-- Table -->
-  <div class="row">
-    <div class="col">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <h3 class="mb-0">Gestion des Machines </h3>
 
-          <div class="col text-right">
-            <button  routerLink="/ajouter-machine" class="btn btn-sm btn-primary">Ajouter Machine</button>
+  <!-- Dark table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div style="background-color: #7EBCF1" class="card-header border-0">
+          <h3  class="text-white mb-0">Gestion des Commandes</h3>
+          <div *ngIf="listMachine.length==0">
+            <h2 style="color: red">Commande vide ..!!</h2>
           </div>
         </div>
-        <div class="table-responsive">
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-            <tr>
-              <th scope="col">Désignation</th>
-              <th scope="col">Réference</th>
-              <th scope="col">Etape Production</th>
-              <th scope="col">Nom Personnel</th>
-              <th scope="col">Date Maintenance</th>
-              <th scope="col">Etat</th>
-              <th scope="col">Action</th>
+        <div *ngIf="listMachine.length>0">
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let l of listMachine">
-              <th scope="row">
-                <div class="media align-items-center">
-                  <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                    <img  src="../assets/img/theme/logoMachine2.png">
-                  </a>
-                  <div class="media-body">
-                    <span class="mb-0 text-sm" >{{l.designation}}</span>
-                  </div>
-                </div>
-              </th>
-              <td>
-                {{l.reference}}
-              </td>
-              <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> {{l.nomEtapeProduction}}
-                  </span>
-              </td>
-              <td>
-                {{l.nomPersonnel}}
-              </td>
-              <td>
-                {{l.dateMaintenance}}
-              </td>
-              <td>
-                <div ngbDropdown placement="bottom-right">
-                  <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                    <i class="fas fa-ellipsis-v"></i>
-                  </a>
-                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                    <button (click)="setEtatEnmarche(l.id)"   class="dropdown-item" >En marche</button>
-                    <button (click)="setEtatEnMaintenance(l.id)"  class="dropdown-item" >En Maintenance</button>
-                    <button (click)="setEtatEnPanne(l.id)"  class="dropdown-item" >En panne</button>
-                    <button (click)="setEtatEnRepos(l.id)"  class="dropdown-item" >En repos</button>
-                  </div>
-                  <a  *ngIf="l.etat == 'En marche'" class="btn btn-sm btn-success">{{l.etat}}</a>
-                  <a   *ngIf="l.etat == 'En Maintenance'" class="btn btn-sm btn-warning">{{l.etat}}</a>
-                  <a   *ngIf="l.etat == 'En panne'" class="btn btn-sm btn-danger">{{l.etat}}</a>
-                  <a   *ngIf="l.etat == 'En repos'" class="btn btn-sm btn-info">{{l.etat}}</a>
+          <div class="table align-items-center table-dark table-flush">
+            <dx-data-grid
+              id="gridContainer"
+              [dataSource]="dataMachine"
+              [showBorders]="true"
+              (onRowUpdated)="updateMachine($event)"
+              (onRowInserted)="addMachine($event)"
+              (onRowRemoved)="delete($event)"
+            >
+              <dxo-paging [enabled]="false">
+              </dxo-paging>
+              <dxo-editing
+                mode="form"
+                [allowUpdating]="true"
+                [allowAdding]="true"
+                [allowDeleting]="true"
 
-                  <!--                  </div>-->
-<!--                 <select class="btn btn-sm btn-primary" (click)="getEtat(l.id,l)" [(ngModel)] = "l.etat">-->
-<!--                   <option  class="input-options"  *ngFor="let et  of listEtat">-->
-<!--                    {{et}}-->
-<!--                  </option>-->
-<!--                  </select>-->
-                </div>
-              </td>
-              <td class="text-right">
-                <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <button (click)="updateMachine(l)"  class="dropdown-item" >Modifier</button>
-                      <button (click)="delete(l.id)"  class="dropdown-item" >Supprimer</button>
-                    </div>
-                  </div>
-            </tr>
-            </tbody>
-          </table>
+              >
+              </dxo-editing>
+
+              <dxi-column  dataField="designation"></dxi-column>
+              <dxi-column  dataField="reference"></dxi-column>
+              <dxi-column  dataField="nomEtapeProduction"></dxi-column>
+              <dxi-column  dataField="nombreConducteur"></dxi-column>
+              <dxi-column  dataField="nomPersonnel"></dxi-column>
+              <dxi-column  dataField="etat"></dxi-column>
+              <!--                              <dxi-column *dxTemplate="let types of typesCmd; ">-->
+              <!--                                <dx-check-box-->
+              <!--                                  [text]="helper.getCheckBoxText(types)"-->
+              <!--                                  [value]="helper.getCheckBoxValue(types)"-->
+              <!--                                  [elementAttr]="helper.getCheckBoxElementAttr(types)"-->
+              <!--                                  (onValueChanged)="helper.checkBoxValueChanged($event)">-->
+              <!--                                </dx-check-box>-->
+              <!--                              </dxi-column>-->
+              <dxi-column  dataField="dateMaintenance" dataType="date"> </dxi-column>
+              <dxi-column  dataField="dateCreation" dataType="date"> </dxi-column>
+            </dx-data-grid>
+          </div>
+
         </div>
-        <div class="card-footer py-4">
+        <div *ngIf="listMachine.length>0"  class="card-footer py-4">
           <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-              <li class="page-item disabled">
+            <ul class="pagination justify-content-end mb-0 ">
+              <li style="color: #363640" class="page-item disabled">
                 <a class="page-link" href="javascript:void(0)" tabindex="-1">
                   <i class="fas fa-angle-left"></i>
                   <span class="sr-only">Previous</span>
                 </a>
               </li>
-              <li class="page-item active">
-                <a class="page-link" href="javascript:void(0)">1</a>
+              <li  class="page-item active ">
+                <a class="page-link " >1</a>
               </li>
               <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                <a class="page-link " href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
               </li>
               <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
               <li class="page-item">
@@ -211,3 +84,79 @@
     </div>
   </div>
 </div>
+<!--<table class="table align-items-center table-flush">-->
+<!--  <thead class="thead-light">-->
+<!--  <tr>-->
+<!--    <th scope="col">Désignation</th>-->
+<!--    <th scope="col">Réference</th>-->
+<!--    <th scope="col">Etape Production</th>-->
+<!--    <th scope="col">Nom Personnel</th>-->
+<!--    <th scope="col">Date Maintenance</th>-->
+<!--    <th scope="col">Etat</th>-->
+<!--    <th scope="col">Action</th>-->
+
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let l of listMachine">-->
+<!--    <th scope="row">-->
+<!--      <div class="media align-items-center">-->
+<!--        <a href="javascript:void(0)" class="avatar rounded-circle mr-3">-->
+<!--          <img  src="../assets/img/theme/logoMachine2.png">-->
+<!--        </a>-->
+<!--        <div class="media-body">-->
+<!--          <span class="mb-0 text-sm" >{{l.designation}}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </th>-->
+<!--    <td>-->
+<!--      {{l.reference}}-->
+<!--    </td>-->
+<!--    <td>-->
+<!--                  <span class="badge badge-dot mr-4">-->
+<!--                    <i class="bg-warning"></i> {{l.nomEtapeProduction}}-->
+<!--                  </span>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      {{l.nomPersonnel}}-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      {{l.dateMaintenance}}-->
+<!--    </td>-->
+<!--    <td>-->
+<!--      <div ngbDropdown placement="bottom-right">-->
+<!--        <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
+<!--          <i class="fas fa-ellipsis-v"></i>-->
+<!--        </a>-->
+<!--        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
+<!--          <button (click)="setEtatEnmarche(l.id)"   class="dropdown-item" >En marche</button>-->
+<!--          <button (click)="setEtatEnMaintenance(l.id)"  class="dropdown-item" >En Maintenance</button>-->
+<!--          <button (click)="setEtatEnPanne(l.id)"  class="dropdown-item" >En panne</button>-->
+<!--          <button (click)="setEtatEnRepos(l.id)"  class="dropdown-item" >En repos</button>-->
+<!--        </div>-->
+<!--        <a  *ngIf="l.etat == 'En marche'" class="btn btn-sm btn-success">{{l.etat}}</a>-->
+<!--        <a   *ngIf="l.etat == 'En Maintenance'" class="btn btn-sm btn-warning">{{l.etat}}</a>-->
+<!--        <a   *ngIf="l.etat == 'En panne'" class="btn btn-sm btn-danger">{{l.etat}}</a>-->
+<!--        <a   *ngIf="l.etat == 'En repos'" class="btn btn-sm btn-info">{{l.etat}}</a>-->
+
+<!--        &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;                 <select class="btn btn-sm btn-primary" (click)="getEtat(l.id,l)" [(ngModel)] = "l.etat">&ndash;&gt;-->
+<!--        &lt;!&ndash;                   <option  class="input-options"  *ngFor="let et  of listEtat">&ndash;&gt;-->
+<!--        &lt;!&ndash;                    {{et}}&ndash;&gt;-->
+<!--        &lt;!&ndash;                  </option>&ndash;&gt;-->
+<!--        &lt;!&ndash;                  </select>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </td>-->
+<!--    <td class="text-right">-->
+<!--      <div ngbDropdown placement="bottom-right">-->
+<!--        <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>-->
+<!--          <i class="fas fa-ellipsis-v"></i>-->
+<!--        </a>-->
+<!--        <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">-->
+<!--          <button (click)="updateMachine(l)"  class="dropdown-item" >Modifier</button>-->
+<!--          <button (click)="delete(l.id)"  class="dropdown-item" >Supprimer</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->

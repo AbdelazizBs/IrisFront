@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {Machine} from '../update-machine/update-machine.component';
 import {MachineServiceService} from '../../services/machine-service.service';
 import {DatePipe} from '@angular/common';
+import {Machine} from '../../model/Machine.model';
 
 
 @Component({
@@ -15,9 +15,8 @@ export class MachineComponent implements OnInit {
 id: any;
   listEtat: any;
   response: any;
-  machine: Machine ;
+  dataMachine: Machine [];
   constructor(private route: Router, private  machineService: MachineServiceService, private router: Router, public datepipe: DatePipe) {
-    this.machine = new Machine();
   }
 
   ngOnInit(): void {
@@ -28,24 +27,18 @@ id: any;
       'En marche',
       'En panne'
     ];
-
-
   }
-  updateMachine(myObj: any) {
-      this.router.navigate(['/update-machine' + '/' + myObj['id']]);
-  }
-
-  updateEtatMachine(id: any , machine: any) {
+  updateMachine(data: any) {
     const f: FormData = new FormData();
-    f.append('designation', this.machine.designation);
-    f.append('reference', this.machine.reference);
-    f.append('nomEtapeProduction', this.machine.nomEtapeProduction);
-    f.append('nombreConducteur', this.machine.nombreConducteur);
-    f.append('nomPersonnel', this.machine.nomPersonnel);
-    f.append('dateMaintenance',  this.datepipe.transform(this.machine.dateMaintenance , 'yyyy/MM/dd'));
-    f.append('dateCreation',  this.datepipe.transform(this.machine.dateCreation , 'yyyy/MM/dd'));
-    f.append('etat', this.machine.etat);
-   this.machineService.updateEtatMachine(id, machine).subscribe(
+    f.append('designation', data.data.designation);
+    f.append('reference', data.data.reference);
+    f.append('nombreConducteur', data.data.nombreConducteur);
+    !data.data.nomPersonnel ?  f.append('nomPersonnel', '') : f.append('nomPersonnel', data.data.nomPersonnel);
+    !data.data.nomEtapeProduction ?  f.append('nomEtapeProduction', '') : f.append('nomEtapeProduction', data.data.nomEtapeProduction);
+    f.append('dateMaintenance',  this.datepipe.transform(data.data.dateMaintenance , 'yyyy/MM/dd'));
+    f.append('dateCreation',  this.datepipe.transform(data.data.dateCreation , 'yyyy/MM/dd'));
+    f.append('etat', data.data.etat);
+   this.machineService.updateEtatMachine(data.data.id, f).subscribe(
      response => {
        console.log(response);
        this.refreshListachines();
@@ -57,7 +50,6 @@ id: any;
           console.log(response);
           this.response = response;
           this.refreshListachines();
-          // this.listEtat = this.response;
       },
         (err) => {
           console.log(err);
@@ -104,6 +96,7 @@ id: any;
   getListMachine() {
       this.machineService.getLisMachine().subscribe((data: any) => {
         this.listMachine = data;
+        this.dataMachine = this.listMachine ;
         console.warn('*---**', this.listMachine);
       });
   }
@@ -124,6 +117,28 @@ id: any;
     this.machineService.getLisMachine().subscribe(
       response => {
         this.listMachine = response;      }
+    );
+  }
+  addMachine(data: any) {
+    const f: FormData = new FormData();
+    f.append('designation', data.data.designation);
+    f.append('reference', data.data.reference);
+    f.append('nomEtapeProduction', data.data.nomEtapeProduction);
+    f.append('nombreConducteur', data.data.nombreConducteur);
+    f.append('dateMaintenance' , this.datepipe.transform( data.data.dateMaintenance, 'yyyy/MM/dd'));
+    f.append('dateCreation', this.datepipe.transform( data.data.dateCreation, 'yyyy/MM/dd'));
+    f.append('etat', data.data.etat);
+    f.append('nomPersonnel', data.data.nomPersonnel);
+
+    this.machineService.ajoutMachine(f).subscribe(
+      (res) => {
+        console.log(res);
+this.refreshListachines();
+},
+      err => {
+        console.log(err);
+
+      }
     );
   }
 }

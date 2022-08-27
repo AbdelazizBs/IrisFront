@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonnelServiceService} from '../../services/personnel-service.service';
 import {Router} from '@angular/router';
 import {EtapeProductionServiceService} from '../../services/etape-production-service.service';
+import {EtapeProduction} from '../../model/EtapeProduction.model';
 
 @Component({
   selector: 'app-etape-production',
@@ -10,6 +10,7 @@ import {EtapeProductionServiceService} from '../../services/etape-production-ser
 })
 export class EtapeProductionComponent implements OnInit {
 listEtape: any ;
+  dataEtapeP: EtapeProduction [] ;
   constructor(private  etapeService: EtapeProductionServiceService, private router: Router) { }
 
   ngOnInit(): void {
@@ -17,13 +18,41 @@ listEtape: any ;
 
   }
 
-  updateEtape(myObj: any) {
-    this.router.navigate(['/update-etape-production' + '/' + myObj['id']]);
+  updateEtape(data: any) {
+    const f: FormData = new FormData();
+    f.append('nomEtape', data.data.nomEtape);
+    f.append('typeEtape', data.data.typeEtape);
+    this.etapeService.updateEtape(data.data.id, f).subscribe(
+      (res) => {
+        console.log(res);
+this.refreshListEtapes();
+},
+      err => {
+        console.log(err);
+
+      }
+    );
+  }
+  addEtape(data: any) {
+    const f: FormData = new FormData();
+    f.append('nomEtape', data.data.nomEtape);
+    f.append('typeEtape', data.data.typeEtape);
+    this.etapeService.ajoutEtape(f).subscribe(
+      (res) => {
+        console.log(res);
+this.refreshListEtapes();
+},
+      err => {
+        console.log(err);
+
+      }
+    );
   }
 
    getLisEtape() {
     this.etapeService.getLisEtape().subscribe((data: any) => {
       this.listEtape = data;
+      this.dataEtapeP = this.listEtape ;
       console.warn('*---**', this.listEtape);
     });
   }
@@ -32,7 +61,7 @@ listEtape: any ;
     this.etapeService.delete(id).subscribe(
       (res) => {
         console.log(res);
-        this.refreshListachines();
+        this.refreshListEtapes();
         this.router.navigate(['/etape-production']);
       },
       err => {
@@ -41,7 +70,7 @@ listEtape: any ;
       }
     );
   }
-  refreshListachines() {
+  refreshListEtapes() {
     this.etapeService.getLisEtape().subscribe(
       response => {
         this.listEtape = response;      }

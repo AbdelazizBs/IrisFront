@@ -17,11 +17,18 @@ export class CommandeServiceService {
   getCmdById(id: any) {
     return this.http.get(this.url + 'commande/' + id  );  }
 
-  ajoutCommande(machine: any) {
-    return this.http.post(this.url + 'commande/addCommande' , machine);
+  ajoutCommande(cmd: any) {
+    return this.http.post(this.url + 'commande/addCommande' , cmd);
   }
   delete(id: any) {
     return this.http.delete<any>(this.url + 'commande/deleteCommande/' + id);
 
+  }
+  updateCmd(id: any, cmd: any): Observable<any> {
+    console.log('id', id);
+    console.log('cmd', cmd);
+    console.log('dateCmd', cmd.dateCmd);
+    console.log('typesCmd', cmd.typesCmd);
+    return this.http.put<any>(this.url + 'commande/updateCommande/' + id, cmd);
   }
 }
