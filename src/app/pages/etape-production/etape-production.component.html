@@ -8,7 +8,7 @@
     <div class="col">
       <div class="card bg-default shadow">
         <div style="background-color: #7EBCF1" class="card-header border-0">
-          <h3  class="text-white mb-0">Gestion des Commandes</h3>
+          <h3  class="text-white mb-0">Gestion des Etapes Production</h3>
           <div *ngIf="listEtape.length==0">
             <h2 style="color: red">Commande vide ..!!</h2>
           </div>
@@ -35,8 +35,8 @@
               >
               </dxo-editing>
 
-              <dxi-column  dataField="nomEtape"></dxi-column>
-              <dxi-column  dataField="typeEtape"></dxi-column>
+              <dxi-column caption="Nom" dataField="nomEtape"></dxi-column>
+              <dxi-column  caption="Type" dataField="typeEtape"></dxi-column>
             </dx-data-grid>
           </div>
 

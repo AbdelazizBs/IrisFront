@@ -9,10 +9,9 @@ import {Client} from '../../model/Client.model';
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit {
-client: Client;
 listClient: any;
+dataClient: Client [];
   constructor(private  clientService: ClientServiceService, private router: Router) {
-this.client = new Client();
   }
 
   ngOnInit(): void {
@@ -21,24 +20,61 @@ this.client = new Client();
   getListClient() {
     this.clientService.getListClient().subscribe((data: any) => {
       this.listClient = data;
+      this.dataClient = this.listClient ;
       console.warn('*---**', this.listClient);
     });
   }
+  addClient(data: any) {
+    const f: FormData = new FormData();
+    f.append('nom', data.data.nom);
+    f.append('reference', data.data.reference);
+    f.append('country', data.data.country);
+    f.append('address', data.data.address);
+    f.append('company', data.data.company);
+    f.append('email', data.data.email);
+    f.append('phone', data.data.phone);
 
+    this.clientService.ajouterClient(f).subscribe(
+      (res) => {
+        console.log(res);
+this.refreshListClient();
+},
+      err => {
+        console.log(err);
+
+      }
+    );
+  }
   articleClient(myObj: any) {
     this.router.navigate(['/article-client' + '/' + myObj['nom'] + '/' + myObj['id']]);
   }
 
-  updateClient(myObj: any) {
-    this.router.navigate(['/update-client' + '/' + myObj['id']]);
-  }
+  updateClient(data: any) {
+    const f: FormData = new FormData();
+    f.append('nom', data.data.nom);
+    f.append('reference', data.data.reference);
+    f.append('country', data.data.country);
+    f.append('address', data.data.address);
+    f.append('company', data.data.company);
+    f.append('email', data.data.email);
+    f.append('phone', data.data.phone);
 
-  delete(id: any) {
-    this.clientService.delete(id).subscribe(
+    this.clientService.updateClient(data.data.id, f).subscribe(
       (res) => {
         console.log(res);
-        this.refreshListachines();
-        this.router.navigate(['/client']);
+this.refreshListClient();
+},
+      err => {
+        console.log(err);
+
+      }
+    );  }
+
+  delete(data: any) {
+    this.clientService.delete(data.data.id).subscribe(
+      (res) => {
+        console.log(res);
+this.refreshListClient();
       },
       err => {
         console.log(err);
@@ -46,10 +82,12 @@ this.client = new Client();
       }
     );
   }
-  refreshListachines() {
+  refreshListClient() {
     this.clientService.getListClient().subscribe(
       response => {
-        this.listClient = response;      }
+        this.listClient = response;
+      this.dataClient = this.listClient ;
+      }
     );
   }
 }

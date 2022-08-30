@@ -10,11 +10,8 @@ import {MachineComponent} from '../../pages/machine/machine.component';
 import {ArticleComponent} from '../../pages/article/article.component';
 import {EtapeProductionComponent} from '../../pages/etape-production/etape-production.component';
 import {OrdreFabricationComponent} from '../../pages/ordre-fabrication/ordre-fabrication.component';
-import {UpdateOrdreFabricationComponent} from '../../pages/update-ordre-fabrication/update-ordre-fabrication.component';
 import {ClientComponent} from '../../pages/client/client.component';
 import {ArticleClientComponent} from '../../pages/article-client/article-client.component';
-import {AjouterClientComponent} from '../../pages/ajouter-client/ajouter-client.component';
-import {UpdateClientComponent} from '../../pages/update-client/update-client.component';
 import {ArticleCommandeComponent} from '../../pages/article-commande/article-commande.component';
 import {ArticleNonLieeComponent} from '../../pages/article-non-liee/article-non-liee.component';
 
@@ -31,15 +28,12 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'icons',          component: IconsComponent  },
   { path: 'logout',          component: LogoutComponent  },
   { path: 'machine',          component: MachineComponent  },
-  { path: 'update-ordre-fabrication/:idArticle',    component: UpdateOrdreFabricationComponent  },
   { path: 'commande',           component: CommandeComponent  },
   { path: 'client',           component: ClientComponent},
   { path: 'article-non-liee',           component: ArticleNonLieeComponent},
   { path: 'ordre-fabrication/:idArticle',           component: OrdreFabricationComponent  },
   { path: 'article-client/:nom/:id',           component: ArticleClientComponent  },
-  { path: 'update-client/:id',           component: UpdateClientComponent  },
   { path: 'article-commande/:idCmd/:nomClient/:numCmd',           component: ArticleCommandeComponent  },
-  { path: 'ajouter-client',           component: AjouterClientComponent  },
 
 
 ];

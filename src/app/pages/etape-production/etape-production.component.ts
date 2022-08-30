@@ -57,8 +57,8 @@ this.refreshListEtapes();
     });
   }
 
-  delete(id: any) {
-    this.etapeService.delete(id).subscribe(
+  delete(data: any) {
+    this.etapeService.delete(data.data.id).subscribe(
       (res) => {
         console.log(res);
         this.refreshListEtapes();

@@ -26,7 +26,7 @@ export class EtapeProductionServiceService {
 
 
   updateEtape(id: any, etape: any): Observable<any> {
-    return this.http.put<any>(this.url + 'etapeProduction/updateEtape/' + id, etape);
+    return this.http.put<any>(this.url + 'updateEtape/' + id, etape);
   }
 
   ajoutEtape(etape: any) {

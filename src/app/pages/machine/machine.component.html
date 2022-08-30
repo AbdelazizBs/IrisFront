@@ -6,15 +6,22 @@
   <!-- Dark table -->
   <div class="row mt-5">
     <div class="col">
-      <div class="card bg-default shadow">
+      <div style="background-color: #FFFFFF !important;" class="card bg-default shadow">
         <div style="background-color: #7EBCF1" class="card-header border-0">
-          <h3  class="text-white mb-0">Gestion des Commandes</h3>
+          <h3  class="text-white mb-0">Gestion des Machines</h3>
           <div *ngIf="listMachine.length==0">
             <h2 style="color: red">Commande vide ..!!</h2>
           </div>
         </div>
         <div *ngIf="listMachine.length>0">
-
+          <div  class="options">
+              <dx-check-box
+                id="autoExpand"
+                [(value)]="expand.autoExpandAll"
+                text="sélectionner tous"
+              >
+              </dx-check-box>
+          </div>
           <div class="table align-items-center table-dark table-flush">
             <dx-data-grid
               id="gridContainer"
@@ -24,8 +31,7 @@
               (onRowInserted)="addMachine($event)"
               (onRowRemoved)="delete($event)"
             >
-              <dxo-paging [enabled]="false">
-              </dxo-paging>
+
               <dxo-editing
                 mode="form"
                 [allowUpdating]="true"
@@ -35,12 +41,12 @@
               >
               </dxo-editing>
 
-              <dxi-column  dataField="designation"></dxi-column>
-              <dxi-column  dataField="reference"></dxi-column>
-              <dxi-column  dataField="nomEtapeProduction"></dxi-column>
-              <dxi-column  dataField="nombreConducteur"></dxi-column>
-              <dxi-column  dataField="nomPersonnel"></dxi-column>
-              <dxi-column  dataField="etat"></dxi-column>
+<!--              <dxi-column caption="Désignation" dataField="designation"></dxi-column>-->
+              <dxi-column caption="Référence"  dataField="reference"></dxi-column>
+              <dxi-column caption="Etape Production"  dataField="nomEtapeProduction"></dxi-column>
+              <dxi-column caption="Nb Conducteur"  dataField="nombreConducteur"></dxi-column>
+              <dxi-column caption="Nom Personnel"  dataField="nomPersonnel"></dxi-column>
+              <dxi-column caption="Etat"  dataField="etat"></dxi-column>
               <!--                              <dxi-column *dxTemplate="let types of typesCmd; ">-->
               <!--                                <dx-check-box-->
               <!--                                  [text]="helper.getCheckBoxText(types)"-->
@@ -49,36 +55,16 @@
               <!--                                  (onValueChanged)="helper.checkBoxValueChanged($event)">-->
               <!--                                </dx-check-box>-->
               <!--                              </dxi-column>-->
-              <dxi-column  dataField="dateMaintenance" dataType="date"> </dxi-column>
-              <dxi-column  dataField="dateCreation" dataType="date"> </dxi-column>
+              <dxi-column caption="Date Maintenance"  dataField="dateMaintenance" dataType="date"> </dxi-column>
+              <dxi-column caption="Date Création"  dataField="dateCreation" dataType="date"> </dxi-column>
+              <dxi-column dataField="designation" [groupIndex]="0"></dxi-column>
+              <dxo-search-panel [visible]="true"></dxo-search-panel>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+              <dxo-group-panel [visible]="true"></dxo-group-panel>
+              <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+
             </dx-data-grid>
           </div>
-
-        </div>
-        <div *ngIf="listMachine.length>0"  class="card-footer py-4">
-          <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0 ">
-              <li style="color: #363640" class="page-item disabled">
-                <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                  <i class="fas fa-angle-left"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li  class="page-item active ">
-                <a class="page-link " >1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link " href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                  <i class="fas fa-angle-right"></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
         </div>
       </div>
     </div>

@@ -24,11 +24,9 @@ export class CommandeServiceService {
     return this.http.delete<any>(this.url + 'commande/deleteCommande/' + id);
 
   }
+  getNameClient() {
+    return this.http.get(this.url + 'client/getNomClients' );  }
   updateCmd(id: any, cmd: any): Observable<any> {
-    console.log('id', id);
-    console.log('cmd', cmd);
-    console.log('dateCmd', cmd.dateCmd);
-    console.log('typesCmd', cmd.typesCmd);
     return this.http.put<any>(this.url + 'commande/updateCommande/' + id, cmd);
   }
 }

@@ -8,7 +8,7 @@
     <div class="col">
       <div class="card bg-default shadow">
         <div style="background-color: #7EBCF1" class="card-header border-0">
-          <h3  class="text-white mb-0">Gestion des Commandes</h3>
+          <h3  class="text-white mb-0">Gestion des Articles</h3>
           <div *ngIf="listArticle.length==0">
             <h2 style="color: red">Commande vide ..!!</h2>
           </div>
@@ -35,9 +35,9 @@
               >
               </dxo-editing>
 
-              <dxi-column  dataField="refIris"></dxi-column>
-              <dxi-column  dataField="refClient"></dxi-column>
-              <dxi-column  dataField="clientName"></dxi-column>
+              <dxi-column caption="Référence Iris"  dataField="refIris"></dxi-column>
+              <dxi-column caption="Référence Client" dataField="refClient"></dxi-column>
+              <dxi-column caption="Nom Client" dataField="clientName"></dxi-column>
             </dx-data-grid>
           </div>
 

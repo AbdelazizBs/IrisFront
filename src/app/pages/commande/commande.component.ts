@@ -7,6 +7,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {AppModule} from '../../app.module';
 import {DatePipe} from '@angular/common';
 import {Commande} from '../../model/command.model';
+import {AppComponent} from '../../app.component';
 @Component({
   selector: 'app-commande',
   templateUrl: './commande.component.html',
@@ -15,22 +16,33 @@ import {Commande} from '../../model/command.model';
 })
 export class CommandeComponent implements OnInit {
   dataCmd: Commande[];
-  constructor( public datepipe: DatePipe,
-               private ordreFab: OrdreFabricationServiceService,
-               private articleService: ArticleServiceService,
-               private  commandeService: CommandeServiceService,
-                 private router: Router) {
-  }
   cmd: any;
   listArticle: any;
   validate: any ;
   id: any;
   listCommande: any ;
   typesCmd = ['Stock', 'Echantillon', 'Relance', 'Ferme'];
+  listOfClient: any;
+  constructor( public datepipe: DatePipe,
+               private ordreFab: OrdreFabricationServiceService,
+               private articleService: ArticleServiceService,
+               private  commandeService: CommandeServiceService,
+                 private router: Router) {
+  }
+  private static isChief(position) {
+    return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+  }
   ngOnInit(): void {
     this.getListCommandes();
+    this.getNameClient();
+  }
+  isCloneIconVisible(e) {
+    return !e.row.isEditing;
   }
 
+  isCloneIconDisabled(e) {
+    return CommandeComponent.isChief(e.row.data.Position);
+  }
   getArticlesByIdCommande(index, idCmd) {
     this.articleService.getArticlesByIdCommande(idCmd).subscribe(response => {
       this.listArticle = response;
@@ -39,6 +51,12 @@ export class CommandeComponent implements OnInit {
       (err) => {
         console.log(err);
       });
+  }
+  getNameClient() {
+    this.commandeService.getNameClient().subscribe(
+      response => {
+        this.listOfClient = response;      }
+    );
   }
   getListCommandes() {
       this.commandeService.getListCommandes().subscribe((data: any) => {
@@ -92,12 +110,6 @@ export class CommandeComponent implements OnInit {
   updateCmd(data: any) {
     console.log(data);
     const f: FormData = new FormData();
-    // data.newData.typeCmd = undefined ? f.append('typeCmd', data.oldData.typeCmd) : f.append('typeCmd', data.newData.typeCmd);
-    // data.newData.numCmd = undefined ? f.append('numCmd', data.oldData.numCmd) : f.append('numCmd', data.newData.numCmd);
-    // data.newData.dateCmd = undefined ?   f.append('dateCmd',  this.datepipe.transform(data.oldData.dateCmd , 'yyyy/MM/dd')) :   f.append('dateCmd',  this.datepipe.transform(data.newData.dateCmd , 'yyyy/MM/dd'));
-    // data.newData.nomClient = undefined ? f.append('nomClient', data.oldData.nomClient) : f.append('nomClient', data.newData.nomClient);
-    // data.newData.articles = undefined ? f.append('articles', data.oldData.articles) : f.append('articles', data.newData.articles);
-    //
     f.append('numCmd', data.data.numCmd);
     f.append('typeCmd', data.data.typeCmd);
     f.append('dateCmd',  this.datepipe.transform(data.data.dateCmd , 'yyyy/MM/dd'));

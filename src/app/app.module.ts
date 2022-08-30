@@ -16,11 +16,8 @@ import { MachineComponent } from './pages/machine/machine.component';
 import { ArticleComponent } from './pages/article/article.component';
 import { EtapeProductionComponent } from './pages/etape-production/etape-production.component';
 import { OrdreFabricationComponent } from './pages/ordre-fabrication/ordre-fabrication.component';
-import { UpdateOrdreFabricationComponent } from './pages/update-ordre-fabrication/update-ordre-fabrication.component';
 import { ClientComponent } from './pages/client/client.component';
-import { AjouterClientComponent } from './pages/ajouter-client/ajouter-client.component';
 import { ArticleClientComponent } from './pages/article-client/article-client.component';
-import { UpdateClientComponent } from './pages/update-client/update-client.component';
 import { ArticleCommandeComponent } from './pages/article-commande/article-commande.component';
 import { ArticleNonLieeComponent } from './pages/article-non-liee/article-non-liee.component';
 import {BrowserModule} from '@angular/platform-browser';
@@ -29,7 +26,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {allIcons, HeroIconModule} from 'ng-heroicon';
-import {DxCheckBoxModule, DxDataGridModule, DxSelectBoxModule} from 'devextreme-angular';
+import {DxCheckBoxModule, DxDataGridModule, DxSelectBoxModule, DxTreeListModule} from 'devextreme-angular';
 
 
 @NgModule({
@@ -44,6 +41,7 @@ import {DxCheckBoxModule, DxDataGridModule, DxSelectBoxModule} from 'devextreme-
     NgxMatSelectSearchModule,
     HttpClientModule,
     DxDataGridModule,
+    DxTreeListModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
@@ -64,11 +62,8 @@ import {DxCheckBoxModule, DxDataGridModule, DxSelectBoxModule} from 'devextreme-
     ArticleComponent,
     EtapeProductionComponent,
     OrdreFabricationComponent,
-    UpdateOrdreFabricationComponent,
     ClientComponent,
-    AjouterClientComponent,
     ArticleClientComponent,
-    UpdateClientComponent,
     ArticleCommandeComponent,
     ArticleNonLieeComponent,
   ],
