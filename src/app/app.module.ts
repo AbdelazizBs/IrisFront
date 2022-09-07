@@ -26,7 +26,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {allIcons, HeroIconModule} from 'ng-heroicon';
-import {DxCheckBoxModule, DxDataGridModule, DxSelectBoxModule, DxTreeListModule} from 'devextreme-angular';
+import { AgGridModule } from 'ag-grid-angular';
+import {
+  DxButtonModule,
+  DxCheckBoxModule,
+  DxDataGridModule,
+  DxPopupModule,
+  DxScrollViewModule,
+  DxSelectBoxModule,
+  DxTemplateModule, DxToolbarModule
+} from 'devextreme-angular';
 
 
 @NgModule({
@@ -40,8 +49,12 @@ import {DxCheckBoxModule, DxDataGridModule, DxSelectBoxModule, DxTreeListModule}
     MatFormFieldModule,
     NgxMatSelectSearchModule,
     HttpClientModule,
+    DxButtonModule,
+    DxTemplateModule,
     DxDataGridModule,
-    DxTreeListModule,
+    AgGridModule,
+    DxPopupModule,
+    DxScrollViewModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
@@ -50,7 +63,8 @@ import {DxCheckBoxModule, DxDataGridModule, DxSelectBoxModule, DxTreeListModule}
       ...allIcons
     }),
     DxSelectBoxModule,
-    DxCheckBoxModule
+    DxCheckBoxModule,
+    DxToolbarModule
   ],
   declarations: [
     AppComponent,

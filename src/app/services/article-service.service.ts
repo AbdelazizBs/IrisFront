@@ -33,6 +33,12 @@ export class ArticleServiceService {
   }
   getArticlesByIdCommande(idcmd: any) {
     return this.http.get(this.url + 'article/' + idcmd  );  }
+
+  getLignCmdByIdArticleAndIdCmd(idArticle, idcmd) {
+    return this.http.get(this.url + 'ligneCommand/getLignCmdByIdArticleAndIdCmd/' + idArticle + '/' +  idcmd );  }
+
+
+
   getListArticleClientByNomClient(nomClient: any) {
     return this.http.get(this.url + 'article/getListArticleClientByNomClient/' + nomClient);
   }

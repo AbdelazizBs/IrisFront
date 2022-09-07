@@ -7,14 +7,21 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {AppModule} from '../../app.module';
 import {DatePipe} from '@angular/common';
 import {Commande} from '../../model/command.model';
-import {AppComponent} from '../../app.component';
+import DxPopup from 'devextreme/ui/popup';
+import { jsPDF } from 'jspdf';
+import {exportDataGrid} from 'devextreme/pdf_exporter';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-commande',
   templateUrl: './commande.component.html',
   styleUrls: ['./commande.component.scss'],
-
 })
 export class CommandeComponent implements OnInit {
+  ligneCmd: any ;
+  collapsed = false;
+  popupVisible = false;
+  closeButtonOptions: any;
   dataCmd: Commande[];
   cmd: any;
   listArticle: any;
@@ -23,25 +30,73 @@ export class CommandeComponent implements OnInit {
   listCommande: any ;
   typesCmd = ['Stock', 'Echantillon', 'Relance', 'Ferme'];
   listOfClient: any;
+  public popup: DxPopup;
+  public toolbarOptions = {
+    text: 'Új partner',
+    type: 'default',
+    stylingMode: 'contained',
+    icon: 'fas fa-plus',
+    onClick: () => { this.popup.show(); }     // <-- control pop-up here
+  };
+  readonly allowedPageSizes = [5, 10, 'all'];
+  displayMode = 'full';
+  showPageSizeSelector = true;
+  showInfo = true;
+  showNavButtons = true;
+  private static isChief(position) {
+    return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+  }
+
   constructor( public datepipe: DatePipe,
                private ordreFab: OrdreFabricationServiceService,
                private articleService: ArticleServiceService,
                private  commandeService: CommandeServiceService,
+               private modalService: NgbModal,
                  private router: Router) {
+    this.closeButtonOptions = {
+      text: 'Close',
+      onClick() {
+        this.popupVisible = false;
+      },
+    };
   }
-  private static isChief(position) {
-    return position && ['CEO', 'CMO'].indexOf(position.trim().toUpperCase()) >= 0;
+
+  customizeColumns(columns) {
+    columns[0].width = 70;
   }
   ngOnInit(): void {
     this.getListCommandes();
     this.getNameClient();
   }
-  isCloneIconVisible(e) {
-    return !e.row.isEditing;
+  popupInitialized(ev) {
+    this.popup = ev.component;
   }
-
-  isCloneIconDisabled(e) {
-    return CommandeComponent.isChief(e.row.data.Position);
+  allowUpdating(e) {
+    return e.row.data.car === true;
+  }
+  onExporting(e) {
+    const doc = new jsPDF();
+    exportDataGrid({
+      jsPDFDocument: doc,
+      component: e.component,
+      indent: 5,
+    }).then(() => {
+      doc.save('Companies.pdf');
+    });
+  }
+  contentReady = (e) => {
+    console.log('aaaaaaaa', e);
+    const listA = e.data.articles.id ;
+    console.log('listA' , listA);
+    // getLignCmdByIdArticleAndIdCmd(e.data.id, e.data.articles.id) {
+    //   this.articleService.getLignCmdByIdArticleAndIdCmd(idArticle, idCmd).subscribe(response => {
+    //       this.ligneCmd = response;
+    //       console.log(this.ligneCmd);
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     });
+    // }
   }
   getArticlesByIdCommande(index, idCmd) {
     this.articleService.getArticlesByIdCommande(idCmd).subscribe(response => {

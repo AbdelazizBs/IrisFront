@@ -5,16 +5,16 @@
 
   <!-- Dark table -->
   <div class="row mt-5">
-    <div class="col">
-      <div  style="background-color: #FFFFFF !important;" class="card bg-default shadow">
+    <div>
+      <div style="background-color: #FFFFFF !important; box-shadow: 0 0 40px 20px lightblue; " class="card bg-default">
         <div style="background-color: #7EBCF1" class="card-header border-0">
-          <h3  class="text-white mb-0">Gestion des Commandes</h3>
+          <h3 class="text-white mb-0">Gestion des Commandes</h3>
           <div *ngIf="listCommande.length==0">
             <h2 style="color: red">Commande vide ..!!</h2>
           </div>
         </div>
         <div *ngIf="listCommande.length>0">
-          <div  class="options">
+          <div class="options">
             <dx-check-box
               id="autoExpand"
               [(value)]="expand.autoExpandAll"
@@ -22,67 +22,125 @@
             >
             </dx-check-box>
           </div>
-                        <div class="table align-items-center table-dark table-flush">
-                            <dx-data-grid
-                              id="gridContainer"
-                              [dataSource]="dataCmd"
-                              [showBorders]="true"
-                              (onRowUpdated)="updateCmd($event)"
-                              (onRowInserted)="addCmd($event)"
-                              (onRowRemoved)="delete($event)"
-                              [showRowLines]="true"
-                              [columnAutoWidth]="true"
-                            >
-<!--                              <dxo-paging [enabled]="true">-->
-<!--                              </dxo-paging>-->
-                              <dxo-editing
-                                mode="popup"
-                                [allowUpdating]="true"
-                                [allowAdding]="true"
-                                [allowDeleting]="true"
-                              >
-                                <dxo-popup title="Commande " [showTitle]="true" [width]="700">
-                                </dxo-popup>
-                              </dxo-editing>
-                            <dxi-column caption="Num" dataField="numCmd">
-                            </dxi-column>
-                            <dxi-column caption="Type" dataField="typeCmd">
-                            </dxi-column>
+          <div class="table align-items-center table-dark table-flush">
+            <dx-data-grid
+              id="gridContainer"
+              keyExpr="id"
+              [dataSource]="dataCmd"
+              [showBorders]="true"
+              (onRowUpdated)="updateCmd($event)"
+              (onRowInserted)="addCmd($event)"
+              (onRowRemoved)="delete($event)"
+              [showRowLines]="true"
+              [columnAutoWidth]="true"
+              (onExporting)="onExporting($event)"
+              [selectedRowKeys]="[]"
+              (onRowClick)="contentReady($event)"
+            >
+              <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+              <dxo-paging [pageSize]="10"> </dxo-paging>
+              <dxo-pager
+                [visible]="true"
+                [allowedPageSizes]="allowedPageSizes"
+                [displayMode]="displayMode"
+                [showPageSizeSelector]="showPageSizeSelector"
+                [showInfo]="showInfo"
+                [showNavigationButtons]="showNavButtons"
+              >
+              </dxo-pager>
+              <dxo-editing
+                mode="popup"
+                [allowUpdating]="true"
+                [allowAdding]="true"
+                [allowDeleting]="true"
 
-<!--                              <dxi-column *dxTemplate="let types of typesCmd; ">-->
-<!--                                <dx-check-box-->
-<!--                                  [text]="helper.getCheckBoxText(types)"-->
-<!--                                  [value]="helper.getCheckBoxValue(types)"-->
-<!--                                  [elementAttr]="helper.getCheckBoxElementAttr(types)"-->
-<!--                                  (onValueChanged)="helper.checkBoxValueChanged($event)">-->
-<!--                                </dx-check-box>-->
-<!--                              </dxi-column>-->
-                            <dxi-column caption="Date" dataField="dateCmd" dataType="date"></dxi-column>
-                            <dxi-column  caption="Client" dataField="nomClient" [groupIndex]="0">
-                              <dxo-lookup [dataSource]="listOfClient"  ></dxo-lookup>
-                            </dxi-column>
-                              <dxi-column type="buttons" [width]="110">
-                                <dxi-button  name="edit"></dxi-button>
-                                <dxi-button name="delete"></dxi-button>
-                                <dxi-button
-                                  hint="Clone"
-                                  icon="copy"
-                                  [visible]="isCloneIconVisible"
-                                  [disabled]="isCloneIconDisabled"
-                                  [onClick]=""
-                                ></dxi-button>
-                              </dxi-column>
-<!--                            <dxi-column caption="Articles" dataField="articles" [groupIndex]="0"> </dxi-column>-->
-                              <dxo-search-panel placeholder="Recherche..." [visible]="true"></dxo-search-panel>
-                              <dxo-paging [pageSize]="10"></dxo-paging>
-                              <dxo-group-panel [visible]="true"></dxo-group-panel>
-                              <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+              >
+                <dxo-popup title="Commande " [showTitle]="true" [width]="700">
+                </dxo-popup>
+              </dxo-editing>
+<!--              <dxo-selection mode="single"></dxo-selection>-->
+              <dxi-column caption="N°Cde" dataField="numCmd">
+              </dxi-column>
+              <dxi-column caption="Client" dataField="client.nom" >
+                <dxo-lookup [dataSource]="listOfClient"></dxo-lookup>
+              </dxi-column>
+              <dxi-column caption="Type Commande" dataField="typeCmd"></dxi-column>
+              <dxi-column caption="Date Commande" dataField="dateCmd" dataType="date"></dxi-column>
+                <dxo-master-detail  onfirstdatarendered="getCurrentData" [enabled]="true" template="detail"></dxo-master-detail>
+              <div *dxTemplate="let cmd of 'detail'">
+                <div class="master-detail-caption">{{ cmd.data.articles[0].refIris }}</div>
+                <dx-data-grid
+                  id="gridContainer1"
+                  [dataSource]="cmd.data.articles"
+                  [showBorders]="true"
+                  (onRowUpdated)="updateCmd($event)"
+                  (onRowInserted)="addCmd($event)"
+                  (onRowRemoved)="delete($event)"
+                  [showRowLines]="true"
+                  [columnAutoWidth]="true"
+                >
+                  <dxo-editing
+                    mode="popup"
+                    [allowUpdating]="true"
+                    [allowAdding]="false"
+                    [allowDeleting]="true"
+                  >
+                    <dxo-popup title="Ligne Cmd " [showTitle]="true" [width]="700">
+                    </dxo-popup>
+                  </dxo-editing>
+                  <dxi-column caption="Réf Client" dataField="numCmd"></dxi-column>
+                  <dxi-column caption="Réf IRIS" dataField="refIris"></dxi-column>
+                  <dxi-column caption="Qté Commandée" dataField="qte" ></dxi-column>
+                  <dxi-column caption="Délai Commande" dataType="date" dataField="delai"></dxi-column>
+                  <dxi-column caption="Action" type="buttons">
+                    <dxi-button name="edit"></dxi-button>
+                    <dxi-button name="delete"></dxi-button>
+                    <!--                <dxi-button text="articles" [onClick]="getCurrentData"></dxi-button>-->
+                  </dxi-column>
+            </dx-data-grid>
+              </div>
 
-                            </dx-data-grid>
-                        </div>
+              <dxi-column caption="Action" type="buttons">
+                <dxi-button  icon="insertrowbelow" ></dxi-button>
+                <dxi-button name="edit" icon="toolbox"></dxi-button>
+                <dxi-button  name="delete" icon="product"></dxi-button>
+              </dxi-column>
+              <dx-toolbar>
+                <dxi-item
+                  location="before"
+                  widget="dxButton"
+                  [options]="toolbarOptions"
+                >
+                </dxi-item>
+                <dxi-item location="center" text="Partnerek"></dxi-item>
+              </dx-toolbar>
 
+              <dx-popup
+                id="entity-popup"
+                [width]="400"
+                height="auto"
+                [showTitle]="true"
+                title="Partner"
+                [dragEnabled]="false"
+                [closeOnOutsideClick]="false"
+                (onInitialized)="popupInitialized($event)"
+              >
+              </dx-popup>
+<!--              <dxo-selection mode="multiple"></dxo-selection>-->
+              <!--                            <dxi-column caption="Articles" dataField="articles" [groupIndex]="0"> </dxi-column>-->
+              <dxo-search-panel placeholder="Recherche..." [visible]="true"></dxo-search-panel>
+              <dxo-paging [pageSize]="10"></dxo-paging>
+<!--              <dxo-group-panel [visible]="true"></dxo-group-panel>-->
+              <dxo-grouping #expand [autoExpandAll]="true"></dxo-grouping>
+              <dxo-export
+                [enabled]="true"
+                [formats]="['pdf']"
+                [allowExportSelectedData]="true"
+              ></dxo-export>
+            </dx-data-grid>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
